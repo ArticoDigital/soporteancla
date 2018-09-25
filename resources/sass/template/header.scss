@@ -1,0 +1,15 @@
+.Header {
+  background-color: var(--primary-color);
+  max-height: 3.2rem;
+  &-logo {
+    position: relative;
+    top: 7rem;
+    padding: 1rem;
+    background: var(--primary-color);
+    border-radius: 0 0 2rem 0;
+    &Image{
+      max-width: 8rem;
+    }
+  }
+
+}

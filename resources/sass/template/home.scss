@@ -1,0 +1,16 @@
+.Login{
+  min-height: calc(100vh - 64px);
+  &-container{
+    max-width: 40rem;
+    width: 100%;
+    margin-bottom: 10rem;
+  }
+  &-h1{
+    font-weight: 600;
+    font-size: 2.4rem;
+    text-align: center;
+  }
+  input{
+    margin: 1.6rem 0;
+  }
+}

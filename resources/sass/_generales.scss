@@ -1,0 +1,24 @@
+body {
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+  color: var(--secondary-color);
+}
+
+h2 {
+  font-weight: 600;
+  line-height: 1em;
+  margin: auto;
+  font-size: 2.4rem;
+}
+
+h3 {
+  line-height: 1em;
+}
+
+.middle-items {
+  align-items: center !important;
+}
+.Main{
+  min-height: calc(100vh - 64px);
+}

@@ -1,0 +1,25 @@
+.Dashboard {
+  margin: 6rem 0;
+  &-section {
+    padding: 2rem 0;
+  }
+  a {
+    opacity: 1 !important;
+  }
+  article {
+    background: var(--primary-color);
+    max-width: 35rem;
+    padding: 7rem;
+    margin: 1.6rem 0;
+    color: white;
+    transition: .3s ease;
+    will-change: box-shadow;;
+    &:hover {
+      box-shadow: 0 0 0 0;
+    }
+  }
+  span {
+    display: inline-block;
+    padding: 1rem 0;
+  }
+}

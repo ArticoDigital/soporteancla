@@ -1,20 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@import "~inuit-css";
 
-// Body
-$body-bg: #f8fafc;
-
-// Typography
-$font-family-sans-serif: "Nunito", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
-
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66D9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+:root {
+  --primary-color: #c1282d;
+  --secondary-color: #757575;
+  --link-color: #538BF4;
+  --fontPrimary--color: #434343;
+  --lightGrey-color: #E9ECEF;
+  --darkGrey-color: #8FA4B8;
+  --dark-color: #5A6169;
+  --active-color: #007BFF;
+  --grid-maxWidth: 1200px;
+}
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (min-width: 36rem) {
+      @content
+    }
+  } @else if $breakpoint == "medium" {
+    @media (min-width: 45rem) {
+      @content
+    }
+  } @else if $breakpoint == "large" {
+    @media (min-width: 920px) {
+      @content
+    }
+  }
+}
