@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
+    return view('create-ticket');
+});
+Route::get('/login', function () {
     return view('home');
 });
 Route::get('/admin', function () {
