@@ -16,7 +16,7 @@
                 <select name="service-category" id="service-category">
                     <option value="0">Seleccione </option>
                 </select>
-                <textarea name="request" id="" cols="30" rows="10" placeholder="Solicitud"></textarea>
+                <textarea class="m-t-20" name="request" id="" cols="30" rows="10" placeholder="Solicitud"></textarea>
             </div>
         </form>
 @endsection

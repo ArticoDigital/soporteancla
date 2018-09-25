@@ -3206,7 +3206,6 @@ h3 {
 
 .Header-logo {
   position: relative;
-  top: 7rem;
   padding: 1rem;
   background: var(--primary-color);
   border-radius: 0 0 2rem 0;
