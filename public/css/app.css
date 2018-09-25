@@ -3178,6 +3178,13 @@ body {
   color: var(--secondary-color);
 }
 
+h1 {
+  font-weight: 400;
+  line-height: 1em;
+  margin: auto;
+  font-size: 3.2rem;
+}
+
 h2 {
   font-weight: 600;
   line-height: 1em;
@@ -3201,18 +3208,21 @@ h3 {
 
 .Header {
   background-color: var(--primary-color);
+}
+
+.Header-container {
   max-height: 3.2rem;
 }
 
-.Header-logo {
-  position: relative;
+.Header-logoImage {
+  max-width: 8rem;
   padding: 1rem;
   background: var(--primary-color);
   border-radius: 0 0 2rem 0;
 }
 
-.Header-logoImage {
-  max-width: 8rem;
+.Header-nav li {
+  margin: 1rem;
 }
 
 .Footer {
@@ -3229,7 +3239,7 @@ h3 {
 }
 
 .Login-container {
-  max-width: 40rem;
+  max-width: 60rem;
   width: 100%;
   margin-bottom: 10rem;
 }

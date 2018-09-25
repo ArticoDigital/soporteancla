@@ -14,13 +14,16 @@
 </head>
 <body data-site="{{env('APP_URL')}}" id="body">
 <header class="Header row align-end">
-
-    <div class="container row justify-between middle-items">
+    <div class="container Header-container row justify-between middle-items">
         <figure class="Header-logo">
             <img class="Header-logoImage" src="{{asset('images/logo_ancla_blanco.png')}}" alt="">
         </figure>
         <nav class="Header-nav">
-
+            <ul class="row" >
+                <li><a href="">Bienvenido Juan</a></li>
+                <li><a href="">Tickets</a></li>
+                <li><a href="">Perfil</a></li>
+            </ul>
         </nav>
     </div>
 
