@@ -1,21 +1,22 @@
 .Header {
   background-color: var(--primary-color);
-  &-container{
-    max-height: 3.2rem;
-  }
-  &-logo {
 
+  &-logo {
     &Image{
       max-width: 8rem;
       padding: 1rem;
-
-      background: var(--primary-color);
-      border-radius: 0 0 2rem 0;
     }
   }
   &-nav{
     li{
       margin: 1rem;
+    }
+    a{
+      color: white;
+    }
+    i{
+      margin-right: .5rem;
+      vertical-align: text-top;
     }
   }
 }

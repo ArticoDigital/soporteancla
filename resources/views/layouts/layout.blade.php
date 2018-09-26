@@ -19,10 +19,10 @@
             <img class="Header-logoImage" src="{{asset('images/logo_ancla_blanco.png')}}" alt="">
         </figure>
         <nav class="Header-nav">
-            <ul class="row" >
-                <li><a href="">Bienvenido Juan</a></li>
-                <li><a href="">Tickets</a></li>
-                <li><a href="">Perfil</a></li>
+            <ul class="row is-list-less" >
+                <li><a href="{{route('tickets')}}"> <i class="fa fa-check"></i>Tickets</a></li>
+                <li><a href="{{route('users')}}"> <i class="fa fa-users"></i>Usuarios</a></li>
+                <li><a href="{{route('profile')}}"> <i class="fa fa-user"></i>Mi Perfil</a></li>
             </ul>
         </nav>
     </div>

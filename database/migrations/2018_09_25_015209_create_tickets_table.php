@@ -19,7 +19,8 @@ class CreateTicketsTable extends Migration
             $table->string('company');
             $table->string('cellphone');
             $table->string('email');
-            $table->string('sapnumber')->nullable();
+            $table->string('subject');
+            $table->string('sap_number')->nullable();
             $table->string('identification');
             $table->string('sell_point');
             $table->string('operation_center');

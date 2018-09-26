@@ -1,16 +1,17 @@
 .Login{
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 113px);
   &-container{
-    max-width: 60rem;
     width: 100%;
-    margin-bottom: 10rem;
+    margin-bottom: 6rem;
   }
   &-h1{
     font-weight: 600;
-    font-size: 2.4rem;
+    font-size: 2rem;
     text-align: center;
   }
   input{
     margin: 1.6rem 0;
+  }
+  select{
   }
 }

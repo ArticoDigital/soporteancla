@@ -1,0 +1,22 @@
+.Users {
+
+  &-links {
+    font-weight: 400;
+    color: #999;
+    margin: 1rem 1rem 1rem 0;
+    display: block;
+    &.active{
+      color: #031b4e
+    }
+  }
+  &-delete{
+    color: var(--error-color);
+  }
+
+}
+.User{
+
+  input{
+    margin: 1.6rem 0;
+  }
+}

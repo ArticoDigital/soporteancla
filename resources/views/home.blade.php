@@ -4,7 +4,7 @@
 
         <form action="" class="Login row justify-center middle-items">
             <div class="Login-container">
-                <h1 class="Login-h1">INICIAR SESIÓN</h1>
+                <h1>Iniciar sesión</h1>
                 <input type="text" placeholder="Email">
                 <input type="password" placeholder="Contraseña">
                 <div class="row justify-end">
