@@ -17,7 +17,7 @@ Route::get('/tickets', function () {
 
 Route::get('/tickets', [
     'uses' => 'TicketController@viewTickets',
-]);
+])->name('tickets');
 
 Route::get('/ticket', function () {
     return view('ticket');
