@@ -1,8 +1,19 @@
 @extends('layouts.layout')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert-error">
+        <ul class="Error-ul is-list-less">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
 
-    <form class="Request row justify-center m-t-20" method="POST">
+        <span class="Error-close"><i class="far fa-times-circle"></i></span>
+    </div>
+@endif
+    <form class="Request row justify-center m-t-20" method="POST" action="{{route('storeticket')}}">
+      @csrf
         <div class="Login-container">
             <h1>¿Cómo puedo ayudarle?</h1>
             <div class="row">
@@ -18,7 +29,7 @@
                     <input type="text" name="sell_point" placeholder="Punto de venta">
                     <input type="text" name="operation_center" placeholder="Centro de operación">
                     <label class="m-b-16" for="service_category">Categoría de servicio</label>
-                    <select name="service_category" id="service_category">
+                    <select name="service_category_id" id="service_category_id">
                         <option value="0">Seleccione</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>

@@ -15,6 +15,9 @@
 
 Route::get('/', 'TicketController@create')->name('home');
 
+
+Route::post('/createticket','TicketController@store')->name('storeticket');
+
 Route::get('/inicio-sesion', function () {
     return view('home');
 });
@@ -25,5 +28,3 @@ Route::get('logout', function () {
 })->name('logout');
 
 Auth::routes();
-
-

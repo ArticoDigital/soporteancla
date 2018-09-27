@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\ServiceCategory;
+use App\Http\Requests\TicketRequest;
 
 
 class TicketController extends Controller
@@ -16,7 +17,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        dd('da');
+        //dd('da');
         $categories = ServiceCategory::all();
         return view('create-ticket',compact('categories'));
     }
@@ -39,10 +40,14 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TicketRequest $request)
     {
         //
+
        $inputs = $request->all();
+
+       $inputs['ticket_state_id']='1';
+      // dd($inputs);
        Ticket::create($inputs);
        return view('ticket-success')->with(['messageok' => 'Registro exitoso']);
     }

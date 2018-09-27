@@ -22,10 +22,9 @@ class CreateTicketsTable extends Migration
             $table->string('subject');
             $table->string('sap_number')->nullable();
             $table->string('identification');
-            $table->string('sell_point');
-            $table->string('operation_center');
-            $table->integer('user_id')->unsigned(); //Usuario al que se le asigna el ticket
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('sell_point')->nullable();
+            $table->string('operation_center')->nullable();
+            $table->integer('user_id')->nullable(); //Usuario al que se le asigna el ticket
             $table->integer('service_category_id')->unsigned();
             $table->foreign('service_category_id')->references('id')->on('service_categories');
             $table->integer('ticket_state_id')->unsigned();
