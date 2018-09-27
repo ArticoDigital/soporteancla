@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             'company_name' => 'Compañia 1',
             'company_NIT' => '45345345'
         ]);
-        $user1->assignRole('Admin');
+        $user1->assignRole('Admi');
         $user2 = User::create([
             'name' => 'Juan Ramos',
             'email' => 'juan2ramos@gmail.com',

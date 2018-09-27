@@ -11,16 +11,21 @@
 |
 */
 
-/*Route::get('/', function () {
+
+
+Route::get('/', function () {
     return view('create-ticket');
 })->name('home');
-*/
-Route::get('/', [
-    'uses' => 'TicketController@create',
-]);
 
 Route::get('/inicio-sesion', function () {
     return view('home');
 });
 
+Route::get('logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
+
 Auth::routes();
+
+
