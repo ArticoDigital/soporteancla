@@ -12,13 +12,14 @@
 */
 
 
-
 Route::get('/', 'TicketController@create')->name('home');
 
 
-Route::post('/createticket','TicketController@store')->name('storeticket');
+Route::post('/createticket', 'TicketController@store')->name('storeticket');
 
 Route::get('/inicio-sesion', function () {
+    if (auth()->check())
+        return redirect()->route('tickets');
     return view('home');
 });
 

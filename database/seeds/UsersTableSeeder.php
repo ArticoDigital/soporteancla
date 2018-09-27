@@ -24,6 +24,7 @@ class UsersTableSeeder extends Seeder
             'company_NIT' => '45345345'
         ]);
         $user1->assignRole('Admin');
+
         $user2 = User::create([
             'name' => 'Juan Ramos',
             'email' => 'juan2ramos@gmail.com',
@@ -33,5 +34,14 @@ class UsersTableSeeder extends Seeder
             'company_NIT' => '4215345345'
         ]);
         $user2->assignRole('Admin');
+
+        $user3 = User::create([
+            'name' => 'Juan Ramos',
+            'email' => 'soporte@ancla.la',
+            'password' => bcrypt('12345'),
+            'identification' => '352324323',
+            'company_NIT' => '4215345345'
+        ]);
+        $user3->assignRole('Support');
     }
 }
