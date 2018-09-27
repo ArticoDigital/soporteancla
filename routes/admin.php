@@ -33,7 +33,7 @@ Route::get('/usuario/nuevo', function () {
 
 Route::get('/perfil', function () {
     return view('profile');
-})->name('profile')->middleware('permission:Administrator');
+})->name('profile');
 
 Route::get('/admin', function () {
     return view('admin');
