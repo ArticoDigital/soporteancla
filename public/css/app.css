@@ -7842,6 +7842,11 @@ p {
 .Main {
   min-height: calc(100vh - 113px);
   padding: 3rem 0;
+  position: relative;
+}
+
+.Main.inicio-sesion {
+  padding: 0;
 }
 
 .Items-wrapper {
@@ -7890,6 +7895,25 @@ input.numInput {
   border-radius: 2px;
 }
 
+.alert-error {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+}
+
+.Error-close {
+  font-size: 3rem;
+  position: absolute;
+  right: 1.3rem;
+  top: .7rem;
+  cursor: pointer;
+}
+
+.Error-ul {
+  list-style: disc;
+  margin-left: 2rem;
+}
+
 .Header {
   background-color: var(--primary-color);
 }
@@ -7923,6 +7947,8 @@ input.numInput {
 
 .Login {
   min-height: calc(100vh - 113px);
+  max-width: 40rem;
+  margin: auto;
 }
 
 .Login-container {
@@ -7937,6 +7963,10 @@ input.numInput {
 }
 
 .Login input {
+  margin: 1.6rem 0;
+}
+
+.Request input {
   margin: 1.6rem 0;
 }
 

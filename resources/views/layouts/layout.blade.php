@@ -29,7 +29,7 @@
 
 </header>
 
-<main class="Main container">
+<main class="Main container {{Route::current()->uri }} ">
     @yield('content')
 </main>
 <footer class="Footer">

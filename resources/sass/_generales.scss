@@ -39,6 +39,10 @@ p {
 .Main {
   min-height: calc(100vh - 113px);
   padding: 3rem 0;
+  position: relative;
+  &.inicio-sesion {
+    padding: 0;
+  }
 }
 
 .Items {
@@ -83,4 +87,23 @@ input.numInput {
     min-width: 0;
     border-radius: 2px;
   }
+}
+
+.alert-error {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+}
+
+.Error-close {
+  font-size: 3rem;
+  position: absolute;
+  right: 1.3rem;
+  top: .7rem;
+  cursor: pointer;
+}
+
+.Error-ul {
+  list-style: disc;
+  margin-left: 2rem;
 }

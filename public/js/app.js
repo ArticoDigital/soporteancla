@@ -93,6 +93,13 @@ __WEBPACK_IMPORTED_MODULE_0_flatpickr___default()(".dates", {
     dateFormat: "Y-m-d"
 });
 
+var errorClose = document.querySelector('.Error-close');
+if (errorClose) {
+    errorClose.addEventListener('click', function () {
+        document.querySelector('.alert-error').remove();
+    });
+}
+
 /***/ }),
 
 /***/ 43:

@@ -1,5 +1,7 @@
 .Login{
   min-height: calc(100vh - 113px);
+  max-width: 40rem;
+  margin: auto;
   &-container{
     width: 100%;
     margin-bottom: 6rem;
@@ -13,5 +15,10 @@
     margin: 1.6rem 0;
   }
   select{
+  }
+}
+.Request{
+  input{
+    margin: 1.6rem 0;
   }
 }

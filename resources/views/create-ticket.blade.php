@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form action="" class="Login row justify-center m-t-20">
+    <form action="" class="Request row justify-center m-t-20">
         <div class="Login-container">
             <h1>¿Cómo puedo ayudarle?</h1>
             <div class="row">

@@ -1,5 +1,5 @@
 import flatpickr from "flatpickr";
-import { Spanish } from "flatpickr/dist/l10n/es"
+import {Spanish} from "flatpickr/dist/l10n/es"
 
 flatpickr(".dates", {
     altInput: true,
@@ -7,3 +7,10 @@ flatpickr(".dates", {
     mode: "range",
     dateFormat: "Y-m-d",
 });
+
+const errorClose = document.querySelector('.Error-close');
+if (errorClose) {
+    errorClose.addEventListener('click', function () {
+        document.querySelector('.alert-error').remove();
+    });
+}
