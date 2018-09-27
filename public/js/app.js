@@ -60,28 +60,26 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 11:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(12);
-module.exports = __webpack_require__(43);
+__webpack_require__(1);
+module.exports = __webpack_require__(4);
 
 
 /***/ }),
-
-/***/ 12:
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__);
 
 
@@ -101,15 +99,7 @@ if (errorClose) {
 }
 
 /***/ }),
-
-/***/ 43:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 48:
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.2, @license MIT */
@@ -2289,8 +2279,7 @@ if (errorClose) {
 
 
 /***/ }),
-
-/***/ 49:
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.2, @license MIT */
@@ -2329,6 +2318,11 @@ if (errorClose) {
 })));
 
 
-/***/ })
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
 
-/******/ });
+// removed by extract-text-webpack-plugin
+
+/***/ })
+/******/ ]);

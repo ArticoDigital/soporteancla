@@ -1,13 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TicketState extends Model
+class ServiceCategory extends Model
 {
     //
     protected $fillable = [
         'name', 'description','isActive'
     ];
+
 }
