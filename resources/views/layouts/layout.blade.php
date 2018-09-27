@@ -18,13 +18,18 @@
         <figure class="Header-logo">
             <img class="Header-logoImage" src="{{asset('images/logo_ancla_blanco.png')}}" alt="">
         </figure>
+        @if(auth()->check())
         <nav class="Header-nav">
-            <ul class="row is-list-less" >
+            <ul class="row is-list-less">
                 <li><a href="{{route('tickets')}}"> <i class="fa fa-check"></i>Tickets</a></li>
-                <li><a href="{{route('users')}}"> <i class="fa fa-users"></i>Usuarios</a></li>
+                @hasrole('Admninistrador')
+                  <li><a href="{{route('users')}}"> <i class="fa fa-users"></i>Usuarios</a></li>
+                @endhasrole
                 <li><a href="{{route('profile')}}"> <i class="fa fa-user"></i>Mi Perfil</a></li>
             </ul>
         </nav>
+        @endif
+
     </div>
 
 </header>

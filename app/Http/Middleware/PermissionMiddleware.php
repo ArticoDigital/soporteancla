@@ -15,9 +15,9 @@ class PermissionMiddleware
      * @param $permission
      * @return mixed
      */
-    public function handle($request, Closure $next, $permission)
+    public function handle($request, Closure $next, $Role)
     {
-        if (Auth::guest() || !$request->user()->can($permission))
+        if (Auth::guest() || !$request->user()->hasRole($Role))
             abort(404);
         return $next($request);
     }
