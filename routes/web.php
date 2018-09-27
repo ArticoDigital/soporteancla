@@ -13,9 +13,7 @@
 
 
 
-Route::get('/', function () {
-    return view('create-ticket');
-})->name('home');
+Route::get('/', 'TicketController@create')->name('home');
 
 Route::get('/inicio-sesion', function () {
     return view('home');

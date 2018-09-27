@@ -16,7 +16,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        dd('da');
         $categories = ServiceCategory::all();
         return view('create-ticket',compact('categories'));
     }
