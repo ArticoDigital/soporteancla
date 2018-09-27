@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comment;
 use App\Models\Ticket;
+use App\Models\TicketState;
 use App\Models\ServiceCategory;
 
-
-class TicketController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,6 @@ class TicketController extends Controller
     public function index()
     {
         //
-        $categories = ServiceCategory::all();
-        return view('create-ticket',compact('categories'));
     }
 
     /**
@@ -29,8 +28,6 @@ class TicketController extends Controller
     public function create()
     {
         //
-        $categories = ServiceCategory::all();
-        return view('create-ticket',compact('categories'));
     }
 
     /**
@@ -42,14 +39,9 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         //
-       $inputs = $request->all();
-       Ticket::create($inputs);
-       return view('ticket-success')->with(['messageok' => 'Registro exitoso']);
-    }
-
-    public function viewTickets(){
-      $categories = ServiceCategory::all();
-      return view('tickets',compact('categories'));
+        $inputs = $request->all();
+        Comment::create($inputs);
+        return view('comment-success')->with(['messageok' => 'Registro exitoso del comentario']);
     }
 
     /**
