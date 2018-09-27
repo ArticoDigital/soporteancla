@@ -16,5 +16,8 @@
                 <h4>Ticket Nº {{$ticket->id}}</h4>
             </div>
         </div>
+        <div class="m-t-a-40">
+            <a class="button" href="http://ancla.la">Volver al E-commerce</a>
+        </div>
     </div>
 @endsection
