@@ -26,6 +26,7 @@
                   <li><a href="{{route('users')}}"> <i class="fa fa-users"></i>Usuarios</a></li>
                 @endhasrole
                 <li><a href="{{route('profile')}}"> <i class="fa fa-user"></i>Mi Perfil</a></li>
+                <li><a href="{{route('logout')}}"> <i class="fa fa-user"></i>Salir</a></li>
             </ul>
         </nav>
         @endif

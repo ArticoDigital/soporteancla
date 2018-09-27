@@ -21,7 +21,7 @@ Route::get('/ticket', function () {
 
 Route::get('/usuarios', function () {
     return view('users');
-})->name('users')->middleware('role:Administrator');
+})->name('users');
 
 Route::get('/usuario', function () {
     return view('user');

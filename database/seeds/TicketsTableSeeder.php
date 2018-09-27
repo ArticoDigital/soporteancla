@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Ticket;
+use App\Models\Ticket;
 class TicketsTableSeeder extends Seeder
 {
     /**

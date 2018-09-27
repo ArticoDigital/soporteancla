@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\TicketState;
+use App\Models\TicketState;
 
 class TicketStatesTableSeeder extends Seeder
 {
