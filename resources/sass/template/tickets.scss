@@ -8,4 +8,11 @@
       margin: 1rem 0;
     }
   }
+  &-success {
+
+    &Border {
+      border: .1rem solid var(--lightGrey-color);
+      padding: 2rem;
+    }
+  }
 }

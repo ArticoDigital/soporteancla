@@ -28,4 +28,5 @@ Route::get('logout', function () {
     return redirect('/');
 })->name('logout');
 
+
 Auth::routes();

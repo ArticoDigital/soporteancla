@@ -8012,6 +8012,11 @@ input.numInput {
   margin: 1rem 0;
 }
 
+.Ticket-successBorder {
+  border: 0.1rem solid var(--lightGrey-color);
+  padding: 2rem;
+}
+
 .Users-links {
   font-weight: 400;
   color: #999;
