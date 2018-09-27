@@ -7,8 +7,9 @@
             <label class="col-4 m-r-12" for="">
                 <select class="col m-r-12" name="" id="">
                     <option value="">Selecione un estado</option>
-                    <option value="">Abierto</option>
-                    <option value="">Cerrado</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
                 </select>
             </label>
             <label class="m-r-12 col-8 "><input class="dates" type="text" placeholder="Seleccione rango de fechas"></label>

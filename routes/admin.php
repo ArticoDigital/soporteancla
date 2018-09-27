@@ -10,10 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/tickets', function () {
     return view('tickets');
-})->name('tickets');
+})->name('tickets');*/
+
+Route::get('/tickets', [
+    'uses' => 'TicketController@viewTickets',
+]);
 
 Route::get('/ticket', function () {
     return view('ticket');
@@ -21,7 +25,7 @@ Route::get('/ticket', function () {
 
 Route::get('/usuarios', function () {
     return view('users');
-})->name('users');
+})->name('users')->middleware('role:Administrator');
 
 Route::get('/usuario', function () {
     return view('user');
@@ -38,7 +42,3 @@ Route::get('/perfil', function () {
 Route::get('/admin', function () {
     return view('admin');
 })->name('dashboard');
-
-
-
-
