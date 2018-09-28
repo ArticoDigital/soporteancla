@@ -29,9 +29,9 @@ Route::get('/usuarios', 'UserController@index')->name('users');
 Route::get('/usuario/{user}', 'UserController@edit')->name('user');
 Route::post('/usuario/{user}', 'UserController@update')->name('userUpdate');
 
-Route::get('/usuario/nuevo', function () {
-    return view('user-create');
-})->name('userCreate');
+Route::get('/usuarios/nuevo', 'UserController@create')->name('userCreate');
+Route::post('/usuarios/nuevo', 'UserController@store')->name('userStore');
+
 
 Route::get('/perfil', function () {
     return view('profile');
