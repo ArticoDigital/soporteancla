@@ -53,9 +53,9 @@
                     <div class=" Status-indicator active"></div>
                 </div>
                 <div class="col-2 is-text-center">{{$ticket->name}}</div>
+                <div class="col-3 is-text-center">{{$ticket->email}}</div>
                 <div class="col-3 is-text-center">{{$ticket->subject}}</div>
                 <div class="col-4 is-text-center">{{$ticket->ServiceCategory->name}}</div>
-                <div class="col-3 is-text-center">{{$ticket->email}}</div>
                 <div class="col-2 is-text-center">{{$ticket->company}}</div>
                 <div class="col-1 row justify-end middle-items">
                     <a href="{{route('ticket',[$ticket->id])}}"><i class="fas fa-edit "></i></a>
