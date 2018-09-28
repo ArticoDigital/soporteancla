@@ -68,6 +68,41 @@ class TicketController extends Controller
         return view('tickets', compact('states', 'tickets'));
     }
 
+    public function filterviewTickets(Request $inputs)
+    {
+        $datev = explode(" a ", $inputs['dates']);
+        $states = TicketState::all();
+        if(!isset($datev[1])){
+          $datev[1]=$datev[0];
+        }
+        //dd($datev);
+
+        /*$tickets = (auth()->user()->hasRole('Support')) ?
+            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+                ->where('ticket_state_id', $inputs['state'])
+                ->where('user_id', auth()->user()->id)
+                ->whereBetween('created_at',$datev)->get() :
+            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+                ->where('ticket_state_id', $inputs['state'])
+                ->whereBetween('created_at',$datev)->get();
+*/
+        $tickets = (auth()->user()->hasRole('Support')) ?
+            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+                ->where('ticket_state_id', $inputs['state'])
+                ->where('user_id', auth()->user()->id)
+                ->whereDate('created_at', '>=', $datev[0])
+                ->whereDate('created_at', '<=', $datev[1])->get() :
+            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+                ->where('ticket_state_id', $inputs['state'])
+                ->whereDate('created_at', '>=', $datev[0])
+                ->whereDate('created_at', '<=', $datev[1])
+                ->get();
+
+
+
+        return view('tickets', compact('states', 'tickets'));
+    }
+
     /**
      * Display the specified resource.
      *

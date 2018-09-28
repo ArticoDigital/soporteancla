@@ -18,6 +18,9 @@ Route::get('/tickets', function () {
 Route::get('/tickets', [
     'uses' => 'TicketController@viewTickets',
 ])->name('tickets');
+Route::post('/tickets', [
+    'uses' => 'TicketController@filterviewTickets',
+])->name('filtertickets');
 
 Route::get('/ticket/{ticket}', 'TicketController@show')->name('ticket');
 

@@ -3,16 +3,16 @@
 @section('content')
     <div class="row justify-between middle-items m-t-16 m-b-16">
         <div class="col-6"><h2 class="">Tickets</h2></div>
-        <form class="Filters row col-10 middle-items justify-end">
+        <form class="Filters row col-10 middle-items justify-end" method="POST" action="{{route('filtertickets')}}">
+            @csrf
             <label class="col-4 m-r-12" for="">
-                <select class="col m-r-12" name="" id="">
-                    <option value="">Selecione un estado</option>
+                <select class="col m-r-12" name="state" id=""> 
                     @foreach($states as $state)
                         <option value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
                 </select>
             </label>
-            <label class="m-r-12 col-8 "><input class="dates" type="text"
+            <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates"
                                                 placeholder="Seleccione rango de fechas"></label>
             <div class=" Filters-submit col-2 row justify-center ">
                 <button class="Filters-button" type="submit"><i class="fas fa-sliders-h"></i></button>
