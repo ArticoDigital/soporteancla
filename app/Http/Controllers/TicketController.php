@@ -55,7 +55,7 @@ class TicketController extends Controller
 
     public function viewTickets()
     {
-        $categories = ServiceCategory::all();
+        $states = TicketState::all();
 
 
         $tickets = (auth()->user()->hasRole('Support')) ?
@@ -65,7 +65,7 @@ class TicketController extends Controller
             Ticket::with(['ticketState', 'ServiceCategory', 'user'])
                 ->where('ticket_state_id', 1)->get();
 
-        return view('tickets', compact('categories', 'tickets'));
+        return view('tickets', compact('states', 'tickets'));
     }
 
     /**
