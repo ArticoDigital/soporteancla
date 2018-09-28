@@ -26,7 +26,7 @@ Route::get('/usuarios', 'UserController@index')->name('users');
 Route::get('/usuario/{user}', 'UserController@edit')->name('user');
 Route::post('/usuario/{user}', 'UserController@update')->name('userUpdate');
 
-Route::get('/usuario/nuevo', function () {
+Route::get('/usuarios/nuevo', function () {
     return view('user-create');
 })->name('userCreate');
 
