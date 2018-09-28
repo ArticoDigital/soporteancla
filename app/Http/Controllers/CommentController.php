@@ -39,9 +39,10 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        $request['user_id']= auth()->user()->id;
         $inputs = $request->all();
         Comment::create($inputs);
-        return view('comment-success')->with(['messageok' => 'Registro exitoso del comentario']);
+        return redirect()->back()->with(['messageok' => 'Registro exitoso del comentario']);
     }
 
     /**

@@ -41,6 +41,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request['password']= bcrypt($request['password']);
         $user = User::create($request->all());
         $user->assignRole($request->input('role'));
         return redirect()->route('user', $user->id);
@@ -78,6 +79,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+      dd($request);
+        $request['password']= bcrypt($request['password']);
         $user->syncRoles([$request->input('role')]);
         $user->fill($request->all())->save();
         return redirect()->back();
