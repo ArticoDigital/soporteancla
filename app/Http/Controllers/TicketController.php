@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TicketState;
+use App\User;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\ServiceCategory;
@@ -54,18 +56,30 @@ class TicketController extends Controller
     public function viewTickets()
     {
         $categories = ServiceCategory::all();
-        return view('tickets', compact('categories'));
+
+
+        $tickets = (auth()->user()->hasRole('Support')) ?
+            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+                ->where('ticket_state_id', 1)
+                ->where('user_id', auth()->user()->id)->get() :
+            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+                ->where('ticket_state_id', 1)->get();
+
+        return view('tickets', compact('categories', 'tickets'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ticket $ticket)
     {
-        //
+        $users = User::role('Support')->get();
+        $ticketStates = TicketState::all();
+        $ticket->load(['ticketState', 'ServiceCategory', 'user', 'Comments.user']);
+        return view('ticket', compact('ticket', 'users', 'ticketStates'));
     }
 
     /**
@@ -83,12 +97,14 @@ class TicketController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $ticket
+     * @return back
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Ticket $ticket)
     {
-        //
+
+        $ticket->fill($request->all())->save();
+        return redirect()->back()->with(['messageok' => 'Registro exitoso del comentario']);
     }
 
     /**

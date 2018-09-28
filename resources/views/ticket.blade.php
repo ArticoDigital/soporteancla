@@ -3,44 +3,59 @@
 @section('content')
     <div class="Ticket">
         <div class="row justify-between middle-items m-t-16 m-b-16">
-            <div class="col-6"><h2 class="">Ticket #129 : Daño caja fuerte</h2></div>
-            <p class="m-t-a-20"><b>Solicitud: </b>Lorem ipsum dolor amet palo santo before they sold out coloring book
-                raw
-                denim, humblebrag
-                irony messenger bag PBR&B freegan heirloom yuccie taxidermy drinking vinegar. Tousled put a bird on it
-                gentrify migas. Kogi typewriter butcher kombucha brunch, church-key hammock. Put a bird on it cardigan
-                enamel pin lo-fi next level PBR&B meditation. Live-edge meh occupy before they sold out, lumbersexual
-                artisan coloring book disrupt hell of kogi hoodie unicorn DIY etsy plaid
-            </p>
+            <div class="col-6"><h2 class="">Ticket #{{$ticket->id}}: {{$ticket->name}}</h2></div>
+            <p class="m-t-a-20 col-16"><b>Solicitud: </b>{{$ticket->request}}</p>
         </div>
-        <form class="row justify-between Ticket-info">
+        <form class="row justify-between Ticket-info" method="post" action="{{route('updateTicket',[$ticket->id])}}">
+            @csrf
             <div class="col-5">
-                <p><b>Nombre: </b> Juan Ramos</p>
-                <p><b>Compañia: </b> Ártico Digital</p>
-                <p><b>Celular: </b> 300 554 93 72</p>
+                <p><b>Nombre: </b> {{$ticket->name}}</p>
+                <p><b>Compañia: </b> {{$ticket->company}}</p>
+                <p><b>Celular: </b> {{$ticket->cellphone}}</p>
             </div>
             <div class="col-5">
-                <p><b>Email: </b> juan2ramos@gmail.com</p>
-                <p><b>identification: </b> 9123912312-1</p>
-                <p><b>Punto de venta: </b> 9123912312-1</p>
+                <p><b>Email: </b> {{$ticket->email}}</p>
+                <p><b>identification: </b> {{$ticket->identification}}</p>
+                <p><b>Punto de venta: </b> {{$ticket->sell_point}}</p>
 
             </div>
             <div class="col-5">
-                <p><b>Centro de operaciones: </b> 300</p>
-                <p><b>Categoría de servicio: </b> Cajas fuertes</p>
+                <p><b>Centro de operaciones: </b> {{$ticket->operation_center}}</p>
+                <p><b>Categoría de servicio: </b> {{$ticket->ServiceCategory->name}}</p>
             </div>
-            <h4 class="m-t-40">Comentarios</h4>
+            <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
                 <div class="col-13 row justify-between">
-                    <div class="row middle-items col-8">
-                        <div class="col-3"><p><b>Asignado a: </b></p></div>
-                        <select class="col-11" name="" id="">
+                    @hasrole('Admin')
+                    <div class="row middle-items col-6">
+                        <div class="col-4"><p><b>Asignado a: </b></p></div>
+                        <select class="col-11" name="user_id" id="">
                             <option value="">Seleccione un opción</option>
+                            @foreach($users as $user)
+                                <option
+                                        {{($user->id == $ticket->user_id)?'selected':''}}
+                                        value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
                         </select>
                     </div>
-                    <div class="row middle-items col-8">
+                    @endhasrole
+
+                    <div class="row middle-items @hasrole('Admin') col-6 @else col-8 @endhasrole ">
+                        <div class="col-4"><p><b>Estado: </b></p></div>
+                        <select class="col-11" name="ticket_state_id" id="">
+                            <option value="">Seleccione un opción</option>
+                            @foreach($ticketStates as $ticketState)
+                                <option
+                                        {{($ticketState->id == $ticket->ticket_state_id)?'selected':''}}
+                                        value="{{$ticketState->id}}">{{$ticketState->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="row middle-items @hasrole('Admin') col-4 @else col-8 @endhasrole ">
+
                         <div class="col-3"><p><b>#SAP: </b></p></div>
-                        <label for="" class="col-11"><input type="text"></label>
+                        <label for="" class="col-11"><input type="text" name="sap_number"
+                                                            value="{{$ticket->sap_number}}"></label>
                     </div>
                 </div>
                 <div class="col-3">
@@ -49,23 +64,34 @@
             </div>
         </form>
         <h4 class="m-t-40">Comentarios</h4>
-        <div class="m-t-20 row middle-items">
-            <div class="col-3">
-                Juan Ramos
+        @forelse($ticket->comments as $comment)
+            <div class="m-t-20 row middle-items">
+                <div class="col-3">
+                    {{$comment->user->name}}
+                </div>
+                <div class="col-13">
+                    <p>{{$comment->comment_text}}</p>
+                    <p class="row align-center m-t-4 Ticket-date">
+                        <i class="far fa-clock"></i>
+                        <span class="m-l-4">{{$comment->created_at}}</span>
+                    </p>
+                </div>
             </div>
-            <div class="col-13">
-                <p>Ya estoy verificando con nuestro equipo del segundo nivel de soporte por que las campañas \"Más que
-                    seguridad te damos tranquilidad\" no han sido enviadas. Te aviso en cuanto encontremos la razón y
-                    podamos comprobar que se ha realizado el envío.
-                </p>
-                <p class="row align-center m-t-4 Ticket-date">
-                    <i class="far fa-clock"></i><span class="m-l-4">martes 03 jul. 2018 at 14:13</span>
-                </p>
+            @if (!$loop->last)
+                <hr>
+            @endif
+
+        @empty
+
+            <div>
+                No hay comentarios
             </div>
-        </div>
-        <hr>
-        <form action="" class="m-t-40">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Escribe un comentario"></textarea>
+        @endforelse
+
+        <form action="{{route('updateComment')}}" method="post" class="m-t-40">
+            @csrf
+            <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
+            <textarea name="comment_text" id="" cols="30" rows="10" placeholder="Escribe un comentario"></textarea>
             <div class="m-t-20">
                 <button type="submit">Comentar</button>
             </div>

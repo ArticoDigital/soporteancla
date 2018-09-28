@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-use App\Models\Comment;
-use App\Models\Ticket;
-use App\Models\TicketState;
-use App\Models\ServiceCategory;
 
-class CommentController extends Controller
+class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:Admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +19,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('users', compact('users'));
     }
 
     /**
@@ -38,11 +41,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-
-        $inputs = $request->all();
-        $inputs['user_id'] = auth()->user()->id;
-        Comment::create($inputs);
-        return redirect()->back()->with(['messageok' => 'Registro exitoso del comentario']);
+        //
     }
 
     /**
@@ -59,24 +58,27 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $user->load('tickets');
+        return view('user', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->syncRoles([$request->input('role')]);
+        $user->fill($request->all())->save();
+        return redirect()->back();
     }
 
     /**

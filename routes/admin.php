@@ -19,17 +19,12 @@ Route::get('/tickets', [
     'uses' => 'TicketController@viewTickets',
 ])->name('tickets');
 
-Route::get('/ticket', function () {
-    return view('ticket');
-})->name('ticket');
+Route::get('/ticket/{ticket}', 'TicketController@show')->name('ticket');
 
-Route::get('/usuarios', function () {
-    return view('users');
-})->name('users')->middleware('role:Admin');
+Route::get('/usuarios', 'UserController@index')->name('users');
 
-Route::get('/usuario', function () {
-    return view('user');
-})->name('user');
+Route::get('/usuario/{user}', 'UserController@edit')->name('user');
+Route::post('/usuario/{user}', 'UserController@update')->name('userUpdate');
 
 Route::get('/usuario/nuevo', function () {
     return view('user-create');
@@ -42,3 +37,7 @@ Route::get('/perfil', function () {
 Route::get('/admin', function () {
     return view('admin');
 })->name('dashboard');
+
+
+Route::post('/updateTicket/{ticket}', 'TicketController@update')->name('updateTicket');
+Route::post('/updateComment', 'CommentController@store')->name('updateComment');

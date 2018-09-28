@@ -6,7 +6,7 @@
     </div>
     <div class="row col-16 justify-between m-b-40">
         <div class="col-8 row  ">
-            <a href="{{route('userCreate')}}" class="button">Crear Administrador <i class="fas fa-user-plus "></i></a>
+            <a href="{{route('userCreate')}}" class="button">Crear usuario <i class="fas fa-user-plus "></i></a>
         </div>
         <form class=" col-8 row justify-end">
             <label class="col-10" for="">
@@ -24,18 +24,20 @@
     </ul>
 
     <ul class="is-list-less  Items">
-        <li class="Items-wrapper row middle-items">
-            <div class="col-2 is-text-center">Juan Ramos</div>
-            <div class="col-3 is-text-center">Ártico Digital</div>
-            <div class="col-3  is-text-center">92031323-1</div>
-            <div class="col-3  is-text-center">300 5549372</div>
-            <div class="col-3  is-text-center">juan2ramos@gmail.com</div>
-            <div class="col-1 row justify-end middle-items">
-                <a href="{{route('user')}}"><i class="fas fa-user-edit "></i></a>
-            </div>
-            <div class="col-1 row justify-end middle-items">
-                <a class="Users-delete" href=""><i class="fas fa-user-times "></i></a>
-            </div>
-        </li>
+        @foreach($users as $user)
+            <li class="Items-wrapper row middle-items">
+                <div class="col-2 is-text-center">{{$user->id}}</div>
+                <div class="col-2 is-text-center">{{$user->name}}</div>
+                <div class="col-3 is-text-center">{{($user->roles->first()->name == 'Admin')?'Admin':'Soporte'}}</div>
+                <div class="col-3  is-text-center">{{$user->identification}}</div>
+                <div class="col-3  is-text-center">{{$user->email}}</div>
+                <div class="col-1 row justify-end middle-items">
+                    <a href="{{route('user',$user->id)}}"><i class="fas fa-user-edit "></i></a>
+                </div>
+                <div class="col-1 row justify-end middle-items">
+                    <a class="Users-delete" href=""><i class="fas fa-user-times "></i></a>
+                </div>
+            </li>
+        @endforeach
     </ul>
 @endsection
