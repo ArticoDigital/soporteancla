@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
         $user2->assignRole('Admin');
 
         $user3 = User::create([
-            'name' => 'Juan Ramos',
+            'name' => 'Fabian Moncada',
             'email' => 'soporte@ancla.la',
             'password' => bcrypt('12345'),
             'identification' => '352324323',
