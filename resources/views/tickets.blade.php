@@ -7,8 +7,8 @@
             <label class="col-4 m-r-12" for="">
                 <select class="col m-r-12" name="" id="">
                     <option value="">Selecione un estado</option>
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @foreach($states as $state)
+                        <option value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
                 </select>
             </label>
