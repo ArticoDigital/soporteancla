@@ -21,9 +21,11 @@ class TicketsTableSeeder extends Seeder
             'sap_number'=>'35345',
             'identification'=>'32434',
             'sell_point'=>'Centro',
+            'address'=>'Cra 20 2 #$4',
             'operation_center'=>'5',
             'user_id'=>'1',
-            'service_category_id'=>'1',
+            'service_subcategory_id'=>'1',
+            'city_id'=>'1',
             'ticket_state_id'=>'1',
             'request'=>'Esta es la solicitud.'
         ]);
