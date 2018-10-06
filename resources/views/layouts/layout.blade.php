@@ -24,6 +24,7 @@
                 <li><a href="{{route('tickets')}}"> <i class="fa fa-check"></i>Tickets</a></li>
                 @hasrole('Admin')
                   <li><a href="{{route('users')}}"> <i class="fa fa-users"></i>Usuarios</a></li>
+                  <li><a href="{{route('categories')}}"> <i class="fa fa-boxes"></i>Categorias</a></li>
                 @endhasrole
                 <li><a href="{{route('profile')}}"> <i class="fa fa-user"></i>Mi Perfil</a></li>
                 <li><a href="{{route('logout')}}"> <i class="far fa-arrow-alt-circle-left"></i>Salir</a></li>

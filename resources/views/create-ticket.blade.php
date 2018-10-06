@@ -20,6 +20,7 @@
                 <div class="col-8 p-r-20">
                     <input type="text" name="name" placeholder="Nombre" required  maxlength="100" value="{{old('name')}}">
                     <input type="text" name="company" placeholder="Empresa" required  maxlength="100" value="{{old('company')}}">
+                    <input type="text" name="address" placeholder="Dirección" required  maxlength="100" value="{{old('address')}}">
                     <input type="text" name="cellphone" placeholder="Celular" required  maxlength="20" value="{{old('cellphone')}}">
                     <input type="email" name="email" placeholder="E-mail" required value="{{old('email')}}">
                     <input type="text" name="subject" placeholder="Asunto" required  maxlength="200" value="{{old('subject')}}">

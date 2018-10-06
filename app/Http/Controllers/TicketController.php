@@ -59,10 +59,10 @@ class TicketController extends Controller
 
 
         $tickets = (auth()->user()->hasRole('Support')) ?
-            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+            Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                 ->where('ticket_state_id', 1)
                 ->where('user_id', auth()->user()->id)->get() :
-            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+            Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                 ->where('ticket_state_id', 1)->get();
 
         return view('tickets', compact('states', 'tickets'));
@@ -80,12 +80,12 @@ class TicketController extends Controller
 
           $states = TicketState::all();
           $tickets = (auth()->user()->hasRole('Support')) ?
-              Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+              Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                   ->where('ticket_state_id', $inputs['state'])
                   ->where('user_id', auth()->user()->id)
                   ->whereDate('created_at', '>=', $datev[0])
                   ->whereDate('created_at', '<=', $datev[1])->get() :
-              Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+              Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                   ->where('ticket_state_id', $inputs['state'])
                   ->whereDate('created_at', '>=', $datev[0])
                   ->whereDate('created_at', '<=', $datev[1])
@@ -93,11 +93,11 @@ class TicketController extends Controller
         }else{
           $states = TicketState::all();
           $tickets = (auth()->user()->hasRole('Support')) ?
-              Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+              Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                   ->where('ticket_state_id', $inputs['state'])
                   ->where('user_id', auth()->user()->id)
                   ->get() :
-              Ticket::with(['ticketState', 'ServiceCategory', 'user'])
+              Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                   ->where('ticket_state_id', $inputs['state'])
                   ->get();
         }
@@ -130,7 +130,7 @@ class TicketController extends Controller
     {
         $users = User::role('Support')->get();
         $ticketStates = TicketState::all();
-        $ticket->load(['ticketState', 'ServiceCategory', 'user', 'Comments.user']);
+        $ticket->load(['ticketState', 'ServiceSubcategory', 'user', 'Comments.user']);
         return view('ticket', compact('ticket', 'users', 'ticketStates'));
     }
 

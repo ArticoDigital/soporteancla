@@ -6,7 +6,7 @@
         <form class="Filters row col-10 middle-items justify-end" method="POST" action="{{route('filtertickets')}}">
             @csrf
             <label class="col-4 m-r-12" for="">
-                <select class="col m-r-12" name="state" id=""> 
+                <select class="col m-r-12" name="state" id="">
                     @foreach($states as $state)
                         <option value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
@@ -28,7 +28,7 @@
                 <div class="col-2 is-text-center">{{$ticket->name}}</div>
                 <div class="col-3 is-text-center">{{$ticket->email}}</div>
                 <div class="col-3 is-text-center">{{$ticket->subject}}</div>
-                <div class="col-4 is-text-center">{{$ticket->ServiceCategory->name}}</div>
+                <div class="col-4 is-text-center">{{$ticket->ServiceSubcategory->name}}</div>
                 <div class="col-2 is-text-center">{{optional($ticket->user)->name}}</div>
                 <div class="col-1 row justify-end middle-items">
                     <a href="{{route('ticket',[$ticket->id])}}"><i class="fas fa-edit "></i></a>

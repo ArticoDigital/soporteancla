@@ -21,7 +21,7 @@
             </div>
             <div class="col-5">
                 <p><b>Centro de operaciones: </b> {{$ticket->operation_center}}</p>
-                <p><b>Categoría de servicio: </b> {{$ticket->ServiceCategory->name}}</p>
+                <p><b>Categoría de servicio: </b> {{$ticket->ServiceSubcategory->name}}</p>
             </div>
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
