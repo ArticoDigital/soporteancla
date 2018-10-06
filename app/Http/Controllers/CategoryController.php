@@ -44,6 +44,7 @@ class CategoryController extends Controller
     public function store(Request $request,ServiceCategory $category)
     {
         //
+        
 
         $category->fill($request->all())->save();
         return redirect()->back();

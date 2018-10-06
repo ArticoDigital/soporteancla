@@ -14,7 +14,7 @@
                 <select name="isActive" id="">
                     <option value="0"
                             {{($category->isActive == '0')?'selected':''}}
-                    >Iactivo</option>
+                    >Inactivo</option>
                     <option value="1"
                             {{($category->isActive == '1')?'selected':''}}
                     >Activo</option>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-8 row  ">
-        <a href="{{route('subcategoryCreate')}}" class="button">Crear Subcategoria <i class="fas fa-boxes "></i></a>
+        <a href="{{route('subcategoryCreate',$category->id)}}" class="button">Crear Subcategoria <i class="fas fa-boxes "></i></a>
     </div>
 
     <ul class="is-list-less  Items">

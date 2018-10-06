@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ServiceSubcategory;
+use App\Models\ServiceCategory;
 
 class ServiceSubcategoryController extends Controller
 {
@@ -22,10 +23,12 @@ class ServiceSubcategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(ServiceCategory $category)
     {
         //
-        return view('subcategoty-create');
+
+        //dd($category);
+        return view('subcategory-create',compact('category'));
     }
 
     /**
@@ -34,9 +37,11 @@ class ServiceSubcategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ServiceSubcategory $subcategory)
     {
         //
+        $subcategory->fill($request->all())->save();
+        return redirect()->back();
     }
 
     /**
