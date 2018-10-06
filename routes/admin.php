@@ -33,12 +33,15 @@ Route::get('/usuarios/nuevo', 'UserController@create')->name('userCreate');
 Route::post('/usuarios/nuevo', 'UserController@store')->name('userStore');
 
 Route::get('/categorias', 'CategoryController@index')->name('categories');
-
 Route::get('/categoria/nuevo', 'CategoryController@create')->name('categoryCreate');
 Route::post('/categoria/nuevo', 'CategoryController@store')->name('categoryStore');
-
 Route::get('/categoria/{category}', 'CategoryController@edit')->name('category');
 Route::post('/categoria/{user}', 'CategoryController@update')->name('categoryUpdate');
+
+Route::get('/subcategoria/nuevo', 'ServiceSubcategoryController@create')->name('subcategoryCreate');
+Route::post('/subcategoria/nuevo', 'ServiceSubcategoryController@store')->name('subcategoryStore');
+Route::get('/subcategoria/{subcategory}', 'ServiceSubcategoryController@edit')->name('subcategory');
+Route::post('/subcategoria/{subcategory}', 'ServiceSubcategoryController@update')->name('subcategoryUpdate');
 
 
 Route::get('/perfil', function () {

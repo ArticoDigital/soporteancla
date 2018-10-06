@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ServiceCategory;
 use App\Models\ServiceSubcategory;
 
-class CategoryController extends Controller
+class ServiceSubcategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,6 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = ServiceCategory::all();
-      //dd($categories);
-        return view('categories', compact('categories'));
     }
 
     /**
@@ -29,10 +25,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-
-        //$categories = ServiceCategory::all();
-        return view('category-create');
-        //return view('users', compact('users'));
+        return view('subcategoty-create');
     }
 
     /**
@@ -41,13 +34,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ServiceCategory $category)
+    public function store(Request $request)
     {
         //
-
-        $category->fill($request->all())->save();
-        return redirect()->back();
-
     }
 
     /**
@@ -59,7 +48,6 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
-
     }
 
     /**
@@ -68,14 +56,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ServiceCategory $category)
+    public function edit(ServiceSubcategory $subcategory)
     {
         //
         //$category->load('tickets');
-        $subcategories = ServiceSubcategory::where('service_category_id', '=', $category->id)->get();
+        //$subcategories = ServiceSubcategory::where('service_category_id', '=', $category->id)->get();
         //dd($subcategory);
         //$subcategory=ServiceSubcategory::find()
-        return view('category', compact('category','subcategories'));
+        return view('subcategory', compact('subcategory'));
 
     }
 
@@ -86,10 +74,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ServiceCategory $category)
+    public function update(Request $request, ServiceSubcategory $subcategory)
     {
-        $category = ServiceCategory::find($request->id);
-        $category->update($request->all());
+        //
+        $subcategory = ServiceSubcategory::find($request->id);
+        $subcategory->update($request->all());
         return redirect()->back();
     }
 
