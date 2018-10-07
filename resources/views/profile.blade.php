@@ -24,7 +24,7 @@
     <div class="User">
       <form method="post" action="{{route('profileUpdate')}}"  class="row  justify-between">
           @csrf
-        <div class="row  justify-between">
+        
             <div class="col-8 p-r-20">
                 <input type="text" name="name" placeholder="Nombre" value="{{$user->name}}">
                 <input type="text" name="identification" placeholder="Cédula" value="{{$user->identification}}">
@@ -37,7 +37,7 @@
             <div class="col-8 m-t-20">
                 <button type="submit">Actualizar</button>
             </div>
-        </div>
+
         </form>
     </div>
 @endsection

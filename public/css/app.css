@@ -7854,9 +7854,9 @@ p {
   margin-top: -1px;
   -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.03);
           box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.03);
-  height: 5rem;
+  /*height: 5rem;*/
   text-align: left;
-  padding: 2rem;
+  padding: 1rem;
   -webkit-transition: background-color linear .3s;
   transition: background-color linear .3s;
 }
@@ -7916,6 +7916,14 @@ input.numInput {
 
 select:disabled {
   background: #f3f3f3;
+}
+
+select {
+  color: inherit;
+}
+
+:required {
+  background-color: #f5dddc;
 }
 
 .Header {

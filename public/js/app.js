@@ -63,9 +63,8 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
@@ -73,8 +72,7 @@ module.exports = __webpack_require__(5);
 
 
 /***/ }),
-
-/***/ 1:
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83,7 +81,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__subcategories__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__subcategories__ = __webpack_require__(4);
 
 
 
@@ -105,8 +103,7 @@ if (errorClose) {
 Object(__WEBPACK_IMPORTED_MODULE_2__subcategories__["a" /* default */])();
 
 /***/ }),
-
-/***/ 2:
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.2, @license MIT */
@@ -2286,44 +2283,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__subcategories__["a" /* default */])();
 
 
 /***/ }),
-
-/***/ 28:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var subCategoriesEl = document.querySelector('#service_subcategory'),
-    categoriesEl = document.querySelector('#service_category_id');
-
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-    if (categoriesEl) {
-
-        var categoriesJson = JSON.parse(categoriesEl.dataset.json);
-
-        categoriesEl.addEventListener('change', function (e) {
-
-            var categoryId = categoriesEl.options[categoriesEl.selectedIndex].value;
-            if (categoryId) {
-                var c = categoriesJson.find(function (c) {
-                    return c.id === parseInt(categoryId);
-                });
-                subCategoriesEl.disabled = false;
-                subCategoriesEl.options.length = 0;
-                c.subcategories.forEach(function (el) {
-                    var option = document.createElement("option");
-                    option.text = el.name;
-                    option.value = el.id;
-                    subCategoriesEl.add(option);
-                });
-            } else {
-                subCategoriesEl.disabled = true;
-            }
-        });
-    }
-});
-
-/***/ }),
-
-/***/ 3:
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.2, @license MIT */
@@ -2363,12 +2323,45 @@ var subCategoriesEl = document.querySelector('#service_subcategory'),
 
 
 /***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/***/ 5:
+"use strict";
+var subCategoriesEl = document.querySelector('#service_subcategory'),
+    categoriesEl = document.querySelector('#service_category_id');
+
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+    if (categoriesEl) {
+
+        var categoriesJson = JSON.parse(categoriesEl.dataset.json);
+
+        categoriesEl.addEventListener('change', function (e) {
+
+            var categoryId = categoriesEl.options[categoriesEl.selectedIndex].value;
+            if (categoryId) {
+                var c = categoriesJson.find(function (c) {
+                    return c.id === parseInt(categoryId);
+                });
+                subCategoriesEl.disabled = false;
+                subCategoriesEl.options.length = 0;
+                c.subcategories.forEach(function (el) {
+                    var option = document.createElement("option");
+                    option.text = el.name;
+                    option.value = el.id;
+                    subCategoriesEl.add(option);
+                });
+            } else {
+                subCategoriesEl.disabled = true;
+            }
+        });
+    }
+});
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
-
-/******/ });
+/******/ ]);
