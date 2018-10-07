@@ -54,8 +54,8 @@
                 <div class="col-1 row justify-center">
                     <div class=" Status-indicator active"></div>
                 </div>
-                <div class="col-4 is-text-center">{{$subcategory->name}}</div>
-                <div class="col-5 is-text-center">{{$subcategory->description}}</div>
+                <div class="col-7 col-l-6 is-text-center">{{$subcategory->name}}</div>
+                <div class="col-6 col-l-6 iis-text-center">{{$subcategory->description}}</div>
                 <div class="col-1 row justify-end middle-items">
                     <a href="{{route('subcategory',$subcategory->id)}}"><i class="fas fa-edit "></i></a>
                 </div>

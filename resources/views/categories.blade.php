@@ -34,15 +34,18 @@
     <ul class="is-list-less  Items">
         @foreach($categories as $category)
             <li class="Items-wrapper row middle-items">
-                <div class="col-2 is-text-center">{{$category->id}}</div>
-                <div class="col-4 is-text-center">{{$category->name}}</div>
-                <div class="col-4 is-text-center">{{$category->description}}</div>
-                <div class="col-2  is-text-center">{{($category->isActive == '1')?'Activo':'Inactivo'}}</div>
+                <div class="col-1 row justify-center">
+                  <div class=" Status-indicator active"></div>
+                </div>
+                <div class="col-1 col-l-1 is-text-center">{{$category->id}}</div>
+                <div class="col-7 col-l-5 is-text-center">{{$category->name}}</div>
+                <div class="col-l-5 hide-phone is-text-center">{{$category->description}}</div>
+                <div class="col-5 col-l-2 is-text-center">{{($category->isActive == '1')?'Activo':'Inactivo'}}</div>
 
-                <div class="col-1 row justify-end middle-items">
+                <div class="col-1 col-l-1 row justify-end middle-items">
                     <a href="{{route('category',$category->id)}}"><i class="fas fa-edit "></i></a>
                 </div>
-                <div class="col-1 row justify-end middle-items">
+                <div class="col-1 col-l-1 row justify-end middle-items">
                     <a class="Users-delete" href=""><i class="fas fa-trash "></i></a>
                 </div>
             </li>
