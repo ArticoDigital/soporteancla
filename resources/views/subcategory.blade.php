@@ -2,7 +2,7 @@
 
 @section('content')
     <h2 class="m-t-40">{{$subcategory->name}}</h2>
-    <div class="Subcategory">
+    <div class="User Subcategory">
         <form method="post" action="{{route('subcategoryUpdate',$subcategory->id)}}"  class="row  justify-between">
             @csrf
             <div class="col-8 p-r-20">
@@ -27,7 +27,7 @@
     </div>
 
 
-    
+
 
 
 @endsection

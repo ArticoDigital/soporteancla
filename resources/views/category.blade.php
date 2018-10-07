@@ -17,8 +17,8 @@
     {{$messageok}}
   </div>
 @endif
-    <h2 class="m-t-40">{{$category->name}}</h2>
-    <div class="Category">
+    <h2 class="m-t-40">Categoría: {{$category->name}}</h2>
+    <div class="User Category">
         <form method="post" action="{{route('categoryUpdate',$category->id)}}"  class="row  justify-between">
             @csrf
             <div class="col-8 p-r-20">
@@ -42,8 +42,9 @@
         </form>
     </div>
 
-    <div class="col-8 row  ">
-        <a href="{{route('subcategoryCreate',$category->id)}}" class="button">Crear Subcategoria <i class="fas fa-boxes "></i></a>
+
+    <div class="col-12 row m-t-40 m-b-40">
+        <h3 class="col-4">Subcategorías</h3><a href="{{route('subcategoryCreate',$category->id)}}" class="button">Crear Subcategoria <i class="fas fa-boxes "></i></a>
     </div>
 
     <ul class="is-list-less  Items">

@@ -2,7 +2,7 @@
 
 @section('content')
     <h2 class="m-t-40">Crear Subcategoría - {{$category->name}}</h2>
-    <div class="Category">
+    <div class="User Category">
         <form method="post" action="{{route('subcategoryStore',$category->id)}}"  class="row  justify-between">
             @csrf
             <div class="col-8 p-r-20">
