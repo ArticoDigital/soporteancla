@@ -17,8 +17,11 @@
             <div class=" Filters-submit col-2 row justify-center ">
                 <button class="Filters-button" type="submit"><i class="fas fa-sliders-h"></i></button>
             </div>
+
         </form>
+        {{old('state')}}
     </div>
+
     <ul class="is-list-less  Items">
         @foreach($tickets as $ticket)
             <li class="Items-wrapper row middle-items">

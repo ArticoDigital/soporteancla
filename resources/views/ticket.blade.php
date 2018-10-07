@@ -21,7 +21,8 @@
             </div>
             <div class="col-5">
                 <p><b>Centro de operaciones: </b> {{$ticket->operation_center}}</p>
-                <p><b>Categoría de servicio: </b> {{$ticket->ServiceSubcategory->name}}</p>
+                <p><b>Subcategoría de servicio: </b> {{$ticket->ServiceSubcategory->name}}</p>
+                <p><b>Ciudad: </b> {{$ticket->city->municipio}}</p>
             </div>
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
@@ -51,12 +52,14 @@
                             @endforeach
                         </select>
                     </div>
+                    @hasrole('Admin')
                     <div class="row middle-items @hasrole('Admin') col-4 @else col-8 @endhasrole ">
 
                         <div class="col-3"><p><b>#SAP: </b></p></div>
                         <label for="" class="col-11"><input type="text" name="sap_number"
                                                             value="{{$ticket->sap_number}}"></label>
                     </div>
+                    @endhasrole
                 </div>
                 <div class="col-3">
                     <button type="submit">Actualizar</button>

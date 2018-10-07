@@ -63,7 +63,7 @@ class TicketController extends Controller
 
         $tickets = (auth()->user()->hasRole('Support')) ?
             Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                ->where('ticket_state_id', 1)
+                ->where('ticket_state_id', 2)
                 ->where('user_id', auth()->user()->id)->get() :
             Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                 ->where('ticket_state_id', 1)->get();
@@ -73,15 +73,13 @@ class TicketController extends Controller
 
     public function filterviewTickets(Request $inputs)
     {
-        //dd($inputs['dates']);
+        $states = TicketState::all();
         if(!empty($inputs['dates'])){
           $datev = explode(" a ", $inputs['dates']);
 
           if(!isset($datev[1])){
             $datev[1]=$datev[0];
           }
-
-          $states = TicketState::all();
           $tickets = (auth()->user()->hasRole('Support')) ?
               Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                   ->where('ticket_state_id', $inputs['state'])
@@ -94,7 +92,6 @@ class TicketController extends Controller
                   ->whereDate('created_at', '<=', $datev[1])
                   ->get();
         }else{
-          $states = TicketState::all();
           $tickets = (auth()->user()->hasRole('Support')) ?
               Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                   ->where('ticket_state_id', $inputs['state'])
@@ -104,22 +101,6 @@ class TicketController extends Controller
                   ->where('ticket_state_id', $inputs['state'])
                   ->get();
         }
-
-        //dd($datev);
-
-        /*$tickets = (auth()->user()->hasRole('Support')) ?
-            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
-                ->where('ticket_state_id', $inputs['state'])
-                ->where('user_id', auth()->user()->id)
-                ->whereBetween('created_at',$datev)->get() :
-            Ticket::with(['ticketState', 'ServiceCategory', 'user'])
-                ->where('ticket_state_id', $inputs['state'])
-                ->whereBetween('created_at',$datev)->get();
-*/
-
-
-
-
         return view('tickets', compact('states', 'tickets'));
     }
 
@@ -133,7 +114,7 @@ class TicketController extends Controller
     {
         $users = User::role('Support')->get();
         $ticketStates = TicketState::all();
-        $ticket->load(['ticketState', 'ServiceSubcategory', 'user', 'Comments.user']);
+        $ticket->load(['ticketState', 'ServiceSubcategory', 'user', 'Comments.user','city']);
         return view('ticket', compact('ticket', 'users', 'ticketStates'));
     }
 
