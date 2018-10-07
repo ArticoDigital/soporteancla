@@ -7914,6 +7914,10 @@ input.numInput {
   margin-left: 2rem;
 }
 
+select:disabled {
+  background: #f3f3f3;
+}
+
 .Header {
   background-color: var(--primary-color);
 }

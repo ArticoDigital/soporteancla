@@ -1,5 +1,7 @@
 import flatpickr from "flatpickr";
 import {Spanish} from "flatpickr/dist/l10n/es"
+import subcategories from './subcategories'
+
 
 flatpickr(".dates", {
     altInput: true,
@@ -14,3 +16,6 @@ if (errorClose) {
         document.querySelector('.alert-error').remove();
     });
 }
+
+subcategories();
+

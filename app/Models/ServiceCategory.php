@@ -8,7 +8,12 @@ class ServiceCategory extends Model
 {
     //
     protected $fillable = [
-        'name', 'description','isActive'
+        'name', 'description', 'isActive'
     ];
+
+    public function subcategories()
+    {
+        return $this->hasMany(ServiceSubcategory::class);
+    }
 
 }

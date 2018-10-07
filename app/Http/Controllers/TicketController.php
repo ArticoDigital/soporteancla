@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\ServiceCategory;
 use App\Models\TicketState;
 use App\User;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
-use App\Models\ServiceCategory;
+use App\Models\ServiceSubcategory;
 use App\Http\Requests\TicketRequest;
 
 
@@ -19,8 +21,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //dd('da');
         $categories = ServiceCategory::all();
+
         return view('create-ticket', compact('categories'));
     }
 
@@ -32,8 +34,9 @@ class TicketController extends Controller
     public function create()
     {
         //
-        $categories = ServiceCategory::all();
-        return view('create-ticket', compact('categories'));
+        $categories = ServiceCategory::with('subcategories')->get();
+        $cities = City::all();
+        return view('create-ticket', compact('categories', 'cities'));
     }
 
     /**
