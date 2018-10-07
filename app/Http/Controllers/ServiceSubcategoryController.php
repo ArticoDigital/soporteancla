@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ServiceSubcategory;
+use App\Models\ServiceCategory;
 
 class ServiceSubcategoryController extends Controller
 {
@@ -22,10 +23,12 @@ class ServiceSubcategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(ServiceCategory $category)
     {
         //
-        return view('subcategoty-create');
+
+        //dd($category);
+        return view('subcategory-create',compact('category'));
     }
 
     /**
@@ -34,9 +37,15 @@ class ServiceSubcategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ServiceSubcategory $subcategory)
     {
         //
+        $subcategory->fill($request->all())->save();
+        $subcategories = ServiceSubcategory::where('service_category_id', '=', $subcategory->service_category_id)->get();
+        $category = ServiceCategory::find($subcategory->service_category_id);
+
+        return view('category', compact('category','subcategories'))->with(['messageok' => 'Subcategoría "'.$subcategory->name.'" creada']);
+        //return redirect()->back();
     }
 
     /**
@@ -79,7 +88,14 @@ class ServiceSubcategoryController extends Controller
         //
         $subcategory = ServiceSubcategory::find($request->id);
         $subcategory->update($request->all());
-        return redirect()->back();
+
+        $subcategories = ServiceSubcategory::where('service_category_id', '=', $subcategory->service_category_id)->get();
+        $category = ServiceCategory::find($subcategory->service_category_id);
+
+        return view('category', compact('category','subcategories'))->with(['messageok' => 'Subcategoría "'.$subcategory->name.'" actualizada']);
+
+
+        //return redirect()->back();
     }
 
     /**

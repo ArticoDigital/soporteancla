@@ -44,9 +44,9 @@ class CategoryController extends Controller
     public function store(Request $request,ServiceCategory $category)
     {
         //
-
         $category->fill($request->all())->save();
-        return redirect()->back();
+        $categories = ServiceCategory::all();
+        return view('categories', compact('categories'))->with(['messageok' => 'Registro exitoso de la categoría '.$category->name]);
 
     }
 
@@ -90,7 +90,8 @@ class CategoryController extends Controller
     {
         $category = ServiceCategory::find($request->id);
         $category->update($request->all());
-        return redirect()->back();
+        $categories = ServiceCategory::all();
+        return view('categories', compact('categories'))->with(['messageok' => 'Categoría "'.$category->name.'" actualizada']);
     }
 
     /**

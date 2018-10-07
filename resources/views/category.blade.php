@@ -1,6 +1,22 @@
 @extends('layouts.layout')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert-error">
+        <ul class="Error-ul is-list-less">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+        <span class="Error-close"><i class="far fa-times-circle"></i></span>
+    </div>
+@endif
+@if (! empty($messageok))
+  <div class="alert-success">
+    {{$messageok}}
+  </div>
+@endif
     <h2 class="m-t-40">{{$category->name}}</h2>
     <div class="Category">
         <form method="post" action="{{route('categoryUpdate',$category->id)}}"  class="row  justify-between">
@@ -14,7 +30,7 @@
                 <select name="isActive" id="">
                     <option value="0"
                             {{($category->isActive == '0')?'selected':''}}
-                    >Iactivo</option>
+                    >Inactivo</option>
                     <option value="1"
                             {{($category->isActive == '1')?'selected':''}}
                     >Activo</option>
@@ -27,7 +43,7 @@
     </div>
 
     <div class="col-8 row  ">
-        <a href="{{route('subcategoryCreate')}}" class="button">Crear Subcategoria <i class="fas fa-boxes "></i></a>
+        <a href="{{route('subcategoryCreate',$category->id)}}" class="button">Crear Subcategoria <i class="fas fa-boxes "></i></a>
     </div>
 
     <ul class="is-list-less  Items">
