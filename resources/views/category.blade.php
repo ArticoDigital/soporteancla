@@ -22,12 +22,12 @@
         <form method="post" action="{{route('categoryUpdate',$category->id)}}"  class="row  justify-between">
             @csrf
             <div class="col-8 p-r-20">
-                <input type="text" name="name" placeholder="Nombre" value="{{$category->name}}">
+                <input type="text" name="name" placeholder="Nombre" value="{{$category->name}}" required>
                 <input type="text" name="description" placeholder="Cédula" value="{{$category->description}}">
             </div>
             <div class="col-8 p-l-20">
               <input type="hidden" name="id" value="{{$category->id}}">
-                <select name="isActive" id="">
+                <select name="isActive" id="" required>
                     <option value="0"
                             {{($category->isActive == '0')?'selected':''}}
                     >Inactivo</option>
@@ -37,7 +37,7 @@
                 </select>
             </div>
             <div class="col-8 m-t-20">
-                <button type="submit">Actualizar</button>
+                <button type="submit">Actualizar categoría</button>
             </div>
         </form>
     </div>

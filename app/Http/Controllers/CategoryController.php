@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ServiceCategory;
 use App\Models\ServiceSubcategory;
-
+use App\Http\Requests\ServiceCategoryRequest;
 class CategoryController extends Controller
 {
     public function __construct()
@@ -46,7 +46,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ServiceCategory $category)
+    public function store(ServiceCategoryRequest $request,ServiceCategory $category)
     {
         //
         $category->fill($request->all())->save();
@@ -91,7 +91,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ServiceCategory $category)
+    public function update(ServiceCategoryRequest $request, ServiceCategory $category)
     {
         $category = ServiceCategory::find($request->id);
         $category->update($request->all());
