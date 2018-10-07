@@ -1,6 +1,13 @@
 @extends('layouts.layout')
 
 @section('content')
+@if (\Session::has('messageok'))
+    <div class="alert-success">
+        <ul>
+            <li>{!! \Session::get('messageok') !!}</li>
+        </ul>
+    </div>
+@endif
     <div class="Ticket">
         <div class="row justify-between middle-items m-t-16 m-b-16">
             <div class="col-6"><h2 class="">Ticket #{{$ticket->id}}: {{$ticket->name}}</h2></div>
