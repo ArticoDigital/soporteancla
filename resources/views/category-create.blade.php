@@ -11,12 +11,13 @@
             </div>
             <div class="col-8 p-l-20">
                 <select name="isActive" id="">
-                    <option value="0"
-                            {{(old('isActive') == '0')?'selected':''}}
-                    >Inactivo</option>
+
                     <option value="1"
                             {{(old('isActive')  == '1')?'selected':''}}
                     >Activo</option>
+                    <option value="0"
+                            {{(old('isActive') == '0')?'selected':''}}
+                    >Inactivo</option>
                 </select>
             </div>
             <div class="col-8 m-t-20">

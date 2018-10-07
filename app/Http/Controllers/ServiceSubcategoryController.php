@@ -41,7 +41,11 @@ class ServiceSubcategoryController extends Controller
     {
         //
         $subcategory->fill($request->all())->save();
-        return redirect()->back();
+        $subcategories = ServiceSubcategory::where('service_category_id', '=', $subcategory->service_category_id)->get();
+        $category = ServiceCategory::find($subcategory->service_category_id);
+
+        return view('category', compact('category','subcategories'))->with(['messageok' => 'Subcategoría "'.$subcategory->name.'" creada']);
+        //return redirect()->back();
     }
 
     /**
@@ -84,7 +88,14 @@ class ServiceSubcategoryController extends Controller
         //
         $subcategory = ServiceSubcategory::find($request->id);
         $subcategory->update($request->all());
-        return redirect()->back();
+
+        $subcategories = ServiceSubcategory::where('service_category_id', '=', $subcategory->service_category_id)->get();
+        $category = ServiceCategory::find($subcategory->service_category_id);
+
+        return view('category', compact('category','subcategories'))->with(['messageok' => 'Subcategoría "'.$subcategory->name.'" actualizada']);
+
+
+        //return redirect()->back();
     }
 
     /**
