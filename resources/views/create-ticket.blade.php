@@ -43,7 +43,7 @@
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
-                    <select class="m-t-16" name="service_category_id" id="service_subcategory" disabled required>
+                    <select class="m-t-16" name="service_subcategory_id" id="service_subcategory" disabled required>
                         <option value="">Seleccione una subcategoría</option>
                     </select>
                     <select class="m-t-16" name="city_id" id="cities">
