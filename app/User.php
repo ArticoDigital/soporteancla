@@ -35,9 +35,9 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class);
     }
 
-    public function ticketsfiltro($inputs)
+    public function ticketsfiltro()
     {
-      dd($inputs);
+      //dd($inputs);
         return $this->hasMany(Ticket::class)->where();
     }
 
