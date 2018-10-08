@@ -10,6 +10,7 @@ use App\Models\Ticket;
 use App\Models\TicketState;
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Notification;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
@@ -39,7 +40,7 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
         //
         $request['user_id']= auth()->user()->id;

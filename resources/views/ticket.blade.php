@@ -1,6 +1,19 @@
 @extends('layouts.layout')
 
 @section('content')
+
+@if ($errors->any())
+    <div class="alert-error">
+        <ul class="Error-ul is-list-less">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+        <span class="Error-close"><i class="far fa-times-circle"></i></span>
+    </div>
+@endif
+
     @if (\Session::has('messageok'))
         <div class="alert-success">
             <ul>
@@ -112,7 +125,7 @@
         <form action="{{route('updateComment')}}" method="post" class="m-t-40">
             @csrf
             <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
-            <textarea name="comment_text" id="" cols="30" rows="10" placeholder="Escribe un comentario"></textarea>
+            <textarea name="comment_text" id="" cols="30" rows="10" placeholder="Escribe un comentario" required></textarea>
             <div class="m-t-20">
                 <button type="submit">Comentar</button>
             </div>

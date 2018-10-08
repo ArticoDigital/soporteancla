@@ -104,12 +104,13 @@ class UserController extends Controller
           //$user = User::find($id);
           //dd($user);
           $user = User::find($id)->wherehas('tickets',function($q) use ($inputs){
-            $q->whereIn('ticket_state_id',  $inputs['state']);
+            $q->whereIn('ticket_state_id', $inputs['state']);
           })->with(['tickets' => function($q) use ($inputs){
           $q->whereIn('ticket_state_id', $inputs['state']);
-          }])->first();
+        }])->first();
 
 
+          //$user->tickets()->whereIn('ticket_state_id',  $inputs['state'])->get();
           //dd($user);
           /*
             $user = User::find($id)->with('tickets',function($q) use ($inputs) {
