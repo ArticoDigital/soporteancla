@@ -60,7 +60,6 @@ class TicketController extends Controller
         $ticket = Ticket::create($inputs);
         Notification::send(User::role('Admin')->get(), new CreateTicket($ticket));
         $ticket->notify(new CreateTicketClient($ticket));
-        Notification::send(User::role('Admin')->get(), new CreateTicket($ticket));
         return view('ticket-success', compact('ticket'))->with(['messageok' => 'Registro exitoso']);
     }
 
