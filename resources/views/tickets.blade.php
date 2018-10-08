@@ -8,14 +8,15 @@
         <form class="Filters row col-10 middle-items justify-end" method="POST" action="{{route('filtertickets')}}">
             @csrf
             <label class="col-4 m-r-12" for="">
-
                 <select class="col m-r-12" name="state" id="">
 
                     @foreach($states as $state)
-                        @continue(  $state->id === 1)
+                        @hasrole('Support')
+                            @continue(  $state->id === 1)
+                        @endhasrole
                         <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
-                    <option value="">Todos los estados</option>
+                    <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
                 </select>
             </label>
             <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates"
