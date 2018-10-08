@@ -100,13 +100,20 @@ class CategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ServiceCategory $category
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(ServiceCategory $category)
     {
-        //
+        if ($category->subcategories()->count()){
+            return redirect()->back()->with(['message' =>
+                ['message' => 'La categoria  no puede ser elimando, tiene subcategorias asignados ', 'type' => 'alert-warning']
+            ]);
+        }
+        $category->delete();
+        return redirect()->back()->with(['message' =>
+            ['message' => 'subcategoria eliminada', 'type' => 'alert-success']
+        ]);
     }
 }

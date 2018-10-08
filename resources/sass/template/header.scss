@@ -1,20 +1,27 @@
 .Header {
-  background-color: var(--primary-color);
-
+  background-color: rgba(43, 43, 42, .8);
+  &-container {
+    position: relative;
+  }
   &-logo {
-    &Image{
-      max-width: 8rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--primary-color);
+    border-radius: 0 0 3rem 0;
+    &Image {
+      max-width: 11rem;
       padding: 1rem;
     }
   }
-  &-nav{
-    li{
+  &-nav {
+    li {
       margin: 1rem;
     }
-    a{
+    a {
       color: white;
     }
-    i{
+    i {
       margin-right: .5rem;
       vertical-align: text-top;
     }

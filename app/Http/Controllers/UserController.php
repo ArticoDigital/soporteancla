@@ -88,13 +88,21 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        if ($user->tickets()->count()){
+            return redirect()->back()->with(['message' =>
+                ['message' => 'El usuario no puede ser elimando, tiene tickets asignados ', 'type' => 'alert-warning']
+            ]);
+        }
+        $user->delete();
+        return redirect()->back()->with(['message' =>
+            ['message' => 'Usuario eliminado', 'type' => 'alert-success']
+        ]);
+
     }
 }

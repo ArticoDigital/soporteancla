@@ -1,6 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
+    @if(Session::has('message'))
+        <div class="{{Session::get('message')['type']}}">{{Session::get('message')['message']}}</div>
+    @endif
     <div class="row justify-between middle-items m-t-16 m-b-16">
         <div class="col-6"><h2 class="">Usuarios</h2></div>
     </div>
@@ -35,7 +38,12 @@
                     <a href="{{route('user',$user->id)}}"><i class="fas fa-user-edit "></i></a>
                 </div>
                 <div class="col-1 row justify-end middle-items">
-                    <a class="Users-delete" href=""><i class="fas fa-user-times "></i></a>
+                    <form action="{{route('userDelete', $user->id)}}" method="post" class="delete">
+                        @csrf
+                        @method('DELETE')
+                        <a class="Users-delete" href=""><i class="fas fa-user-times "></i></a>
+                    </form>
+
                 </div>
             </li>
         @endforeach

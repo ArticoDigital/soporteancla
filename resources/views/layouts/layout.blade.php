@@ -14,7 +14,7 @@
 </head>
 <body data-site="{{env('APP_URL')}}" id="body">
 <header class="Header row align-end">
-    <div class="container Header-container row justify-between middle-items">
+    <div class="container Header-container row justify-end">
         <figure class="Header-logo">
             <img class="Header-logoImage" src="{{asset('images/logo_ancla_blanco.png')}}" alt="">
         </figure>

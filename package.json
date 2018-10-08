@@ -26,6 +26,7 @@
         "flatpickr": "^4.5.2",
         "font-awesome": "^4.7.0",
         "font-awesome-icons": "^1.4.3",
-        "inuit-css": "^2.0.5"
+        "inuit-css": "^2.0.5",
+        "sweetalert": "^2.1.0"
     }
 }

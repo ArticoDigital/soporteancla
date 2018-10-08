@@ -1,22 +1,25 @@
 @extends('layouts.layout')
 
 @section('content')
-@if ($errors->any())
-    <div class="alert-error">
-        <ul class="Error-ul is-list-less">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    @if(Session::has('message'))
+        <div class="{{Session::get('message')['type']}}">{{Session::get('message')['message']}}</div>
+    @endif
+    @if ($errors->any())
+        <div class="alert-error">
+            <ul class="Error-ul is-list-less">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
 
-        <span class="Error-close"><i class="far fa-times-circle"></i></span>
-    </div>
-@endif
-@if (! empty($messageok))
-  <div class="alert-success">
-    {{$messageok}}
-  </div>
-@endif
+            <span class="Error-close"><i class="far fa-times-circle"></i></span>
+        </div>
+    @endif
+    @if (! empty($messageok))
+        <div class="alert-success">
+            {{$messageok}}
+        </div>
+    @endif
     <div class="row justify-between middle-items m-t-16 m-b-16">
         <div class="col-6"><h2 class="">Categorias</h2></div>
     </div>
@@ -24,8 +27,6 @@
         <div class="col-8 row  ">
             <a href="{{route('categoryCreate')}}" class="button">Crear Categoria <i class="fas fa-boxes "></i></a>
         </div>
-
-
 
 
     </div>
@@ -43,7 +44,12 @@
                     <a href="{{route('category',$category->id)}}"><i class="fas fa-edit "></i></a>
                 </div>
                 <div class="col-1 row justify-end middle-items">
-                    <a class="Users-delete" href=""><i class="fas fa-trash "></i></a>
+                    <form action="{{route('categoryDelete', $category->id)}}" method="post" class="delete">
+                        @csrf
+                        @method('DELETE')
+                        <a class="Users-delete" href=""><i class="fas fa-trash "></i></a>
+                    </form>
+
                 </div>
             </li>
         @endforeach

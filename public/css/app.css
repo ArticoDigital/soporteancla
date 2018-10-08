@@ -7841,7 +7841,7 @@ p {
 
 .Main {
   min-height: calc(100vh - 113px);
-  padding: 3rem 0;
+  padding: 6rem 0;
   position: relative;
 }
 
@@ -7919,11 +7919,23 @@ select:disabled {
 }
 
 .Header {
-  background-color: var(--primary-color);
+  background-color: rgba(43, 43, 42, 0.8);
+}
+
+.Header-container {
+  position: relative;
+}
+
+.Header-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--primary-color);
+  border-radius: 0 0 3rem 0;
 }
 
 .Header-logoImage {
-  max-width: 8rem;
+  max-width: 11rem;
   padding: 1rem;
 }
 

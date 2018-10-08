@@ -1,7 +1,7 @@
 import flatpickr from "flatpickr";
 import {Spanish} from "flatpickr/dist/l10n/es"
 import subcategories from './subcategories'
-
+import {Delete} from "./Delete";
 
 flatpickr(".dates", {
     altInput: true,
@@ -18,4 +18,18 @@ if (errorClose) {
 }
 
 subcategories();
+
+const deleteElement = document.querySelectorAll('.delete');
+if (deleteElement) {
+    deleteElement.forEach(function (el) {
+        el.addEventListener('click', function (e) {
+            e.preventDefault();
+            Delete({
+                title: 'Estas seguro de eliminar?',
+                text: 'Recuerda que no podrás volver a recuperar la info',
+                formId: el
+            });
+        });
+    })
+}
 

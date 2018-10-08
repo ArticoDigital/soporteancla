@@ -12,14 +12,14 @@
                     @endforeach
                 </select>
             </label>
-            <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates"
+            <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates" value=""
                                                 placeholder="Seleccione rango de fechas"></label>
             <div class=" Filters-submit col-2 row justify-center ">
                 <button class="Filters-button" type="submit"><i class="fas fa-sliders-h"></i></button>
             </div>
 
         </form>
-        {{old('state')}}
+
     </div>
 
     <ul class="is-list-less  Items">

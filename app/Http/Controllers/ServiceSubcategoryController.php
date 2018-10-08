@@ -99,13 +99,21 @@ class ServiceSubcategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ServiceSubcategory $subcategory
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(ServiceSubcategory $subcategory)
     {
-        //
+
+        if ($subcategory->tickets()->count()){
+            return redirect()->back()->with(['message' =>
+                ['message' => 'La subcategoria  no puede ser elimando, tiene tickets asignados ', 'type' => 'alert-warning']
+            ]);
+        }
+        $subcategory->delete();
+        return redirect()->route('category',$subcategory->serviceCategory->id)->with(['message' =>
+            ['message' => 'subcategoria eliminada', 'type' => 'alert-success']
+        ]);
     }
 }

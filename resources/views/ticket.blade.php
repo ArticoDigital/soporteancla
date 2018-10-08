@@ -6,6 +6,7 @@
             <div class="col-6"><h2 class="">Ticket #{{$ticket->id}}: {{$ticket->name}}</h2></div>
             <p class="m-t-a-20 col-16"><b>Solicitud: </b>{{$ticket->request}}</p>
         </div>
+
         <form class="row justify-between Ticket-info" method="post" action="{{route('updateTicket',[$ticket->id])}}">
             @csrf
             <div class="col-5">
@@ -24,6 +25,7 @@
                 <p><b>Subcategoría de servicio: </b> {{$ticket->ServiceSubcategory->name}}</p>
                 <p><b>Ciudad: </b> {{$ticket->city->municipio}}</p>
             </div>
+
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
                 <div class="col-13 row justify-between">

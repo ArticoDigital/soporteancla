@@ -74,6 +74,7 @@ class TicketController extends Controller
     public function filterviewTickets(Request $inputs)
     {
         $states = TicketState::all();
+        $data = $inputs->all();
         if(!empty($inputs['dates'])){
           $datev = explode(" a ", $inputs['dates']);
 
@@ -101,7 +102,8 @@ class TicketController extends Controller
                   ->where('ticket_state_id', $inputs['state'])
                   ->get();
         }
-        return view('tickets', compact('states', 'tickets'));
+
+        return view('tickets', compact('states', 'tickets','data'));
     }
 
     /**
