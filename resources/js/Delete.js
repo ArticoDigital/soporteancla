@@ -2,6 +2,7 @@ import swal from 'sweetalert';
 
 class DeleteClass {
 
+
     constructor(settings) {
         this.settings = settings;
         this.init();

@@ -29,13 +29,10 @@
                 <input type="text" name="description" placeholder="Cédula" value="{{$category->description}}">
             </div>
             <div class="col-8 p-l-20">
-<<<<<<< HEAD
-                <input type="hidden" name="id" value="{{$category->id}}">
-                <select name="isActive" id="">
-=======
+
               <input type="hidden" name="id" value="{{$category->id}}">
-                <select name="isActive" id="" required>
->>>>>>> ce4d9d30c04f8fba174a4f0b0844c56aaa143696
+                <select name="isActive" class=" m-t-16" id="" required>
+
                     <option value="0"
                             {{($category->isActive == '0')?'selected':''}}
                     >Inactivo

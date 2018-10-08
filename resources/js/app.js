@@ -3,6 +3,7 @@ import {Spanish} from "flatpickr/dist/l10n/es"
 import subcategories from './subcategories'
 import {Delete} from "./Delete";
 
+
 flatpickr(".dates", {
     altInput: true,
     "locale": "es",
