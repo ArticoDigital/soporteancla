@@ -21,23 +21,20 @@
         </form>
 
     </div>
-    <ul class="is-list-less row Users">
-        <li><a class="Users-links active" href="">Administradores</a></li>
-        <li><a class="Users-links" href="">Clientes</a></li>
-    </ul>
+
 
     <ul class="is-list-less  Items">
         @foreach($users as $user)
             <li class="Items-wrapper row middle-items">
-                <div class="col-2 is-text-center">{{$user->id}}</div>
-                <div class="col-2 is-text-center">{{$user->name}}</div>
-                <div class="col-3 is-text-center">{{($user->roles->first()->name == 'Admin')?'Admin':'Soporte'}}</div>
-                <div class="col-3  is-text-center">{{$user->identification}}</div>
-                <div class="col-3  is-text-center">{{$user->email}}</div>
-                <div class="col-1 row justify-end middle-items">
+                <div class="col-1 hide-phone is-text-center">{{$user->id}}</div>
+                <div class="col-7 col-l-4 is-text-center">{{$user->name}}</div>
+                <div class="col-2 col-l-2 hide-phone is-text-center">{{($user->roles->first()->name == 'Admin')?'Admin':'Soporte'}}</div>
+                <div class="col-3 col-l-3 hide-phone is-text-center">{{$user->identification}}</div>
+                <div class="col-7 col-l-4 is-text-center">{{$user->email}}</div>
+                <div class="col-1 col-l-1 row justify-end middle-items">
                     <a href="{{route('user',$user->id)}}"><i class="fas fa-user-edit "></i></a>
                 </div>
-                <div class="col-1 row justify-end middle-items">
+                <div class="col-1 col-l-1 row justify-end middle-items">
                     <form action="{{route('userDelete', $user->id)}}" method="post" class="delete">
                         @csrf
                         @method('DELETE')

@@ -21,8 +21,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $categories = ServiceCategory::all();
-
+        $categories = ServiceCategory::where("isActive",1);
         return view('create-ticket', compact('categories'));
     }
 
@@ -34,7 +33,7 @@ class TicketController extends Controller
     public function create()
     {
         //
-        $categories = ServiceCategory::with('subcategories')->get();
+        $categories = ServiceCategory::where("isActive",1)->with('subcategories')->get();
         $cities = City::all();
         return view('create-ticket', compact('categories', 'cities'));
     }
