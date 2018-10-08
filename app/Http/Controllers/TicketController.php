@@ -75,35 +75,41 @@ class TicketController extends Controller
     {
         $states = TicketState::all();
         $data = $inputs->all();
-        if(!empty($inputs['dates'])){
-          $datev = explode(" a ", $inputs['dates']);
+        $inputs['state'] = (empty($inputs['state'])) ?
+            TicketState::where('isActive', '=', 1)->select('id')->get()->toArray() :
+            [$inputs['state']];
+        if (!empty($inputs['dates'])) {
+            $datev = explode(" a ", $inputs['dates']);
 
-          if(!isset($datev[1])){
-            $datev[1]=$datev[0];
-          }
-          $tickets = (auth()->user()->hasRole('Support')) ?
-              Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                  ->where('ticket_state_id', $inputs['state'])
-                  ->where('user_id', auth()->user()->id)
-                  ->whereDate('created_at', '>=', $datev[0])
-                  ->whereDate('created_at', '<=', $datev[1])->get() :
-              Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                  ->where('ticket_state_id', $inputs['state'])
-                  ->whereDate('created_at', '>=', $datev[0])
-                  ->whereDate('created_at', '<=', $datev[1])
-                  ->get();
-        }else{
-          $tickets = (auth()->user()->hasRole('Support')) ?
-              Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                  ->where('ticket_state_id', $inputs['state'])
-                  ->where('user_id', auth()->user()->id)
-                  ->get() :
-              Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                  ->where('ticket_state_id', $inputs['state'])
-                  ->get();
+            if (!isset($datev[1])) {
+                $datev[1] = $datev[0];
+            }
+
+
+
+            $tickets = (auth()->user()->hasRole('Support')) ?
+                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $inputs['state'])
+                    ->where('user_id', auth()->user()->id)
+                    ->whereDate('created_at', '>=', $datev[0])
+                    ->whereDate('created_at', '<=', $datev[1])->get() :
+                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $inputs['state'])
+                    ->whereDate('created_at', '>=', $datev[0])
+                    ->whereDate('created_at', '<=', $datev[1])
+                    ->get();
+        } else {
+            $tickets = (auth()->user()->hasRole('Support')) ?
+                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $inputs['state'])
+                    ->where('user_id', auth()->user()->id)
+                    ->get() :
+                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $inputs['state'])
+                    ->get();
         }
 
-        return view('tickets', compact('states', 'tickets','data'));
+        return view('tickets', compact('states', 'tickets', 'data'));
     }
 
     /**
@@ -116,7 +122,7 @@ class TicketController extends Controller
     {
         $users = User::role('Support')->get();
         $ticketStates = TicketState::all();
-        $ticket->load(['ticketState', 'ServiceSubcategory', 'user', 'Comments.user','city']);
+        $ticket->load(['ticketState', 'ServiceSubcategory', 'user', 'Comments.user', 'city']);
         return view('ticket', compact('ticket', 'users', 'ticketStates'));
     }
 

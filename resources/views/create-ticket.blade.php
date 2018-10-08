@@ -12,7 +12,7 @@
             <span class="Error-close"><i class="far fa-times-circle"></i></span>
         </div>
     @endif
-    <form class="Request row justify-center m-t-20" method="POST" action="{{route('storeticket')}}">
+    <form class="Request row justify-center m-t-80" method="POST" action="{{route('storeticket')}}">
         @csrf
         <div class="Login-container">
             <h1>¿Cómo puedo ayudarle?</h1>

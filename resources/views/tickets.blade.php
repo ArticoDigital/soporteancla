@@ -1,18 +1,25 @@
 @extends('layouts.layout')
 
 @section('content')
+
+
     <div class="row justify-between middle-items m-t-16 m-b-16">
         <div class="col-6"><h2 class="">Tickets</h2></div>
         <form class="Filters row col-10 middle-items justify-end" method="POST" action="{{route('filtertickets')}}">
             @csrf
             <label class="col-4 m-r-12" for="">
+
                 <select class="col m-r-12" name="state" id="">
+
                     @foreach($states as $state)
-                        <option value="{{$state->id}}">{{$state->name}}</option>
+                        @continue(  $state->id === 1)
+                        <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
+                    <option value="">Todos los estados</option>
                 </select>
             </label>
-            <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates" value=""
+            <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates"
+                                                value="{{(isset($data))?$data['dates']:''}}"
                                                 placeholder="Seleccione rango de fechas"></label>
             <div class=" Filters-submit col-2 row justify-center ">
                 <button class="Filters-button" type="submit"><i class="fas fa-sliders-h"></i></button>
@@ -26,7 +33,7 @@
         @foreach($tickets as $ticket)
             <li class="Items-wrapper row middle-items">
                 <div class="col-1 row justify-center">
-                    <div class=" Status-indicator active"></div>
+                    <div class=" Status-indicator {{$ticket->ticketState->nameClass()}}"></div>
                 </div>
                 <div class="col-2 is-text-center">{{$ticket->name}}</div>
                 <div class="col-3 is-text-center">{{$ticket->email}}</div>

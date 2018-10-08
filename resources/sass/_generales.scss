@@ -69,8 +69,20 @@ p {
   vertical-align: middle;
   transform: scale(.999) translateZ(0);
   transition: background .3s ease;
-  &.active {
-    background: #15cd72;
+  &.recibido {
+    background: var(--error-color);
+  }
+  &.asignado {
+    background: var(--warning-color);
+  }
+  &.en-proceso {
+    background: var(--warning-color);
+  }
+  &.finalizado {
+    background: var(--success-color);
+  }
+  &.eliminado {
+    background: gray;
   }
 }
 

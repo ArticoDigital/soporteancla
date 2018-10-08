@@ -8,6 +8,12 @@ class TicketState extends Model
 {
     //
     protected $fillable = [
-        'name', 'description','isActive'
+        'name', 'description', 'isActive'
     ];
+
+        public function nameClass()
+    {
+        return str_slug($this->name);
+    }
+
 }

@@ -7876,8 +7876,24 @@ p {
   transition: background .3s ease;
 }
 
-.Status-indicator.active {
-  background: #15cd72;
+.Status-indicator.recibido {
+  background: var(--error-color);
+}
+
+.Status-indicator.asignado {
+  background: var(--warning-color);
+}
+
+.Status-indicator.en-proceso {
+  background: var(--warning-color);
+}
+
+.Status-indicator.finalizado {
+  background: var(--success-color);
+}
+
+.Status-indicator.eliminado {
+  background: gray;
 }
 
 input.numInput {
