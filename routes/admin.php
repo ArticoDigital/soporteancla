@@ -21,12 +21,17 @@ Route::get('/tickets', [
 Route::post('/tickets', [
     'uses' => 'TicketController@filterviewTickets',
 ])->name('filtertickets');
+/*Route::post('/tickets/{user}', [
+    'uses' => 'TicketController@filterviewTicketsUser',
+])->name('filterticketsuser');*/
+
 
 Route::get('/ticket/{ticket}', 'TicketController@show')->name('ticket');
 
 Route::get('/usuarios', 'UserController@index')->name('users');
 
 Route::get('/usuario/{user}', 'UserController@edit')->name('user');
+Route::post('/usuariof/{user}', 'UserController@editfiltrado')->name('ticketuserfiltered');
 Route::post('/usuario/{user}', 'UserController@update')->name('userUpdate');
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('userCreate');

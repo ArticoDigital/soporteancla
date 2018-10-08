@@ -111,6 +111,48 @@ class TicketController extends Controller
         return view('tickets', compact('states', 'tickets', 'data'));
     }
 
+    public function filterviewTicketsUser(Request $inputs, User $user)
+    {
+      //dd($user);
+        $states = TicketState::all();
+        $data = $inputs->all();
+        $inputs['state'] = (empty($inputs['state'])) ?
+            TicketState::where('isActive', '=', 1)->select('id')->get()->toArray() :
+            [$inputs['state']];
+        if (!empty($inputs['dates'])) {
+            $datev = explode(" a ", $inputs['dates']);
+
+            if (!isset($datev[1])) {
+                $datev[1] = $datev[0];
+            }
+
+
+
+            $tickets = (auth()->user()->hasRole('Support')) ?
+                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $inputs['state'])
+                    ->where('user_id', auth()->user()->id)
+                    ->whereDate('created_at', '>=', $datev[0])
+                    ->whereDate('created_at', '<=', $datev[1])->get() :
+                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $inputs['state'])
+                    ->whereDate('created_at', '>=', $datev[0])
+                    ->whereDate('created_at', '<=', $datev[1])
+                    ->get();
+        } else {
+            $tickets = (auth()->user()->hasRole('Support')) ?
+                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $inputs['state'])
+                    ->where('user_id', auth()->user()->id)
+                    ->get() :
+                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $inputs['state'])
+                    ->get();
+        }
+
+        return view('tickets', compact('states', 'tickets', 'data'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -147,7 +189,7 @@ class TicketController extends Controller
     {
 
         $ticket->fill($request->all())->save();
-        return redirect()->back()->with(['messageok' => 'Registro exitoso del comentario']);
+        return redirect()->back()->with(['messageok' => 'Ticket actualizado']);
     }
 
     /**

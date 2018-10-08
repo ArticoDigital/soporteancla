@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\TicketState;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
@@ -68,8 +69,20 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $states = TicketState::all();
         $user->load('tickets');
-        return view('user', compact('user'));
+        return view('user', compact('user','states'));
+    }
+
+    public function editfiltrado(Request $inputs, $id)
+    {
+        $user = User::find($id)->with('tickets',function($q) use ($inputs) {
+          $q->where()
+        });
+
+        $states = TicketState::all();
+        //$user->load('ticketsfiltro',$inputs);
+        return view('user', compact('user','states'));
     }
 
     /**
