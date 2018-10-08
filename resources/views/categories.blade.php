@@ -36,7 +36,7 @@
         @foreach($categories as $category)
             <li class="Items-wrapper row middle-items">
                 <div class="col-1 row justify-center">
-                  <div class=" Status-indicator active"></div>
+                    <div class=" Status-indicator active"></div>
                 </div>
                 <div class="col-1 col-l-1 is-text-center">{{$category->id}}</div>
                 <div class="col-7 col-l-5 is-text-center">{{$category->name}}</div>
@@ -46,18 +46,12 @@
                 <div class="col-1 col-l-1 row justify-end middle-items">
                     <a href="{{route('category',$category->id)}}"><i class="fas fa-edit "></i></a>
                 </div>
-<<<<<<< HEAD
                 <div class="col-1 row justify-end middle-items">
                     <form action="{{route('categoryDelete', $category->id)}}" method="post" class="delete">
                         @csrf
                         @method('DELETE')
                         <a class="Users-delete" href=""><i class="fas fa-trash "></i></a>
                     </form>
-
-=======
-                <div class="col-1 col-l-1 row justify-end middle-items">
-                    <a class="Users-delete" href=""><i class="fas fa-trash "></i></a>
->>>>>>> ce4d9d30c04f8fba174a4f0b0844c56aaa143696
                 </div>
             </li>
         @endforeach

@@ -7840,7 +7840,7 @@ p {
 }
 
 .Main {
-  min-height: calc(100vh - 113px);
+  min-height: calc(100vh - 87px);
   padding: 6rem 0;
   position: relative;
 }
