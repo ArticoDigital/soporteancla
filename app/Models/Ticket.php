@@ -29,7 +29,7 @@ class Ticket extends Model
     }
     public function city()
     {
-        return $this->belongsTo(city::class);
+        return $this->belongsTo(City::class);
     }
 
     public function Comments()
