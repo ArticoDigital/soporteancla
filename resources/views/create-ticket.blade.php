@@ -40,7 +40,7 @@
                            value="{{old('identification')}}">
                     <input type="text" name="sell_point" placeholder="Punto de venta" required maxlength="100"
                            value="{{old('sell_point')}}">
-                    <input type="text" name="operation_center" placeholder="Centro de operación" required
+                    <input type="text" name="operation_center" placeholder="Centro de operación"
                            maxlength="150" value="{{old('operation_center')}}">
                     <select data-json="{{$categories}}" name="service_category_id" id="service_category_id" required>
                         <option value="">Seleccione una categoría</option>
@@ -51,7 +51,7 @@
                     <select class="m-t-16" name="service_subcategory_id" id="service_subcategory" disabled required>
                         <option value="">Seleccione una subcategoría</option>
                     </select>
-                    <select class="m-t-16" name="city_id" id="cities">
+                    <select class="m-t-16" name="city_id" id="cities" required>
                         <option value="">Seleccione Ciudad o Municipio</option>
                         @foreach($cities as $city)
                             <option value="{{$city->id}}">{{$city->municipio}} - {{$city->departamento}}</option>
