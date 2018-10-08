@@ -31,10 +31,11 @@ class TicketRequest extends FormRequest
             'sapnumber'=>'max:100',
             'identification'=>'required|max:50',
             'sell_point'=>'required|max:100',
-            'operation_center'=>'required|max:150',
-            'service_category_id'=>'required|numeric',
+            'operation_center'=>'max:150',
+            'service_subcategory_id'=>'required|numeric',
             'request'=>'required',
             'subject' => 'required|max:200',
+            'city_id' => 'required'
         ];
     }
 }
