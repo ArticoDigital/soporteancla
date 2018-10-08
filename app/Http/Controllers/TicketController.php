@@ -15,6 +15,7 @@ use App\Models\Ticket;
 use App\Models\ServiceSubcategory;
 use App\Http\Requests\TicketRequest;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 
 
 class TicketController extends Controller
@@ -193,6 +194,7 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
+
         if ($user = $ticket->user) {
             if ($user->id != $request->input('user_id')) {
                 $user->notify(new AssignSupport($ticket));
@@ -204,7 +206,7 @@ class TicketController extends Controller
 
             Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket));
         }
-        $ticket->fill($request->all())->save();
+        $ticket->fill($this->file($request))->save();
 
         return redirect()->back()->with(['messageok' => 'Ticket actualizado']);
     }
@@ -218,5 +220,15 @@ class TicketController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function file($request)
+    {
+        if ($request->file('file')) {
+            $inputs = $request->all();
+            $path = Storage::putFile('SoporteAncla', $request->file('file'), 'public');
+            $inputs['file'] = $path;
+        }
+        return $inputs;
     }
 }

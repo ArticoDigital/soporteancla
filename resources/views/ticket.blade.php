@@ -1,20 +1,21 @@
 @extends('layouts.layout')
 
 @section('content')
-@if (\Session::has('messageok'))
-    <div class="alert-success">
-        <ul>
-            <li>{!! \Session::get('messageok') !!}</li>
-        </ul>
-    </div>
-@endif
+    @if (\Session::has('messageok'))
+        <div class="alert-success">
+            <ul>
+                <li>{!! \Session::get('messageok') !!}</li>
+            </ul>
+        </div>
+    @endif
     <div class="Ticket">
         <div class="row justify-between middle-items m-t-16 m-b-16">
             <div class="col-6"><h2 class="">Ticket #{{$ticket->id}}: {{$ticket->name}}</h2></div>
             <p class="m-t-a-20 col-16"><b>Solicitud: </b>{{$ticket->request}}</p>
         </div>
 
-        <form class="row justify-between Ticket-info" method="post" action="{{route('updateTicket',[$ticket->id])}}">
+        <form class="row justify-between Ticket-info" enctype="multipart/form-data" method="post"
+              action="{{route('updateTicket',[$ticket->id])}}">
             @csrf
             <div class="col-5">
                 <p><b>Nombre: </b> {{$ticket->name}}</p>
@@ -35,9 +36,17 @@
 
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
+                <div class="col-16 row  m-b-28 middle-items">
+                    <label for="" class="col-8">
+                        <input type="file" class="" name="file" placeholder="Archivo">
+                    </label>
+                    @if($ticket->file)
+                        <div class="col-8 p-l-32"><a target="_blank" href="{{Storage::url($ticket->file)}}">Ver archivo</a></div>
+                    @endif
+                </div>
                 <div class="col-13 col-l-13 row justify-between">
                     @hasrole('Admin')
-                    <div class="row middle-items col-16 col-l-8">
+                    <div class="row middle-items col-16 col-m-8 col-l-6">
                         <div class="col-4"><p><b>Asignado a: </b></p></div>
                         <select class="col-11" name="user_id" id="">
                             <option value="">Seleccione un opción</option>
@@ -50,7 +59,7 @@
                     </div>
                     @endhasrole
 
-                    <div class="row middle-items @hasrole('Admin') col-16 col-l-8 @else col-16 col-l-8 @endhasrole ">
+                    <div class="row middle-items @hasrole('Admin') col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
                         <div class="col-4"><p><b>Estado: </b></p></div>
                         <select class="col-11" name="ticket_state_id" id="">
                             <option value="">Seleccione un opción</option>
@@ -62,7 +71,7 @@
                         </select>
                     </div>
                     @hasrole('Admin')
-                    <div class="row middle-items @hasrole('Admin')   col-16 col-l-8 @else col-16 col-l-8 @endhasrole ">
+                    <div class="row middle-items @hasrole('Admin')   col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
 
                         <div class="col-4"><p><b>#SAP: </b></p></div>
                         <label for="" class="col-11"><input type="text" name="sap_number"
