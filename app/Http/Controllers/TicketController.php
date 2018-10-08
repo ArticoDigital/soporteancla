@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\ServiceCategory;
 use App\Models\TicketState;
+use App\Notifications\AssignSupport;
+use App\Notifications\ChangeStateTicket;
 use App\Notifications\CreateTicket;
 use App\Notifications\CreateTicketClient;
 use App\User;
@@ -24,7 +26,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $categories = ServiceCategory::where("isActive",1);
+        $categories = ServiceCategory::where("isActive", 1);
         return view('create-ticket', compact('categories'));
     }
 
@@ -36,7 +38,7 @@ class TicketController extends Controller
     public function create()
     {
         //
-        $categories = ServiceCategory::where("isActive",1)->with('subcategories')->get();
+        $categories = ServiceCategory::where("isActive", 1)->with('subcategories')->get();
         $cities = City::all();
         return view('create-ticket', compact('categories', 'cities'));
     }
@@ -91,7 +93,6 @@ class TicketController extends Controller
             }
 
 
-
             $tickets = (auth()->user()->hasRole('Support')) ?
                 Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                     ->whereIn('ticket_state_id', $inputs['state'])
@@ -119,7 +120,7 @@ class TicketController extends Controller
 
     public function filterviewTicketsUser(Request $inputs, User $user)
     {
-      //dd($user);
+        //dd($user);
         $states = TicketState::all();
         $data = $inputs->all();
         $inputs['state'] = (empty($inputs['state'])) ?
@@ -131,7 +132,6 @@ class TicketController extends Controller
             if (!isset($datev[1])) {
                 $datev[1] = $datev[0];
             }
-
 
 
             $tickets = (auth()->user()->hasRole('Support')) ?
@@ -193,8 +193,19 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
+        if ($user = $ticket->user) {
+            if ($user->id != $request->input('user_id')) {
+                $user->notify(new AssignSupport($ticket));
+            } else {
+                $user->notify(new ChangeStateTicket($ticket));
+                Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket));
+            }
+        } else {
 
+            Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket));
+        }
         $ticket->fill($request->all())->save();
+
         return redirect()->back()->with(['messageok' => 'Ticket actualizado']);
     }
 

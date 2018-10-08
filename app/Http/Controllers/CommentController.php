@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\NewComment;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Ticket;
 use App\Models\TicketState;
 use App\Models\ServiceCategory;
+use Illuminate\Support\Facades\Notification;
 
 class CommentController extends Controller
 {
@@ -41,7 +43,12 @@ class CommentController extends Controller
         //
         $request['user_id']= auth()->user()->id;
         $inputs = $request->all();
-        Comment::create($inputs);
+        $ticket = Ticket::find($request->input('ticket_id'));
+        $comment = Comment::create($inputs);
+        Notification::send(User::role('Admin')->get(), new NewComment($ticket));
+        if ($user = $ticket->user) {
+            $user->notify(new NewComment($ticket));
+        }
         return redirect()->back()->with(['messageok' => 'Registro exitoso del comentario']);
     }
 
