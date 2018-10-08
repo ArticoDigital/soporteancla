@@ -77,7 +77,7 @@
         </form>
     </div>
     <ul class="is-list-less  Items">
-
+      
         @foreach($user->tickets as $ticket)
             <li class="Items-wrapper row middle-items">
                 <div class="col-1 row justify-center">

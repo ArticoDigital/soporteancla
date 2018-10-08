@@ -76,13 +76,55 @@ class UserController extends Controller
 
     public function editfiltrado(Request $inputs, $id)
     {
-        $user = User::find($id)->with('tickets',function($q) use ($inputs) {
-          $q->where()
-        });
-
+      //dd($id);
         $states = TicketState::all();
+        $data = $inputs->all();
+
+        $inputs['state'] = (empty($inputs['state'])) ?
+            TicketState::where('isActive', '=', 1)->select('id')->get()->toArray() :
+            [$inputs['state']];
+
+        if (!empty($inputs['dates'])) {
+
+                $datev = explode(" a ", $inputs['dates']);
+
+                if (!isset($datev[1])) {
+                    $datev[1] = $datev[0];
+                }
+                $user = User::find($id)->wherehas('tickets',function($q) use ($inputs, $datev){
+                  $q->whereIn('ticket_state_id', $inputs['state'])
+                  ->whereDate('created_at', '>=', $datev[0])
+                  ->whereDate('created_at', '<=', $datev[1]);
+                })->with(['tickets' => function($q) use ($inputs, $datev){
+                  $q->whereIn('ticket_state_id', $inputs['state'])
+                  ->whereDate('created_at', '>=', $datev[0])
+                  ->whereDate('created_at', '<=', $datev[1]);
+                }])->first();
+        }else{
+          //$user = User::find($id);
+          //dd($user);
+          $user = User::find($id)->wherehas('tickets',function($q) use ($inputs){
+            $q->whereIn('ticket_state_id',  $inputs['state']);
+          })->with(['tickets' => function($q) use ($inputs){
+          $q->whereIn('ticket_state_id', $inputs['state']);
+          }])->first();
+
+
+          //dd($user);
+          /*
+            $user = User::find($id)->with('tickets',function($q) use ($inputs) {
+              dd($q);
+            $q->whereIn('ticket_state_id', $inputs['state']);
+          });*/
+        }
+        //dd($user);
+        if(empty($user)){
+          //dd("vaco");
+          $user=User::find($id);
+
+        }
         //$user->load('ticketsfiltro',$inputs);
-        return view('user', compact('user','states'));
+        return view('user', compact('user','states', 'data'));
     }
 
     /**
