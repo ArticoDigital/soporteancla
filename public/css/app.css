@@ -7948,6 +7948,7 @@ select {
 
 .Header-container {
   position: relative;
+  min-height: 4.4rem;
 }
 
 .Header-logo {
