@@ -35,9 +35,9 @@
 
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
-                <div class="col-13 row justify-between">
+                <div class="col-13 col-l-13 row justify-between">
                     @hasrole('Admin')
-                    <div class="row middle-items col-6">
+                    <div class="row middle-items col-16 col-l-8">
                         <div class="col-4"><p><b>Asignado a: </b></p></div>
                         <select class="col-11" name="user_id" id="">
                             <option value="">Seleccione un opción</option>
@@ -50,7 +50,7 @@
                     </div>
                     @endhasrole
 
-                    <div class="row middle-items @hasrole('Admin') col-6 @else col-8 @endhasrole ">
+                    <div class="row middle-items @hasrole('Admin') col-16 col-l-8 @else col-16 col-l-8 @endhasrole ">
                         <div class="col-4"><p><b>Estado: </b></p></div>
                         <select class="col-11" name="ticket_state_id" id="">
                             <option value="">Seleccione un opción</option>
@@ -62,9 +62,9 @@
                         </select>
                     </div>
                     @hasrole('Admin')
-                    <div class="row middle-items @hasrole('Admin') col-4 @else col-8 @endhasrole ">
+                    <div class="row middle-items @hasrole('Admin')   col-16 col-l-8 @else col-16 col-l-8 @endhasrole ">
 
-                        <div class="col-3"><p><b>#SAP: </b></p></div>
+                        <div class="col-4"><p><b>#SAP: </b></p></div>
                         <label for="" class="col-11"><input type="text" name="sap_number"
                                                             value="{{$ticket->sap_number}}"></label>
                     </div>
