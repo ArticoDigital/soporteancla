@@ -199,11 +199,11 @@ class TicketController extends Controller
                 $user->notify(new AssignSupport($ticket));
             } else {
                 $user->notify(new ChangeStateTicket($ticket));
-              //  Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket));
+                //  Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket));
             }
         } else {
 
-          //  Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket));
+            //  Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket));
         }
         $ticket->fill($this->file($request))->save();
 
@@ -223,8 +223,9 @@ class TicketController extends Controller
 
     private function file($request)
     {
+        $inputs = $request->all();
         if ($request->file('file')) {
-            $inputs = $request->all();
+
             $path = Storage::putFile('SoporteAncla', $request->file('file'), 'public');
             $inputs['file'] = $path;
         }
