@@ -43,10 +43,12 @@ Route::post('/categoria/{category}/subcategoria/nuevo', 'ServiceSubcategoryContr
 Route::get('/subcategoria/{subcategory}', 'ServiceSubcategoryController@edit')->name('subcategory');
 Route::post('/subcategoria/{subcategory}', 'ServiceSubcategoryController@update')->name('subcategoryUpdate');
 
+Route::get('/perfil', 'UserProfileController@edit')->name('profile');
+Route::post('/perfil', 'UserProfileController@update')->name('profileUpdate');
 
-Route::get('/perfil', function () {
+/*Route::get('/perfil', function () {
     return view('profile');
-})->name('profile');
+})->name('profile');*/
 
 Route::get('/admin', function () {
     return view('admin');

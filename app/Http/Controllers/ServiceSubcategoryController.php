@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ServiceSubcategory;
 use App\Models\ServiceCategory;
-
+use App\Http\Requests\ServiceSubcategoryRequest;
 class ServiceSubcategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:Admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +41,7 @@ class ServiceSubcategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, ServiceSubcategory $subcategory)
+    public function store(ServiceSubcategoryRequest $request, ServiceSubcategory $subcategory)
     {
         //
         $subcategory->fill($request->all())->save();
@@ -83,7 +87,7 @@ class ServiceSubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ServiceSubcategory $subcategory)
+    public function update(ServiceSubcategoryRequest $request, ServiceSubcategory $subcategory)
     {
         //
         $subcategory = ServiceSubcategory::find($request->id);

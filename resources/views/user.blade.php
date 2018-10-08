@@ -1,7 +1,30 @@
 @extends('layouts.layout')
 
 @section('content')
-    <h2 class="m-t-40">{{$user->name}}</h2>
+
+@if ($errors->any())
+    <div class="alert-error">
+        <ul class="Error-ul is-list-less">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+        <span class="Error-close"><i class="far fa-times-circle"></i></span>
+    </div>
+@endif
+
+
+@if (\Session::has('messageok'))
+    <div class="alert-success">
+        <ul>
+            <li>{!! \Session::get('messageok') !!}</li>
+        </ul>
+    </div>
+@endif
+
+
+    <h2 class="m-t-40">Usuario: {{$user->name}}</h2>
     <div class="User">
         <form method="post" action="{{route('userUpdate',$user->id)}}"  class="row  justify-between">
             @csrf
@@ -12,7 +35,7 @@
                        value="{{$user->email}}">
             </div>
             <div class="col-8 p-l-20">
-                <input type="password" name="Contraseña" placeholder="Contraseña">
+                <input type="password" name="password" placeholder="Contraseña">
                 <select name="role" id="">
                     <option value="">Seleccione un rol</option>
                     <option value="Admin"
@@ -24,7 +47,7 @@
                 </select>
             </div>
             <div class="col-8 m-t-20">
-                <button type="submit">Enviar</button>
+                <button type="submit">Actualizar usuario</button>
             </div>
         </form>
     </div>

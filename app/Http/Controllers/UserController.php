@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -39,7 +41,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $request['password']= bcrypt($request['password']);
         $user = User::create($request->all());
@@ -77,14 +79,25 @@ class UserController extends Controller
      * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
       //$user['password']);
-      dd($request->input('password'));
+      //dd($request);
+      if($request['password']!=""){
         $request['password']= bcrypt($request['password']);
+        //dd($user);
+      }else{
+          $request['password']=$user['password'];
+      }
         $user->syncRoles([$request->input('role')]);
         $user->fill($request->all())->save();
-        return redirect()->back();
+        return redirect()->back()->with(['messageok' => 'Usuario "'.$user->name.'" actualizado']);
+
+      //  return redirect()->back()->with('success', ['your message,here']);
+
+
+
+
     }
 
     /**

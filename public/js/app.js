@@ -81,9 +81,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__subcategories__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Delete__ = __webpack_require__(29);
 
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__subcategories__ = __webpack_require__(4);
+>>>>>>> ce4d9d30c04f8fba174a4f0b0844c56aaa143696
 
 
 
@@ -104,6 +108,7 @@ if (errorClose) {
 
 Object(__WEBPACK_IMPORTED_MODULE_2__subcategories__["a" /* default */])();
 
+<<<<<<< HEAD
 var deleteElement = document.querySelectorAll('.delete');
 if (deleteElement) {
     deleteElement.forEach(function (el) {
@@ -118,6 +123,8 @@ if (deleteElement) {
     });
 }
 
+=======
+>>>>>>> ce4d9d30c04f8fba174a4f0b0844c56aaa143696
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2300,6 +2307,7 @@ if (deleteElement) {
 
 /***/ }),
 /* 3 */
+<<<<<<< HEAD
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.2, @license MIT */
@@ -2452,6 +2460,8 @@ function Delete(settings) {
 
 /***/ }),
 /* 30 */
+=======
+>>>>>>> ce4d9d30c04f8fba174a4f0b0844c56aaa143696
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -2548,6 +2558,7 @@ module.exports = g;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2749,11 +2760,50 @@ module.exports = g;
 
 /***/ }),
 /* 34 */
+=======
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var subCategoriesEl = document.querySelector('#service_subcategory'),
+    categoriesEl = document.querySelector('#service_category_id');
+
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+    if (categoriesEl) {
+
+        var categoriesJson = JSON.parse(categoriesEl.dataset.json);
+
+        categoriesEl.addEventListener('change', function (e) {
+
+            var categoryId = categoriesEl.options[categoriesEl.selectedIndex].value;
+            if (categoryId) {
+                var c = categoriesJson.find(function (c) {
+                    return c.id === parseInt(categoryId);
+                });
+                subCategoriesEl.disabled = false;
+                subCategoriesEl.options.length = 0;
+                c.subcategories.forEach(function (el) {
+                    var option = document.createElement("option");
+                    option.text = el.name;
+                    option.value = el.id;
+                    subCategoriesEl.add(option);
+                });
+            } else {
+                subCategoriesEl.disabled = true;
+            }
+        });
+    }
+});
+
+/***/ }),
+/* 5 */
+>>>>>>> ce4d9d30c04f8fba174a4f0b0844c56aaa143696
 /***/ (function(module, exports) {
 
 // shim for using process in browser
 var process = module.exports = {};
 
+<<<<<<< HEAD
 // cached from whatever global is present so that test runners that stub it
 // don't break things.  But we need to wrap it in a try catch in case it is
 // wrapped in strict mode code which doesn't define any globals.  It's inside a
@@ -2937,5 +2987,7 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 
+=======
+>>>>>>> ce4d9d30c04f8fba174a4f0b0844c56aaa143696
 /***/ })
 /******/ ]);
