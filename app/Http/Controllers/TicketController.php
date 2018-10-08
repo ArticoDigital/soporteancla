@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\ServiceCategory;
 use App\Models\TicketState;
+use App\Notifications\CreateTicket;
+use App\Notifications\CreateTicketClient;
 use App\User;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\ServiceSubcategory;
 use App\Http\Requests\TicketRequest;
+use Illuminate\Support\Facades\Notification;
 
 
 class TicketController extends Controller
@@ -52,6 +55,9 @@ class TicketController extends Controller
 
         $inputs['ticket_state_id'] = '1';
         $ticket = Ticket::create($inputs);
+        Notification::send(User::role('Admin')->get(), new CreateTicket($ticket));
+        $ticket->notify(new CreateTicketClient($ticket));
+        Notification::send(User::role('Admin')->get(), new CreateTicket($ticket));
         return view('ticket-success', compact('ticket'))->with(['messageok' => 'Registro exitoso']);
     }
 

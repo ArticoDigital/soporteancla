@@ -12,6 +12,11 @@
             <span class="Error-close"><i class="far fa-times-circle"></i></span>
         </div>
     @endif
+    <div  class=" m-t-80">
+        <figure>
+            <img src="{{asset('images/banner.png')}}" alt="">
+        </figure>
+    </div>
     <form class="Request row justify-center m-t-80" method="POST" action="{{route('storeticket')}}">
         @csrf
         <div class="Login-container">
@@ -59,5 +64,6 @@
             </div>
             <button class="m-t-16">Enviar Ticket</button>
         </div>
+
     </form>
 @endsection

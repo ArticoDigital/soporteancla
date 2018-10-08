@@ -4,10 +4,13 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Ticket extends Model
 {
-    //
+
+    use Notifiable;
+
     protected $fillable = ['name', 'subject', 'company', 'cellphone', 'email', 'sap_number', 'identification', 'sell_point', 'operation_center', 'user_id', 'service_subcategory_id', 'ticket_state_id', 'request','address','city_id'];
 
     public function user()
