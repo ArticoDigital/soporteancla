@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ServiceCategory;
 use App\Models\ServiceSubcategory;
 use App\Http\Requests\ServiceCategoryRequest;
+
 class CategoryController extends Controller
 {
     public function __construct()
@@ -22,7 +23,7 @@ class CategoryController extends Controller
     {
         //
         $categories = ServiceCategory::all();
-      //dd($categories);
+        //dd($categories);
         return view('categories', compact('categories'));
     }
 
@@ -43,22 +44,22 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ServiceCategoryRequest $request,ServiceCategory $category)
+    public function store(ServiceCategoryRequest $request, ServiceCategory $category)
     {
         //
         $category->fill($request->all())->save();
         $categories = ServiceCategory::all();
-        return view('categories', compact('categories'))->with(['messageok' => 'Registro exitoso de la categoría '.$category->name]);
+        return view('categories', compact('categories'))->with(['messageok' => 'Registro exitoso de la categoría ' . $category->name]);
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -70,7 +71,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(ServiceCategory $category)
@@ -80,15 +81,15 @@ class CategoryController extends Controller
         $subcategories = ServiceSubcategory::where('service_category_id', '=', $category->id)->get();
         //dd($subcategory);
         //$subcategory=ServiceSubcategory::find()
-        return view('category', compact('category','subcategories'));
+        return view('category', compact('category', 'subcategories'));
 
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(ServiceCategoryRequest $request, ServiceCategory $category)
@@ -96,7 +97,7 @@ class CategoryController extends Controller
         $category = ServiceCategory::find($request->id);
         $category->update($request->all());
         $categories = ServiceCategory::all();
-        return view('categories', compact('categories'))->with(['messageok' => 'Categoría "'.$category->name.'" actualizada']);
+        return view('categories', compact('categories'))->with(['messageok' => 'Categoría "' . $category->name . '" actualizada']);
     }
 
     /**
@@ -106,7 +107,7 @@ class CategoryController extends Controller
      */
     public function destroy(ServiceCategory $category)
     {
-        if ($category->subcategories()->count()){
+        if ($category->subcategories()->count()) {
             return redirect()->back()->with(['message' =>
                 ['message' => 'La categoria  no puede ser elimando, tiene subcategorias asignados ', 'type' => 'alert-warning']
             ]);

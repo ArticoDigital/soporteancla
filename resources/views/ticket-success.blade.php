@@ -7,8 +7,10 @@
                 <h2>Se ha enviado la incidencia</h2>
                 <hr>
                 <p>
-                    Nuestro equipo ha recibido su mensaje, le enviaremos a su dirección
-                    email {{$ticket->email}} en cuanto sea posible :-) !Gracias por su paciencia!
+                    Gracias por contactarnos. Hemos recibido su solicitud y en un plazo de 24 horas hábiles daremos
+                    respuesta a su requerimiento.
+                    Tenga presente que los horarios de atención son de Lunes a Viernes de 8am a 6pm y los Sábados de 9am
+                    a 12m"
                 </p>
             </div>
             <div class="col-1"></div>

@@ -26,7 +26,7 @@ class CreateTicket extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -37,21 +37,21 @@ class CreateTicket extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Hemos  registrado un nuevo ticket')
-            ->line($this->data->name . ' Nuestro equipo ha recibido un ticket, en el transcurso de 48 horas un experto se estará comunicando con ud.')
-            ->line('Gracias por confiar en nosotros!');
+            ->subject('Se ha registrado un Ticket')
+            ->line($this->data->name . 'El Sr (Sra) ' . $this->data->data . 'creó la solicitud #' . $this->data->name . ', por favor abrir solicitud y asignar un técnico para dar inicio al proceso de atención.')
+            ->action('Ver ticket', route('ticket', $this->data->id));
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return array
      */
     public function toArray($notifiable)

@@ -12,7 +12,8 @@
         "laravel/tinker": "^1.0",
         "laraveles/spanish": "^1.1",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "spatie/laravel-permission": "^2.20"
+        "spatie/laravel-permission": "^2.20",
+        "mailjet/laravel-mailjet": "dev-laravel5.5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

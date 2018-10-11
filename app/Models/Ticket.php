@@ -11,7 +11,7 @@ class Ticket extends Model
 
     use Notifiable;
 
-    protected $fillable = ['name', 'subject', 'company', 'cellphone', 'email', 'sap_number', 'identification', 'sell_point', 'operation_center', 'user_id', 'service_subcategory_id', 'ticket_state_id', 'request','address','city_id','file'];
+    protected $fillable = ['name', 'subject', 'company', 'cellphone', 'email', 'sap_number', 'identification', 'sell_point', 'operation_center', 'user_id', 'service_subcategory_id', 'ticket_state_id', 'request', 'address', 'city_id', 'file'];
 
     public function user()
     {
@@ -27,6 +27,7 @@ class Ticket extends Model
     {
         return $this->belongsTo(TicketState::class);
     }
+
     public function city()
     {
         return $this->belongsTo(City::class);
