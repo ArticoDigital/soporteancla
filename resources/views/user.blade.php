@@ -60,9 +60,7 @@
                 <select class="col m-r-12" name="state" id="">
                     <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
                     @foreach($states as $state)
-                        @hasrole('Support')
-                            @continue(  $state->id === 1)
-                        @endhasrole
+                        
                         <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
 

@@ -16,7 +16,7 @@
         @csrf
         <div class="Login-container">
             <h1>Iniciar sesión</h1>
-            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="email" placeholder="Email" value="{{old('email')}}">
             <input type="password" name="password" placeholder="Contraseña">
             <div class="row justify-end">
                 <button type="submit">INGRESAR</button>

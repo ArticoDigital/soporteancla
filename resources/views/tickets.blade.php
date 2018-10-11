@@ -4,20 +4,20 @@
 
 
     <div class="row justify-between middle-items m-t-16 m-b-16">
-        <div class="col-6"><h2 class="">Tickets</h2></div>
-        <form class="Filters row col-10 middle-items justify-end" method="POST" action="{{route('filtertickets')}}">
+        <div class="col-6 col-l-6"><h2 class="">Tickets</h2></div>
+        <form class="Filters row  col-16 col-l-10 middle-items justify-end" method="POST" action="{{route('filtertickets')}}">
             @csrf
             <label class="col-4 m-r-12" for="">
                 <select class="col m-r-12" name="state" id="">
                     <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
                     @foreach($states as $state)
-                      
+
                         <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
 
                 </select>
             </label>
-            <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates"
+            <label class="m-r-12 col-8"><input class="dates" type="text" name="dates"
                                                 value="{{(isset($data))?$data['dates']:''}}"
                                                 placeholder="Seleccione rango de fechas"></label>
             <div class=" Filters-submit col-2 row justify-center ">
@@ -34,12 +34,12 @@
                 <div class="col-1 row justify-center">
                     <div class=" Status-indicator {{$ticket->ticketState->nameClass()}}"></div>
                 </div>
-                <div class="col-2 is-text-center">{{$ticket->name}}</div>
-                <div class="col-3 is-text-center">{{$ticket->email}}</div>
-                <div class="col-3 is-text-center">{{$ticket->subject}}</div>
-                <div class="col-4 is-text-center">{{$ticket->ServiceSubcategory->name}}</div>
-                <div class="col-2 is-text-center">{{optional($ticket->user)->name}}</div>
-                <div class="col-1 row justify-end middle-items">
+                <div class="col-4 col-l-2 is-text-center">{{$ticket->name}}</div>
+                <div class="col-10 col-l-3 is-text-center">{{$ticket->email}}</div>
+                <div class="col-4 col-l-3  hide-phone is-text-center">{{$ticket->subject}}</div>
+                <div class="col-4 col-l-4 hide-phone is-text-center">{{$ticket->ServiceSubcategory->name}}</div>
+                <div class="col-2 col-l-2 hide-phone is-text-center">{{optional($ticket->user)->name}}</div>
+                <div class="col-1 col-l-1 row justify-end middle-items">
                     <a href="{{route('ticket',[$ticket->id])}}"><i class="fas fa-edit "></i></a>
                 </div>
             </li>
