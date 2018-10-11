@@ -58,14 +58,14 @@
             @csrf
             <label class="col-4 m-r-12" for="">
                 <select class="col m-r-12" name="state" id="">
-
+                    <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
                     @foreach($states as $state)
                         @hasrole('Support')
                             @continue(  $state->id === 1)
                         @endhasrole
                         <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
-                    <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
+
                 </select>
             </label>
             <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates"
@@ -77,7 +77,7 @@
         </form>
     </div>
     <ul class="is-list-less  Items">
-      
+       @if(!isset($data['notickets']))
         @foreach($user->tickets as $ticket)
             <li class="Items-wrapper row middle-items">
                 <div class="col-1 row justify-center">
@@ -93,5 +93,6 @@
                 </div>
             </li>
         @endforeach
+        @endif
     </ul>
 @endsection

@@ -35,7 +35,8 @@ class TicketRequest extends FormRequest
             'service_subcategory_id'=>'required|numeric',
             'request'=>'required',
             'subject' => 'required|max:200',
-            'city_id' => 'required'
+            'city_id' => 'required',
+            'habeas_data' => 'required'
         ];
     }
 }

@@ -61,6 +61,10 @@
                 </div>
                 <textarea required name="request" id="" cols="30" rows="10"
                           placeholder="Escribe tu solicitud">{!! old('request') !!}</textarea>
+              <input  name="habeas_data" id="habeas_data" value="1" type="checkbox" required>
+                <label for="habeas_data" class="m-t-20 m-b-20" required>
+            	     <span>Acepto la <a href="https://www.ancla.la/wp-content/uploads/2017/02/politica_general_privacidad.pdf" target="_blank">política política de privacidad</a> , <a href="https://www.ancla.la/wp-content/uploads/2017/02/Habeas-data.pdf" target="_blank">terminos y condiciones</a> y el uso de mis datos con fines comerciales.</span>
+                </label>
             </div>
             <button class="m-t-16">Enviar Ticket</button>
         </div>

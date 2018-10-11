@@ -66,16 +66,25 @@ class TicketController extends Controller
     public function viewTickets()
     {
         $states = TicketState::all();
+      //  $allstates['states'] =TicketState::where('isActive', '=', 1)->select('id')->get()->toArray();
 
+        //dd($allstates);
+        //  TicketState::where('isActive', '=', 1)->select('id')->get()->toArray() :
+        $data['state']=(auth()->user()->hasRole('Support')) ? 2 : 1;
+        $data['dates']="";
 
         $tickets = (auth()->user()->hasRole('Support')) ?
             Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                ->where('ticket_state_id', 2)
-                ->where('user_id', auth()->user()->id)->get() :
+                ->where('ticket_state_id', $data['state'])
+                ->where('user_id', auth()->user()->id)
+                ->orderBy('created_at','desc')
+                ->get() :
             Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                ->where('ticket_state_id', 1)->get();
+                ->where('ticket_state_id', $data['state'])
+                ->orderBy('created_at','desc')
+                ->get();
 
-        return view('tickets', compact('states', 'tickets'));
+        return view('tickets', compact('states', 'tickets','data'));
     }
 
     public function filterviewTickets(Request $inputs)
@@ -98,20 +107,25 @@ class TicketController extends Controller
                     ->whereIn('ticket_state_id', $inputs['state'])
                     ->where('user_id', auth()->user()->id)
                     ->whereDate('created_at', '>=', $datev[0])
-                    ->whereDate('created_at', '<=', $datev[1])->get() :
+                    ->whereDate('created_at', '<=', $datev[1])
+                    ->orderBy('created_at','desc')
+                    ->get() :
                 Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                     ->whereIn('ticket_state_id', $inputs['state'])
                     ->whereDate('created_at', '>=', $datev[0])
                     ->whereDate('created_at', '<=', $datev[1])
+                    ->orderBy('created_at','desc')
                     ->get();
         } else {
             $tickets = (auth()->user()->hasRole('Support')) ?
                 Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                     ->whereIn('ticket_state_id', $inputs['state'])
                     ->where('user_id', auth()->user()->id)
+                    ->orderBy('created_at','desc')
                     ->get() :
                 Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                     ->whereIn('ticket_state_id', $inputs['state'])
+                    ->orderBy('created_at','desc')
                     ->get();
         }
 

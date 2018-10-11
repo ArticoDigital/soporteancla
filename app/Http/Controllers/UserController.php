@@ -77,6 +77,9 @@ class UserController extends Controller
     public function editfiltrado(Request $inputs, $id)
     {
       //dd($id);
+
+      //$user=User::find($id)->tickets;
+      //dd($user);
         $states = TicketState::all();
         $data = $inputs->all();
 
@@ -121,6 +124,7 @@ class UserController extends Controller
         //dd($user);
         if(empty($user)){
           //dd("vaco");
+          $data['notickets']=true;
           $user=User::find($id);
 
         }

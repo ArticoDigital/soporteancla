@@ -24,7 +24,7 @@
     <div class="Ticket">
         <div class="row justify-between middle-items m-t-16 m-b-16">
             <div class="col-6"><h2 class="">Ticket #{{$ticket->id}}: {{$ticket->name}}</h2></div>
-            <p class="m-t-a-20 col-16"><b>Solicitud: </b>{{$ticket->request}}</p>
+            <p class="m-t-a-20 col-16"><b>Solicitud: </b>{!! nl2br(e($ticket->request)) !!}</p>
         </div>
 
         <form class="row justify-between Ticket-info" enctype="multipart/form-data" method="post"
