@@ -46,8 +46,7 @@ class CreateTicketClient extends Notification
             ->subject($this->data->name . 'Hemos  registrado un nuevo ticket')
             ->line('Gracias por contactarnos. ')
             ->line(' Hemos recibido su solicitud y en un plazo de 24 horas hábiles daremos respuesta a su requerimiento.
-Tenga presente que los horarios de atención son de Lunes a Viernes de 8am a 6pm y los Sábados de 9am a 12m"')
-            ->action('Ver ticket', route('ticket', $this->data->id));
+Tenga presente que los horarios de atención son de Lunes a Viernes de 8am a 6pm y los Sábados de 9am a 12m"');
     }
 
     /**
