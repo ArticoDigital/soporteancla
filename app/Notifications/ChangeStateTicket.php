@@ -11,16 +11,19 @@ class ChangeStateTicket extends Notification
 {
     use Queueable;
     private $data;
+    private $user;
 
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param $data
+     * @param $user
      */
-    public function __construct($data)
+    public function __construct($data, $user)
     {
         //
         $this->data = $data;
+        $this->user = $user;
     }
 
     /**
@@ -44,9 +47,9 @@ class ChangeStateTicket extends Notification
     {
         return (new MailMessage)
             ->subject('Ticket Nº ' . $this->data->id . ' ha cambaido su estado ')
-            ->line('Ticket Nº ' . $this->data->id . ' ha sido a actualizado, para ver más detalles, da click en botón')
-            ->action('Ver ticket', route('ticket', $this->data->id))
-            ->line('Gracias por usar nuestra aplicación!');
+            ->line($this->user->name . ' ha cambiado el estado de la solicitud #' . $this->data->id .
+                ' a " ' . $this->data->ticketState->name . ' "')
+            ->action('Ver ticket', route('ticket', $this->data->id));
     }
 
     /**
