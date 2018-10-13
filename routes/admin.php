@@ -26,7 +26,9 @@ Route::post('/tickets', [
 ])->name('filterticketsuser');*/
 
 
-Route::get('/ticket/{ticket}', 'TicketController@show')->name('ticket');
+Route::get('/ticket/{ticket}', 'TicketController@show')
+    ->name('ticket')
+    ->middleware('ticketUser');
 
 Route::get('/usuarios', 'UserController@index')->name('users');
 

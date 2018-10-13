@@ -12,7 +12,7 @@
             <span class="Error-close"><i class="far fa-times-circle"></i></span>
         </div>
     @endif
-    <div  class=" m-t-80">
+    <div  class=" m-t-40">
         <figure>
             <img src="{{asset('images/banner.png')}}" alt="">
         </figure>

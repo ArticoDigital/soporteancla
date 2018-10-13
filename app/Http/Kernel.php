@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
 
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \App\Http\Middleware\PermissionMiddleware::class,
+        'ticketUser' => \App\Http\Middleware\TicketForUser::class,
     ];
 
     /**

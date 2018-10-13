@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Storage;
 
 class TicketController extends Controller
 {
+    private $ticket;
     /**
      * Display a listing of the resource.
      *
