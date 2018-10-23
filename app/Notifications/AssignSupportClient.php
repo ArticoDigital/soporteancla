@@ -43,8 +43,8 @@ class AssignSupportClient extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Ticket Nº ' . $this->data->id . ' Se le ha asignado')
-            ->line('Su solicitud ha sido asignada a ' . $this->data->user->name . '. En un plazo de 24 horas responderá a su requerimiento y dará inicio a la atención de su solicitud. Invitamos a estar pendiente de su correo electrónico. Gracias por contactarnos y tenga usted un feliz día.');
+            ->subject('Ticket Nº ' . $this->data->id . ' Su solicitud ha sido asignada ')
+            ->line('Su solicitud ha sido asignada. En un plazo de 24 horas responderá a su requerimiento y dará inicio a la atención de su solicitud. Invitamos a estar pendiente de su correo electrónico. Gracias por contactarnos y tenga usted un feliz día.');
     }
 
     /**

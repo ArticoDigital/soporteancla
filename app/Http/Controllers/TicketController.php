@@ -212,13 +212,20 @@ class TicketController extends Controller
 
         if ($user = $ticket->user) {
             if ($user->id != $request->input('user_id')) {
+
                 $user->notify(new AssignSupport($ticket));
-                $ticket->notify(new AssignSupportClient($ticket));
+
             } else {
                 $user->notify(new ChangeStateTicket($ticket, auth()->user()));
                 Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket, auth()->user()));
             }
         } else {
+            if($supportUserId = $request->input('user_id')){
+                $supportUser =  User::find($supportUserId);
+                $supportUser->notify(new AssignSupport($ticket));
+                $ticket->notify(new AssignSupportClient($ticket));
+            }
+
             Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket, auth()->user()));
         }
 
