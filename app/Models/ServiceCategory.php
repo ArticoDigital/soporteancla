@@ -13,7 +13,7 @@ class ServiceCategory extends Model
 
     public function subcategories()
     {
-        return $this->hasMany(ServiceSubcategory::class);
+        return $this->hasMany(ServiceSubcategory::class)->where('isActive',"=",1);
     }
 
 }

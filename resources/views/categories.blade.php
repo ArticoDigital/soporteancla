@@ -36,7 +36,7 @@
         @foreach($categories as $category)
             <li class="Items-wrapper row middle-items">
                 <div class="col-1 row justify-center">
-                    <div class=" Status-indicator active"></div>
+                    <div class=" Status-indicator {{($category->isActive==1)? 'finalizado':'recibido'}}"></div>
                 </div>
                 <div class="col-1 col-l-1 is-text-center">{{$category->id}}</div>
                 <div class="col-7 col-l-5 is-text-center">{{$category->name}}</div>
