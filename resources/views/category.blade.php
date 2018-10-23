@@ -60,7 +60,7 @@
         @foreach($subcategories as $subcategory)
             <li class="Items-wrapper row middle-items">
                 <div class="col-1 row justify-center">
-                    <div class=" Status-indicator active"></div>
+                    <div class=" Status-indicator {{($subcategory->isActive==1)? 'finalizado':'recibido'}}"></div>
                 </div>
                 <div class="col-7 col-l-6 is-text-center">{{$subcategory->name}}</div>
                 <div class="col-6 col-l-6 iis-text-center">{{$subcategory->description}}</div>
