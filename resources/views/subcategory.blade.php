@@ -25,7 +25,7 @@
                 <select name="isActive" id="" required>
                     <option value="0"
                             {{($subcategory->isActive == '0')?'selected':''}}
-                    >Iactivo</option>
+                    >Inactivo</option>
                     <option value="1"
                             {{($subcategory->isActive == '1')?'selected':''}}
                     >Activo</option>

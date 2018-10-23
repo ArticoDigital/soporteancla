@@ -67,15 +67,15 @@
                               <option
                                     selected  value="{{$ticket->user->id}}">{{$ticket->user->name}} - inactivo
                               </option>
-
-                            @else
+                            @endif
+                            
                               @foreach($users as $user)
                                   <option
                                           {{($user->id == $ticket->user_id)?'selected':''}}
                                           value="{{$user->id}}">{{$user->name}}
                                   </option>
                               @endforeach
-                            @endif
+
                         </select>
                     </div>
                     @endhasrole
