@@ -183,7 +183,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        $users = User::role('Support')->get();
+        $users = User::role('Support')->where('isActive',1)->get();
         $ticketStates = TicketState::all();
         $ticket->load(['ticketState', 'ServiceSubcategory', 'user', 'Comments.user', 'city']);
         return view('ticket', compact('ticket', 'users', 'ticketStates'));

@@ -1134,7 +1134,6 @@ class CitiesTableSeeder extends Seeder
         city::create([ 'region'=>'Región Centro Oriente ','codigo_dane_depto'=>'25 ','departamento' => 'Cundinamarca ', 'codigo_dane_mun' => '25898 ','municipio'=> 'Zipacón ' ]);
         city::create([ 'region'=>'Región Centro Oriente ','codigo_dane_depto'=>'25 ','departamento' => 'Cundinamarca ', 'codigo_dane_mun' => '25899 ','municipio'=> 'Zipaquirá ' ]);
         city::create([ 'region'=>'Región Caribe ','codigo_dane_depto'=>'47 ','departamento' => 'Magdalena ', 'codigo_dane_mun' => '47980 ','municipio'=> 'Zona Bananera ' ]);
-
-
+        city::create([ 'region'=>'Otro ','codigo_dane_depto'=>'100','departamento' => ' ', 'codigo_dane_mun' => '100000 ','municipio'=> 'Otro' ]);
     }
 }

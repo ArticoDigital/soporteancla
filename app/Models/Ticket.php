@@ -11,7 +11,12 @@ class Ticket extends Model
 
     use Notifiable;
 
-    protected $fillable = ['name', 'subject', 'company', 'cellphone', 'email', 'sap_number', 'identification', 'sell_point', 'operation_center', 'user_id', 'service_subcategory_id', 'ticket_state_id', 'request', 'address', 'city_id', 'file'];
+    protected $fillable = ['name', 'subject', 'company', 'cellphone',
+    'email', 'sap_number', 'identification',
+    'sell_point', 'operation_center', 'user_id',
+    'service_subcategory_id', 'ticket_state_id', 'request',
+    'address', 'city_id', 'file','file2','file3','city_text','is_invoiced',
+    'invoice_number','invoice_cost'];
 
     public function user()
     {

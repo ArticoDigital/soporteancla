@@ -23,12 +23,21 @@
                     <input type="email" name="email" placeholder="E-Mail" value="{{old('email')}}" required>
                 </div>
                 <div class="col-8 p-l-20">
-                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <input type="password" name="password" placeholder="Contraseña" value="{{old('password')}}" required>
                     <select name="role" id="" required>
                         <option value="">Seleccione un rol</option>
-                        <option value="Admin">Administrador</option>
-                        <option value="Support">Soporte</option>
+                        <option value="Admin" {{(old('role')  == 'Admin')?'selected':''}}>Administrador</option>
+                        <option value="Support"  {{(old('role')  == 'Support')?'selected':''}}>Soporte</option>
                     </select>
+                    <select name="isActive" id="" required style="margin: 1.6rem 0;">
+
+                        <option value="1"
+                                {{(old('isActive')  == '1')?'selected':''}}
+                        >Activo</option>
+                        <option value="0"
+                                {{(old('isActive') == '0')?'selected':''}}
+                        >Inactivo</option>
+                        </select>
                 </div>
                 <div class="col-8 m-t-20">
                     <button type="submit">Crear</button>

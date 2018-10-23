@@ -21,7 +21,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('12345'),
             'identification' => '3523243',
             'company_name' => 'Compañia 1',
-            'company_NIT' => '45345345'
+            'company_NIT' => '45345345',
+            'isActive' => 1
         ]);
         $user1->assignRole('Admin');
 
@@ -31,7 +32,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('12345'),
             'identification' => '352324323',
             'company_name' => 'Compañia 2',
-            'company_NIT' => '4215345345'
+            'company_NIT' => '4215345345',
+            'isActive' => 1
         ]);
         $user2->assignRole('Admin');
 
@@ -40,7 +42,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'soporte@ancla.la',
             'password' => bcrypt('12345'),
             'identification' => '352324323',
-            'company_NIT' => '4215345345'
+            'company_NIT' => '4215345345',
+            'isActive' => 1
         ]);
         $user3->assignRole('Support');
     }

@@ -63,11 +63,19 @@
                         <div class="col-4"><p><b>Asignado a: </b></p></div>
                         <select class="col-11" name="user_id" id="">
                             <option value="">Seleccione un opción</option>
-                            @foreach($users as $user)
-                                <option
-                                        {{($user->id == $ticket->user_id)?'selected':''}}
-                                        value="{{$user->id}}">{{$user->name}}</option>
-                            @endforeach
+                            @if(isset($ticket->user) && $ticket->user->isActive == 0)
+                              <option
+                                    selected  value="{{$ticket->user->id}}">{{$ticket->user->name}} - inactivo
+                              </option>
+
+                            @else
+                              @foreach($users as $user)
+                                  <option
+                                          {{($user->id == $ticket->user_id)?'selected':''}}
+                                          value="{{$user->id}}">{{$user->name}}
+                                  </option>
+                              @endforeach
+                            @endif
                         </select>
                     </div>
                     @endhasrole

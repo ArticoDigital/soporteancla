@@ -45,6 +45,15 @@
                             {{($user->roles->first()->name == 'Support')?'selected':''}}
                     >Soporte</option>
                 </select>
+                <select name="isActive" id="" style="margin: 1.6rem 0;">
+
+                    <option value="1"
+                            {{($user->isActive  == '1')?'selected':''}}
+                    >Activo</option>
+                    <option value="0"
+                            {{($user->isActive == '0')?'selected':''}}
+                    >Inactivo</option>
+                </select>
             </div>
             <div class="col-8 m-t-20">
                 <button type="submit">Actualizar usuario</button>
@@ -60,7 +69,7 @@
                 <select class="col m-r-12" name="state" id="">
                     <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
                     @foreach($states as $state)
-                        
+
                         <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
 
