@@ -23,6 +23,7 @@
         "@fortawesome/fontawesome-free": "^5.3.1",
         "@fortawesome/fontawesome-free-brands": "^5.0.13",
         "@fortawesome/fontawesome-free-solid": "^5.0.13",
+        "animated-scroll-to": "^1.2.2",
         "flatpickr": "^4.5.2",
         "font-awesome": "^4.7.0",
         "font-awesome-icons": "^1.4.3",
