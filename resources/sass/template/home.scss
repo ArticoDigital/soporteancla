@@ -19,6 +19,11 @@
 }
 
 .Request {
+  &-file{
+    margin-top: 0 !important;
+    border: 1px #b9b9b9 dashed !important;
+    padding: 2rem !important;
+  }
   input {
     margin: 1.6rem 0;
   }
