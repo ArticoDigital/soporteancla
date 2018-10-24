@@ -26,8 +26,20 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-    }
 
+        //$schedule->command('log:test')->everyMinute();
+        //$schedule->command('log:testa')->everyMinute();
+        $schedule->command('mail:unasigned')->everyMinute();
+
+  /*  $schedule->call(function () {
+      ServiceSubcategory::create([
+          'name'=>'Subcategoria1',
+          'description'=>'Descripcíón ',
+          'service_category_id'=>1,
+          'isActive' => 1
+      ]);
+    })->hourly();*/
+  }
     /**
      * Register the commands for the application.
      *

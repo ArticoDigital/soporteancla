@@ -1,0 +1,14 @@
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" log:test > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" log:test > "NUL" 2>&1
+No scheduled commands are ready to run.
+No scheduled commands are ready to run.
+No scheduled commands are ready to run.
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" log:test > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" log:testa > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" log:test > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" log:testa > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" log:test > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" log:testa > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" mail:unasigned > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" mail:unasigned > "NUL" 2>&1
+Running scheduled command: "C:\wamp64\bin\php\php7.2.1\php.exe" "artisan" mail:unasigned > "NUL" 2>&1
