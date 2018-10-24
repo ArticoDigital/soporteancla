@@ -53,10 +53,6 @@ Route::post('/subcategoria/{subcategory}', 'ServiceSubcategoryController@update'
 Route::get('/perfil', 'UserProfileController@edit')->name('profile');
 Route::post('/perfil', 'UserProfileController@update')->name('profileUpdate');
 
-/*Route::get('/perfil', function () {
-    return view('profile');
-})->name('profile');*/
-
 Route::get('/admin', function () {
     return view('admin');
 })->name('dashboard');
@@ -68,3 +64,4 @@ Route::post('/updateComment', 'CommentController@store')->name('updateComment');
 Route::delete('/usuario/{user}', 'UserController@destroy')->name('userDelete');
 Route::delete('/categoria/{subcategory}', 'ServiceSubcategoryController@destroy')->name('subcategoryDelete');
 Route::delete('/categorias/{category}', 'CategoryController@destroy')->name('categoryDelete');
+Route::post('/downloadExcel', 'ExportController@tickets')->name('downloadExcel');

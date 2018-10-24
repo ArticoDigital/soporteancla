@@ -8081,6 +8081,21 @@ select {
   padding: 2rem;
 }
 
+.Filters-download {
+  width: 4rem;
+  margin-left: 1rem;
+}
+
+.Filters-downloadButton {
+  min-width: auto !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  color: #fff !important;
+  background: none !important;
+  width: 3.6rem;
+  margin-left: .4rem;
+}
+
 .Users-links {
   font-weight: 400;
   color: #999;

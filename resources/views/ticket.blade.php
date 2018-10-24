@@ -50,7 +50,7 @@
                     <p><b>Documento</b> <a target="_blank" href="{{Storage::url($ticket->file2)}}"> Ver documento</a></p>
                 @endif
             </div>
-
+            @hasrole('Admin')
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
                 <div class="col-16 row  m-b-28 middle-items">
@@ -63,7 +63,7 @@
                     @endif
                 </div>
                 <div class="col-13 col-l-13 row justify-between">
-                    @hasrole('Admin')
+
                     <div class="row middle-items col-16 col-m-8 col-l-6">
                         <div class="col-4"><p><b>Asignado a: </b></p></div>
                         <select class="col-11" name="user_id" id="">
@@ -83,7 +83,7 @@
 
                         </select>
                     </div>
-                    @endhasrole
+
 
                     <div class="row middle-items @hasrole('Admin') col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
                         <div class="col-4"><p><b>Estado: </b></p></div>
@@ -96,18 +96,20 @@
                             @endforeach
                         </select>
                     </div>
-                    @hasrole('Admin')
-                    <div class="row middle-items @hasrole('Admin')   col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
+
+
+                    <div class="row middle-items   col-16 col-l-5 ">
 
                         <div class="col-4"><p><b>#SAP: </b></p></div>
                         <label for="" class="col-11"><input type="text" name="sap_number"
                                                             value="{{$ticket->sap_number}}"></label>
                     </div>
-                    @endhasrole
+
                 </div>
                 <div class="col-3">
                     <button type="submit">Actualizar</button>
                 </div>
+                @endhasrole
             </div>
         </form>
         <h4 class="m-t-40">Comentarios</h4>

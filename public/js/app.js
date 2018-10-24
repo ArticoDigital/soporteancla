@@ -165,7 +165,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(3);
-module.exports = __webpack_require__(11);
+module.exports = __webpack_require__(12);
 
 
 /***/ }),
@@ -180,7 +180,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__subcategories__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Delete__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_animated_scroll_to__);
 
 
@@ -237,6 +237,34 @@ if (otherForm) {
       otherFormInput.classList.add('is-hidden');
     }
   });
+}
+
+var downloadExcel = document.querySelector('#downloadExcel');
+var filtersForm = document.querySelector('#FiltersForm');
+if (downloadExcel) {
+  var buttonSubmit = document.querySelector('#downloadExcelButton');
+  buttonSubmit.addEventListener('click', function (e) {
+    e.preventDefault();
+    var form = addElementForm(filtersForm, downloadExcel);
+    form.submit();
+  });
+}
+
+function addElementForm(filtersForm, newForm) {
+
+  var elements = filtersForm.querySelectorAll("input, select, textarea");
+
+  while (newForm.firstChild) {
+    newForm.removeChild(newForm.firstChild);
+  }
+  for (var i = 0; i < elements.length; ++i) {
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", 'hidden');
+    x.setAttribute("name", elements[i].name);
+    x.setAttribute("value", elements[i].value);
+    newForm.appendChild(x);
+  }
+  return newForm;
 }
 
 /***/ }),
@@ -2945,34 +2973,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function() {
@@ -3201,6 +3201,12 @@ process.umask = function() { return 0; };
   }
 }).call(this);
 
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

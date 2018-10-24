@@ -42,7 +42,7 @@ if (arrow) {
 }
 
 const otherForm = document.querySelector('#cities');
-if(otherForm){
+if (otherForm) {
   
   otherForm.addEventListener('change', function () {
     
@@ -54,5 +54,33 @@ if(otherForm){
       otherFormInput.classList.add('is-hidden')
     }
   });
+}
+
+const downloadExcel = document.querySelector('#downloadExcel');
+const filtersForm = document.querySelector('#FiltersForm');
+if (downloadExcel) {
+  const buttonSubmit = document.querySelector('#downloadExcelButton');
+  buttonSubmit.addEventListener('click', function (e) {
+    e.preventDefault();
+    let form = addElementForm(filtersForm, downloadExcel);
+    form.submit()
+  })
+}
+
+function addElementForm(filtersForm, newForm) {
+  
+  const elements = filtersForm.querySelectorAll("input, select, textarea");
+  
+  while (newForm.firstChild) {
+    newForm.removeChild(newForm.firstChild);
+  }
+  for (let i = 0; i < elements.length; ++i) {
+    let x = document.createElement("INPUT");
+    x.setAttribute("type", 'hidden');
+    x.setAttribute("name", elements[i].name);
+    x.setAttribute("value", elements[i].value);
+    newForm.appendChild(x)
+  }
+  return newForm;
 }
 
