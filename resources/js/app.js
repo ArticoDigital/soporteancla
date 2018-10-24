@@ -41,3 +41,18 @@ if (arrow) {
   })
 }
 
+const otherForm = document.querySelector('#cities');
+if(otherForm){
+  
+  otherForm.addEventListener('change', function () {
+    
+    const otherFormInput = document.querySelector('#otherForm');
+    if (otherForm.value === '1124') {
+      otherFormInput.classList.remove('is-hidden')
+    } else {
+      otherFormInput.value = '';
+      otherFormInput.classList.add('is-hidden')
+    }
+  });
+}
+

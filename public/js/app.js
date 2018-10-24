@@ -224,6 +224,21 @@ if (arrow) {
   });
 }
 
+var otherForm = document.querySelector('#cities');
+if (otherForm) {
+
+  otherForm.addEventListener('change', function () {
+
+    var otherFormInput = document.querySelector('#otherForm');
+    if (otherForm.value === '1124') {
+      otherFormInput.classList.remove('is-hidden');
+    } else {
+      otherFormInput.value = '';
+      otherFormInput.classList.add('is-hidden');
+    }
+  });
+}
+
 /***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2451,33 +2466,44 @@ if (arrow) {
 "use strict";
 var subCategoriesEl = document.querySelector('#service_subcategory'),
     categoriesEl = document.querySelector('#service_category_id');
+var categoriesJson = {};
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
-    if (categoriesEl) {
+  if (categoriesEl) {
 
-        var categoriesJson = JSON.parse(categoriesEl.dataset.json);
+    categoriesJson = JSON.parse(categoriesEl.dataset.json);
 
-        categoriesEl.addEventListener('change', function (e) {
-
-            var categoryId = categoriesEl.options[categoriesEl.selectedIndex].value;
-            if (categoryId) {
-                var c = categoriesJson.find(function (c) {
-                    return c.id === parseInt(categoryId);
-                });
-                subCategoriesEl.disabled = false;
-                subCategoriesEl.options.length = 0;
-                c.subcategories.forEach(function (el) {
-                    var option = document.createElement("option");
-                    option.text = el.name;
-                    option.value = el.id;
-                    subCategoriesEl.add(option);
-                });
-            } else {
-                subCategoriesEl.disabled = true;
-            }
-        });
+    if (categoriesEl.value !== '') {
+      change();
     }
+    categoriesEl.addEventListener('change', change);
+  }
 });
+
+function change() {
+  var oldSubCategories = subCategoriesEl.dataset.old;
+  var categoryId = categoriesEl.options[categoriesEl.selectedIndex].value;
+  if (categoryId) {
+    var c = categoriesJson.find(function (c) {
+      return c.id === parseInt(categoryId);
+    });
+    subCategoriesEl.disabled = false;
+    subCategoriesEl.options.length = 0;
+    c.subcategories.forEach(function (el) {
+      var option = document.createElement("option");
+      option.text = el.name;
+      option.value = el.id;
+      if (+oldSubCategories === el.id) {
+        option.selected = true;
+        subCategoriesEl.dataset.old = '';
+        console.log(oldSubCategories);
+      }
+      subCategoriesEl.add(option);
+    });
+  } else {
+    subCategoriesEl.disabled = true;
+  }
+}
 
 /***/ }),
 /* 7 */

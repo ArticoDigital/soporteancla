@@ -2,17 +2,17 @@
 
 @section('content')
 
-@if ($errors->any())
-    <div class="alert-error">
-        <ul class="Error-ul is-list-less">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    @if ($errors->any())
+        <div class="alert-error">
+            <ul class="Error-ul is-list-less">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
 
-        <span class="Error-close"><i class="far fa-times-circle"></i></span>
-    </div>
-@endif
+            <span class="Error-close"><i class="far fa-times-circle"></i></span>
+        </div>
+    @endif
 
     @if (\Session::has('messageok'))
         <div class="alert-success">
@@ -44,7 +44,11 @@
             <div class="col-5">
                 <p><b>Centro de operaciones: </b> {{$ticket->operation_center}}</p>
                 <p><b>Subcategoría de servicio: </b> {{$ticket->ServiceSubcategory->name}}</p>
-                <p><b>Ciudad: </b> {{$ticket->city->municipio}}</p>
+                <p><b>Ciudad: </b> {{$ticket->city->municipio}}
+                    {{$ticket->city->municipio == 'Otro'? ' - ' . $ticket->city_text:''}}</p>
+                @if($ticket->file2)
+                    <p><b>Documento</b> <a target="_blank" href="{{Storage::url($ticket->file2)}}"> Ver documento</a></p>
+                @endif
             </div>
 
             <h4 class="m-t-40">Actualizar ticket</h4>
@@ -54,7 +58,8 @@
                         <input type="file" class="" name="file" placeholder="Archivo">
                     </label>
                     @if($ticket->file)
-                        <div class="col-8 p-l-32"><a target="_blank" href="{{Storage::url($ticket->file)}}">Ver archivo</a></div>
+                        <div class="col-8 p-l-32"><a target="_blank" href="{{Storage::url($ticket->file)}}">Ver
+                                archivo</a></div>
                     @endif
                 </div>
                 <div class="col-13 col-l-13 row justify-between">
@@ -64,17 +69,17 @@
                         <select class="col-11" name="user_id" id="">
                             <option value="">Seleccione un opción</option>
                             @if(isset($ticket->user) && $ticket->user->isActive == 0)
-                              <option
-                                    selected  value="{{$ticket->user->id}}">{{$ticket->user->name}} - inactivo
-                              </option>
+                                <option
+                                        selected value="{{$ticket->user->id}}">{{$ticket->user->name}} - inactivo
+                                </option>
                             @endif
-                            
-                              @foreach($users as $user)
-                                  <option
-                                          {{($user->id == $ticket->user_id)?'selected':''}}
-                                          value="{{$user->id}}">{{$user->name}}
-                                  </option>
-                              @endforeach
+
+                            @foreach($users as $user)
+                                <option
+                                        {{($user->id == $ticket->user_id)?'selected':''}}
+                                        value="{{$user->id}}">{{$user->name}}
+                                </option>
+                            @endforeach
 
                         </select>
                     </div>
@@ -133,7 +138,8 @@
         <form action="{{route('updateComment')}}" method="post" class="m-t-40">
             @csrf
             <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
-            <textarea name="comment_text" id="" cols="30" rows="10" placeholder="Escribe un comentario" required></textarea>
+            <textarea name="comment_text" id="" cols="30" rows="10" placeholder="Escribe un comentario"
+                      required></textarea>
             <div class="m-t-20">
                 <button type="submit">Comentar</button>
             </div>

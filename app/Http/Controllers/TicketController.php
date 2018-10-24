@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
 class TicketController extends Controller
 {
     private $ticket;
+
     /**
      * Display a listing of the resource.
      *
@@ -54,13 +55,16 @@ class TicketController extends Controller
      */
     public function store(TicketRequest $request)
     {
-        //
-
         $inputs = $request->all();
 
         $inputs['ticket_state_id'] = '1';
+        if ($request->file('file2')) {
+            $path = Storage::putFile('SoporteAncla', $request->file('file2'), 'public');
+            $inputs['file2'] = $path;
+        }
         $ticket = Ticket::create($inputs);
         Notification::send(User::role('Admin')->get(), new CreateTicket($ticket));
+
         $ticket->notify(new CreateTicketClient($ticket));
         return view('ticket-success', compact('ticket'))->with(['messageok' => 'Registro exitoso']);
     }
@@ -183,7 +187,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        $users = User::role('Support')->where('isActive',1)->get();
+        $users = User::role('Support')->where('isActive', 1)->get();
         $ticketStates = TicketState::all();
         $ticket->load(['ticketState', 'ServiceSubcategory', 'user', 'Comments.user', 'city']);
         return view('ticket', compact('ticket', 'users', 'ticketStates'));
@@ -220,8 +224,8 @@ class TicketController extends Controller
                 Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket, auth()->user()));
             }
         } else {
-            if($supportUserId = $request->input('user_id')){
-                $supportUser =  User::find($supportUserId);
+            if ($supportUserId = $request->input('user_id')) {
+                $supportUser = User::find($supportUserId);
                 $supportUser->notify(new AssignSupport($ticket));
                 $ticket->notify(new AssignSupportClient($ticket));
             }
