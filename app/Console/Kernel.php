@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
 
         //$schedule->command('log:test')->everyMinute();
         //$schedule->command('log:testa')->everyMinute();
-        $schedule->command('mail:unasigned')->everyMinute();
+        $schedule->command('mail:unasigned')->everyMinute();  //Envía correo si no ha sido asignado el tickets
 
   /*  $schedule->call(function () {
       ServiceSubcategory::create([

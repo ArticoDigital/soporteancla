@@ -43,24 +43,12 @@ class ListUnasignedTickets extends Notification
      */
     public function toMail($notifiable)
     {
-        $tabletickets="<table style='width:100%'>
-        <tr>
-          <th>Ticket</th>
-          <th>Nombre cliente</th>
-          <th>Enlace</th>
-        </tr>";
-        foreach($this->data as $value) {
-          $tabletickets.="<tr>
-                            <td>".$value->id."</td>
-                            <td>".$value->name."</td>
-                            <td>".$value->id."</td>
-                          </tr>";
-        }
-        $tabletickets.="</table>";
+      
+
         return (new MailMessage)
             ->subject('Soporte Ancla - Tickets no asignados')
             ->line('Se han detectado los siguientes tickets sin asignación de soporte, por favor asignelos o cambie el estado de los mismos')
-            ->formatLine($tabletickets);
+            ->markdown('emails.tickets.unasigned', ['data' => $this->data]);
     }
 
     /**
