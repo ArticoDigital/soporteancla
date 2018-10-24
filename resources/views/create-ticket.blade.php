@@ -13,14 +13,14 @@
         </div>
     @endif
     <div  class=" m-t-40">
-        <figure>
-            <img src="{{asset('images/banner.png')}}" alt="">
+        <figure class="Banner-principal row justify-center align-end" style="background-image: url({{asset('images/banner.png')}})">
+            <img id="arrowToScroll" class="Banner-principalArrow" src="{{asset('images/angle-down-solid.svg')}}" alt="">
         </figure>
     </div>
-    <form class="Request row justify-center m-t-80" method="POST" action="{{route('storeticket')}}">
+    <form class="Request row justify-center m-t-40" method="POST" action="{{route('storeticket')}}">
         @csrf
         <div class="Login-container">
-            <h1>¿Cómo puedo ayudarle?</h1>
+            <h1 class="target">¿Cómo puedo ayudarle?</h1>
             <div class="row">
                 <div class="col-16 col-m-8 col-l-8  p-l-20 p-r-20">
                     <input type="text" name="name" placeholder="Nombre" required maxlength="100"
