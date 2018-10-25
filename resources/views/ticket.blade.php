@@ -62,13 +62,9 @@
                                 archivo</a></div>
                     @endif
                 </div>
-<<<<<<< HEAD
-                <div class="col-16 col-l-16 row justify-left">
-                    @hasrole('Admin')
-=======
-                <div class="col-13 col-l-13 row justify-between">
 
->>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9
+                <div class="col-16 col-l-16 row justify-left">
+
                     <div class="row middle-items col-16 col-m-8 col-l-6">
                         <div class="col-4"><p><b>Asignado a: </b></p></div>
                         <select class="col-11" name="user_id" id="">
@@ -89,7 +85,6 @@
                         </select>
                     </div>
 
-
                     <div class="row middle-items @hasrole('Admin') col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
                         <div class="col-4"><p><b>Estado: </b></p></div>
                         <select class="col-11" name="ticket_state_id" id="ticket_state">
@@ -101,9 +96,9 @@
                             @endforeach
                         </select>
                     </div>
-<<<<<<< HEAD
+
                     <div id="isfinished" class="boxcolor {{$ticket->ticket_state_id == 4?'':'is-hidden'}}">
-                      <input name="is_invoiced" id="is_invoiced" type="checkbox" value="1" {{($ticket->is_invoiced == 1) ? 'checked': ''}} class="{{$ticket->ticket_state_id == 4?'':'is-hidden'}}">
+                      <input name="is_invoiced" id="is_invoiced" type="checkbox" value="1" class="{{$ticket->ticket_state_id == 4?'':'is-hidden'}}" {{($ticket->is_invoiced == 1) ? 'checked': ''}} >
                       <label for="is_invoiced" class="m-t-16 m-b-20">Es facturado:</label>
 
                       <input id="invoice_cost" class="{{$ticket->is_invoiced == 1?'':'is-hidden'}}" type="text" name="invoice_cost"
@@ -111,25 +106,23 @@
 
                     </div>
 
-                    @hasrole('Admin')
                     <div class="row middle-items @hasrole('Admin')   col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
-=======
 
+                      <div class="row middle-items   col-16">
 
-                    <div class="row middle-items   col-16 col-l-5 ">
->>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9
-
-                        <div class="col-4"><p><b>#SAP: </b></p></div>
-                        <label for="" class="col-11"><input type="text" name="sap_number"
-                                                            value="{{$ticket->sap_number}}"></label>
+                          <div class="col-4"><p><b>#SAP: </b></p></div>
+                          <label for="" class="col-11"><input type="text" name="sap_number"
+                                                              value="{{$ticket->sap_number}}"></label>
+                      </div>
                     </div>
 
                 </div>
                 <div class="col-16  m-t-40">
                     <button type="submit">Actualizar</button>
                 </div>
-                @endhasrole
+
             </div>
+            @endhasrole
         </form>
         <h4 class="m-t-40">Comentarios</h4>
         @forelse($ticket->comments as $comment)

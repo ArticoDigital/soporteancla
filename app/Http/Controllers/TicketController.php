@@ -215,9 +215,15 @@ class TicketController extends Controller
     public function update(Request $request, Ticket $ticket)
     {
         //dd($request);
+
         if(!isset($request['is_invoiced'])){
           $request['is_invoiced']=0;
           $request['invoice_cost']=null;
+        }else{
+          $validatedData = $request->validate([
+              'is_invoiced' => 'numeric',
+              'invoice_cost' => 'numeric'
+            ]);
         }
         if ($user = $ticket->user) {
             if ($user->id != $request->input('user_id')) {

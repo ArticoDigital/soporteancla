@@ -42,13 +42,7 @@ if (arrow) {
 }
 
 const otherForm = document.querySelector('#cities');
-<<<<<<< HEAD
-if(otherForm){
-
-=======
 if (otherForm) {
-  
->>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9
   otherForm.addEventListener('change', function () {
 
     const otherFormInput = document.querySelector('#otherForm');
@@ -61,7 +55,7 @@ if (otherForm) {
   });
 }
 
-<<<<<<< HEAD
+
 const ticketState = document.querySelector('#ticket_state');
 const is_invoiced = document.querySelector('#is_invoiced');
 if(ticketState){
@@ -101,7 +95,7 @@ if(is_invoiced){
     }
   });
 }
-=======
+
 const downloadExcel = document.querySelector('#downloadExcel');
 const filtersForm = document.querySelector('#FiltersForm');
 if (downloadExcel) {
@@ -114,9 +108,9 @@ if (downloadExcel) {
 }
 
 function addElementForm(filtersForm, newForm) {
-  
+
   const elements = filtersForm.querySelectorAll("input, select, textarea");
-  
+
   while (newForm.firstChild) {
     newForm.removeChild(newForm.firstChild);
   }
@@ -129,5 +123,3 @@ function addElementForm(filtersForm, newForm) {
   }
   return newForm;
 }
-
->>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9

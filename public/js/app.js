@@ -226,7 +226,6 @@ if (arrow) {
 
 var otherForm = document.querySelector('#cities');
 if (otherForm) {
-
   otherForm.addEventListener('change', function () {
 
     var otherFormInput = document.querySelector('#otherForm');
@@ -239,7 +238,6 @@ if (otherForm) {
   });
 }
 
-<<<<<<< HEAD
 var ticketState = document.querySelector('#ticket_state');
 var is_invoiced = document.querySelector('#is_invoiced');
 if (ticketState) {
@@ -274,7 +272,8 @@ if (is_invoiced) {
       invoice_cost.attributes.remove('required');
     }
   });
-=======
+}
+
 var downloadExcel = document.querySelector('#downloadExcel');
 var filtersForm = document.querySelector('#FiltersForm');
 if (downloadExcel) {
@@ -301,7 +300,6 @@ function addElementForm(filtersForm, newForm) {
     newForm.appendChild(x);
   }
   return newForm;
->>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9
 }
 
 /***/ }),
