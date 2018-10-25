@@ -8081,6 +8081,12 @@ select {
   padding: 2rem;
 }
 
+.boxcolor {
+  background-color: beige;
+  padding: 13px;
+  margin: 15px;
+}
+
 .Users-links {
   font-weight: 400;
   color: #999;

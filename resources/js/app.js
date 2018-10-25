@@ -43,9 +43,9 @@ if (arrow) {
 
 const otherForm = document.querySelector('#cities');
 if(otherForm){
-  
+
   otherForm.addEventListener('change', function () {
-    
+
     const otherFormInput = document.querySelector('#otherForm');
     if (otherForm.value === '1124') {
       otherFormInput.classList.remove('is-hidden')
@@ -56,3 +56,42 @@ if(otherForm){
   });
 }
 
+const ticketState = document.querySelector('#ticket_state');
+const is_invoiced = document.querySelector('#is_invoiced');
+if(ticketState){
+
+  ticketState.addEventListener('change', function () {
+    const isfinished = document.querySelector('#isfinished');
+    const invoice_cost = document.querySelector('#invoice_cost');
+
+
+    if (ticketState.value === '4') {
+      is_invoiced.classList.remove('is-hidden')
+      isfinished.classList.remove('is-hidden');
+      //invoice_cost.classList.remove('is-hidden');
+
+
+    } else {
+      is_invoiced.value = '';
+      is_invoiced.classList.add('is-hidden')
+      invoice_cost.value = '';
+      invoice_cost.classList.add('is-hidden')
+      isfinished.classList.add('is-hidden')
+
+    }
+  });
+}
+if(is_invoiced){
+  is_invoiced.addEventListener('change', function () {
+    const invoice_cost = document.querySelector('#invoice_cost');
+    if(this.checked){
+      invoice_cost.classList.remove('is-hidden');
+      invoice_cost.attributes.add('required');
+    } else {
+      invoice_cost.value = '';
+      invoice_cost.classList.add('is-hidden')
+      invoice_cost.attributes.remove('required');
+
+    }
+  });
+}

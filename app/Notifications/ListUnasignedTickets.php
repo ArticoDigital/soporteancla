@@ -32,7 +32,7 @@ class ListUnasignedTickets extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -43,11 +43,11 @@ class ListUnasignedTickets extends Notification
      */
     public function toMail($notifiable)
     {
-      
+
 
         return (new MailMessage)
             ->subject('Soporte Ancla - Tickets no asignados')
-            ->line('Se han detectado los siguientes tickets sin asignación de soporte, por favor asignelos o cambie el estado de los mismos')
+            ->line('Se han detectado los siguientes tickets sin asignación de soporte, por favor asígnelos o cambie el estado de los mismos')
             ->markdown('emails.tickets.unasigned', ['data' => $this->data]);
     }
 
@@ -59,8 +59,9 @@ class ListUnasignedTickets extends Notification
      */
     public function toArray($notifiable)
     {
+
         return [
-            //
+            'UnasignedTickets' => $this->data->pluck('id')->toArray()
         ];
     }
 }

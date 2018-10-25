@@ -165,7 +165,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(3);
-module.exports = __webpack_require__(11);
+module.exports = __webpack_require__(12);
 
 
 /***/ }),
@@ -180,7 +180,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_flatpickr_dist_l10n_es__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__subcategories__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Delete__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_animated_scroll_to__);
 
 
@@ -235,6 +235,42 @@ if (otherForm) {
     } else {
       otherFormInput.value = '';
       otherFormInput.classList.add('is-hidden');
+    }
+  });
+}
+
+var ticketState = document.querySelector('#ticket_state');
+var is_invoiced = document.querySelector('#is_invoiced');
+if (ticketState) {
+
+  ticketState.addEventListener('change', function () {
+    var isfinished = document.querySelector('#isfinished');
+    var invoice_cost = document.querySelector('#invoice_cost');
+
+    if (ticketState.value === '4') {
+      is_invoiced.classList.remove('is-hidden');
+      isfinished.classList.remove('is-hidden');
+      //invoice_cost.classList.remove('is-hidden');
+
+    } else {
+      is_invoiced.value = '';
+      is_invoiced.classList.add('is-hidden');
+      invoice_cost.value = '';
+      invoice_cost.classList.add('is-hidden');
+      isfinished.classList.add('is-hidden');
+    }
+  });
+}
+if (is_invoiced) {
+  is_invoiced.addEventListener('change', function () {
+    var invoice_cost = document.querySelector('#invoice_cost');
+    if (this.checked) {
+      invoice_cost.classList.remove('is-hidden');
+      invoice_cost.attributes.add('required');
+    } else {
+      invoice_cost.value = '';
+      invoice_cost.classList.add('is-hidden');
+      invoice_cost.attributes.remove('required');
     }
   });
 }
@@ -2945,34 +2981,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function() {
@@ -3201,6 +3209,12 @@ process.umask = function() { return 0; };
   }
 }).call(this);
 
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

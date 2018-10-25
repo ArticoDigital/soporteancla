@@ -30,18 +30,18 @@
         <form class="row justify-between Ticket-info" enctype="multipart/form-data" method="post"
               action="{{route('updateTicket',[$ticket->id])}}">
             @csrf
-            <div class="col-5">
+            <div class="col-16 col-m-5">
                 <p><b>Nombre: </b> {{$ticket->name}}</p>
                 <p><b>Compañia: </b> {{$ticket->company}}</p>
                 <p><b>Celular: </b> {{$ticket->cellphone}}</p>
             </div>
-            <div class="col-5">
+            <div class="col-16 col-m-5">
                 <p><b>Email: </b> {{$ticket->email}}</p>
                 <p><b>identification: </b> {{$ticket->identification}}</p>
                 <p><b>Punto de venta: </b> {{$ticket->sell_point}}</p>
 
             </div>
-            <div class="col-5">
+            <div class="col-16 col-m-5">
                 <p><b>Centro de operaciones: </b> {{$ticket->operation_center}}</p>
                 <p><b>Subcategoría de servicio: </b> {{$ticket->ServiceSubcategory->name}}</p>
                 <p><b>Ciudad: </b> {{$ticket->city->municipio}}
@@ -54,7 +54,7 @@
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
                 <div class="col-16 row  m-b-28 middle-items">
-                    <label for="" class="col-8">
+                    <label for="" class="col-15 col-l-8">
                         <input type="file" class="" name="file" placeholder="Archivo">
                     </label>
                     @if($ticket->file)
@@ -62,7 +62,7 @@
                                 archivo</a></div>
                     @endif
                 </div>
-                <div class="col-13 col-l-13 row justify-between">
+                <div class="col-16 col-l-16 row justify-left">
                     @hasrole('Admin')
                     <div class="row middle-items col-16 col-m-8 col-l-6">
                         <div class="col-4"><p><b>Asignado a: </b></p></div>
@@ -87,7 +87,7 @@
 
                     <div class="row middle-items @hasrole('Admin') col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
                         <div class="col-4"><p><b>Estado: </b></p></div>
-                        <select class="col-11" name="ticket_state_id" id="">
+                        <select class="col-11" name="ticket_state_id" id="ticket_state">
                             <option value="">Seleccione un opción</option>
                             @foreach($ticketStates as $ticketState)
                                 <option
@@ -96,6 +96,15 @@
                             @endforeach
                         </select>
                     </div>
+                    <div id="isfinished" class="boxcolor {{$ticket->ticket_state_id == 4?'':'is-hidden'}}">
+                      <input name="is_invoiced" id="is_invoiced" type="checkbox" value="1" {{($ticket->is_invoiced == 1) ? 'checked': ''}} class="{{$ticket->ticket_state_id == 4?'':'is-hidden'}}">
+                      <label for="is_invoiced" class="m-t-16 m-b-20">Es facturado:</label>
+
+                      <input id="invoice_cost" class="{{$ticket->is_invoiced == 1?'':'is-hidden'}}" type="text" name="invoice_cost"
+                             placeholder="Valor" value="{{$ticket->invoice_cost}}">
+
+                    </div>
+
                     @hasrole('Admin')
                     <div class="row middle-items @hasrole('Admin')   col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
 
@@ -105,7 +114,7 @@
                     </div>
                     @endhasrole
                 </div>
-                <div class="col-3">
+                <div class="col-16  m-t-40">
                     <button type="submit">Actualizar</button>
                 </div>
             </div>

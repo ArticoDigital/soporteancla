@@ -15,6 +15,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Http\Requests\TicketRequest;
+use App\Http\Requests\TicketUpdateRequest;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
@@ -213,7 +214,11 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-
+        //dd($request);
+        if(!isset($request['is_invoiced'])){
+          $request['is_invoiced']=0;
+          $request['invoice_cost']=null;
+        }
         if ($user = $ticket->user) {
             if ($user->id != $request->input('user_id')) {
 
