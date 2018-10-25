@@ -50,7 +50,7 @@
                     <p><b>Documento</b> <a target="_blank" href="{{Storage::url($ticket->file2)}}"> Ver documento</a></p>
                 @endif
             </div>
-
+            @hasrole('Admin')
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
                 <div class="col-16 row  m-b-28 middle-items">
@@ -62,8 +62,13 @@
                                 archivo</a></div>
                     @endif
                 </div>
+<<<<<<< HEAD
                 <div class="col-16 col-l-16 row justify-left">
                     @hasrole('Admin')
+=======
+                <div class="col-13 col-l-13 row justify-between">
+
+>>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9
                     <div class="row middle-items col-16 col-m-8 col-l-6">
                         <div class="col-4"><p><b>Asignado a: </b></p></div>
                         <select class="col-11" name="user_id" id="">
@@ -83,7 +88,7 @@
 
                         </select>
                     </div>
-                    @endhasrole
+
 
                     <div class="row middle-items @hasrole('Admin') col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
                         <div class="col-4"><p><b>Estado: </b></p></div>
@@ -96,6 +101,7 @@
                             @endforeach
                         </select>
                     </div>
+<<<<<<< HEAD
                     <div id="isfinished" class="boxcolor {{$ticket->ticket_state_id == 4?'':'is-hidden'}}">
                       <input name="is_invoiced" id="is_invoiced" type="checkbox" value="1" {{($ticket->is_invoiced == 1) ? 'checked': ''}} class="{{$ticket->ticket_state_id == 4?'':'is-hidden'}}">
                       <label for="is_invoiced" class="m-t-16 m-b-20">Es facturado:</label>
@@ -107,16 +113,22 @@
 
                     @hasrole('Admin')
                     <div class="row middle-items @hasrole('Admin')   col-16 col-l-5 @else col-16 col-l-8 @endhasrole ">
+=======
+
+
+                    <div class="row middle-items   col-16 col-l-5 ">
+>>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9
 
                         <div class="col-4"><p><b>#SAP: </b></p></div>
                         <label for="" class="col-11"><input type="text" name="sap_number"
                                                             value="{{$ticket->sap_number}}"></label>
                     </div>
-                    @endhasrole
+
                 </div>
                 <div class="col-16  m-t-40">
                     <button type="submit">Actualizar</button>
                 </div>
+                @endhasrole
             </div>
         </form>
         <h4 class="m-t-40">Comentarios</h4>

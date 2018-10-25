@@ -30,3 +30,7 @@ Route::get('logout', function () {
 
 
 Auth::routes();
+
+Route::get('mail', function (){
+    return new \App\Mail\WelcomeUser();
+});

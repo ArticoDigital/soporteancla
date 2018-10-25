@@ -2,29 +2,35 @@
 
 @section('content')
 
-
     <div class="row justify-between middle-items m-t-16 m-b-16">
         <div class="col-6 col-l-6"><h2 class="">Tickets</h2></div>
-        <form class="Filters row  col-16 col-l-10 middle-items justify-end" method="POST" action="{{route('filtertickets')}}">
-            @csrf
-            <label class="col-4 m-r-12" for="">
-                <select class="col m-r-12" name="state" id="">
-                    <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
-                    @foreach($states as $state)
+        <div class="Filters row  col-16 col-l-10 middle-items justify-end">
 
-                        <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
-                    @endforeach
+            <form method="POST" id="FiltersForm" class="row col-13 justify-end" action="{{route('filtertickets')}}">
+                @csrf
+                <label class="col-5 m-r-12 " for="">
+                    <select class="col-16 m-r-12" name="state" id="">
+                        <option value="{{(isset($data) && is_null($data['state']))?'selected':'0'}}">Todos los estados
+                        </option>
+                        @foreach($states as $state)
 
-                </select>
-            </label>
-            <label class="m-r-12 col-8"><input class="dates" type="text" name="dates"
-                                                value="{{(isset($data))?$data['dates']:''}}"
-                                                placeholder="Seleccione rango de fechas"></label>
-            <div class=" Filters-submit col-2 row justify-center ">
-                <button class="Filters-button" type="submit"><i class="fas fa-sliders-h"></i></button>
-            </div>
+                            <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
+                        @endforeach
 
-        </form>
+                    </select>
+                </label>
+                <label class="m-r-12 col-8"><input class="dates" type="text" name="dates"
+                                                   value="{{(isset($data))?$data['dates']:''}}"
+                                                   placeholder="Seleccione rango de fechas"></label>
+                <div class=" Filters-submit col-2 row justify-center ">
+                    <button class="Filters-button" type="submit"><i class="fas fa-sliders-h"></i></button>
+                </div>
+            </form>
+
+            <button class="Filters-downloadButton" id="downloadExcelButton">
+                <img src="{{asset('images/file-excel-regular.svg')}}" alt="">
+            </button>
+        </div>
 
     </div>
 
@@ -45,6 +51,6 @@
             </li>
         @endforeach
     </ul>
-
+    <form action="{{route('downloadExcel')}}" method="post" id="downloadExcel"></form>
 
 @endsection

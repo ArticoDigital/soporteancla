@@ -42,8 +42,13 @@ if (arrow) {
 }
 
 const otherForm = document.querySelector('#cities');
+<<<<<<< HEAD
 if(otherForm){
 
+=======
+if (otherForm) {
+  
+>>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9
   otherForm.addEventListener('change', function () {
 
     const otherFormInput = document.querySelector('#otherForm');
@@ -56,6 +61,7 @@ if(otherForm){
   });
 }
 
+<<<<<<< HEAD
 const ticketState = document.querySelector('#ticket_state');
 const is_invoiced = document.querySelector('#is_invoiced');
 if(ticketState){
@@ -95,3 +101,33 @@ if(is_invoiced){
     }
   });
 }
+=======
+const downloadExcel = document.querySelector('#downloadExcel');
+const filtersForm = document.querySelector('#FiltersForm');
+if (downloadExcel) {
+  const buttonSubmit = document.querySelector('#downloadExcelButton');
+  buttonSubmit.addEventListener('click', function (e) {
+    e.preventDefault();
+    let form = addElementForm(filtersForm, downloadExcel);
+    form.submit()
+  })
+}
+
+function addElementForm(filtersForm, newForm) {
+  
+  const elements = filtersForm.querySelectorAll("input, select, textarea");
+  
+  while (newForm.firstChild) {
+    newForm.removeChild(newForm.firstChild);
+  }
+  for (let i = 0; i < elements.length; ++i) {
+    let x = document.createElement("INPUT");
+    x.setAttribute("type", 'hidden');
+    x.setAttribute("name", elements[i].name);
+    x.setAttribute("value", elements[i].value);
+    newForm.appendChild(x)
+  }
+  return newForm;
+}
+
+>>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9

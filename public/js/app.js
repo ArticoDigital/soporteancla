@@ -239,6 +239,7 @@ if (otherForm) {
   });
 }
 
+<<<<<<< HEAD
 var ticketState = document.querySelector('#ticket_state');
 var is_invoiced = document.querySelector('#is_invoiced');
 if (ticketState) {
@@ -273,6 +274,34 @@ if (is_invoiced) {
       invoice_cost.attributes.remove('required');
     }
   });
+=======
+var downloadExcel = document.querySelector('#downloadExcel');
+var filtersForm = document.querySelector('#FiltersForm');
+if (downloadExcel) {
+  var buttonSubmit = document.querySelector('#downloadExcelButton');
+  buttonSubmit.addEventListener('click', function (e) {
+    e.preventDefault();
+    var form = addElementForm(filtersForm, downloadExcel);
+    form.submit();
+  });
+}
+
+function addElementForm(filtersForm, newForm) {
+
+  var elements = filtersForm.querySelectorAll("input, select, textarea");
+
+  while (newForm.firstChild) {
+    newForm.removeChild(newForm.firstChild);
+  }
+  for (var i = 0; i < elements.length; ++i) {
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", 'hidden');
+    x.setAttribute("name", elements[i].name);
+    x.setAttribute("value", elements[i].value);
+    newForm.appendChild(x);
+  }
+  return newForm;
+>>>>>>> 51c61d4231b4076572c48039ac888861ca7ffba9
 }
 
 /***/ }),

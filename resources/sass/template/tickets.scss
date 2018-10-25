@@ -21,4 +21,17 @@
     background-color: beige;
     padding: 13px;
     margin: 15px;
+
+.Filters-download {
+  width: 4rem;
+  margin-left: 1rem;
+  &Button {
+    min-width: auto !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    color: #fff !important;
+    background: none !important;
+    width: 3.6rem;
+    margin-left: .4rem;
+  }
 }

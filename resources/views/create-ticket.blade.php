@@ -14,7 +14,7 @@
     <div class=" m-t-40">
         <figure class="Banner-principal row justify-center align-end"
                 style="background-image: url({{asset('images/banner.png')}})">
-            <img id="arrowToScroll" class="Banner-principalArrow" src="{{asset('images/angle-down-solid.svg')}}" alt="">
+            <img  id="arrowToScroll" class="Banner-principalArrow  animated bounce" src="{{asset('images/angle-down-solid.svg')}}" alt="">
         </figure>
     </div>
     <form class="Request row justify-center m-t-40" method="POST" enctype="multipart/form-data" action="{{route('storeticket')}}">
