@@ -48,7 +48,7 @@ class ChangeStateTicket extends Notification
         return (new MailMessage)
             ->subject('Ticket Nº ' . $this->data->id . ' ha cambaido su estado ')
             ->line($this->user->name . ' ha cambiado el estado de la solicitud #' . $this->data->id .
-                ' a " ' . $this->data->ticketState->name . ' "')
+                ' a "' . $this->data->ticketState->name . '"')
             ->action('Ver ticket', route('ticket', $this->data->id));
     }
 

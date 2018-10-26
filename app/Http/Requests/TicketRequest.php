@@ -39,7 +39,7 @@ class TicketRequest extends FormRequest
             'habeas_data' => 'required',
             'city_text' => 'required_if:city_id,==,1124',
             'file2' => 'sometimes|mimes:jpeg,png,jpg,pdf|max:2048',
-            
+
         ];
     }
     public function messages()
@@ -47,7 +47,7 @@ class TicketRequest extends FormRequest
         return [
             'file2.mimes' => 'El archivo debe ser jpeg,png,jpg o pdf',
             'file2.max' => 'El archivo no debe pesar más de 2GB',
-            'city_text.required_if' => 'El campo ¿Cúal? es obligatorio cuando se selecciona otra ciudad ',
+            'city_text.required_if' => 'El campo ¿Cuál? es obligatorio cuando se selecciona otra ciudad ',
         ];
     }
 }

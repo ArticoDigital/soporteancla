@@ -43,10 +43,10 @@ class CreateTicketClient extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject($this->data->name . 'Hemos  registrado un nuevo ticket')
+            ->subject($this->data->name . ' Hemos  registrado un nuevo ticket')
             ->line('Gracias por contactarnos. ')
             ->line(' Hemos recibido su solicitud y en un plazo de 24 horas hábiles daremos respuesta a su requerimiento.
-Tenga presente que los horarios de atención son de Lunes a Viernes de 8am a 6pm y los Sábados de 9am a 12m"');
+Tenga presente que los horarios de atención son de lunes a viernes de 8am a 6pm y los sábados de 9am a 12m"');
     }
 
     /**

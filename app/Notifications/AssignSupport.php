@@ -44,7 +44,7 @@ class AssignSupport extends Notification
     {
         return (new MailMessage)
             ->subject('Ticket Nº ' . $this->data->id . ' Se le ha asignado')
-            ->line('Se le ha asignado la solicitud  ' . $this->data->id . ' . Por favor, dé click en "ver solicitud" e inicie el proceso de atención personalizado.')
+            ->line('Se le ha asignado la solicitud  ' . $this->data->id . ' . Por favor, dé click en "ver ticket" e inicie el proceso de atención personalizado.')
             ->action('Ver ticket', route('ticket', $this->data->id))
             ;
     }
