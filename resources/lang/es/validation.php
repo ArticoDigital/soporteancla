@@ -117,6 +117,15 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+      'invoice_cost'=>'Valor',
+      'name'=>'Nombre',
+      'password'=>'Contraseña',
+      'identification' => 'Identificación',
+      'description' => 'Descripción',
+
+
+    ],
+
 
 ];

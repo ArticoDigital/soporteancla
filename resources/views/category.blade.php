@@ -26,7 +26,7 @@
             @csrf
             <div class="col-8 p-r-20">
                 <input type="text" name="name" placeholder="Nombre" value="{{$category->name}}" required>
-                <input type="text" name="description" placeholder="Cédula" value="{{$category->description}}">
+                <input type="text" name="description" placeholder="Descripción" value="{{$category->description}}">
             </div>
             <div class="col-8 p-l-20">
 

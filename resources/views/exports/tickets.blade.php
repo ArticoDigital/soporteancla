@@ -20,7 +20,6 @@
         <th>Solicitud</th>
         <th>Usuario soporte</th>
         <th>Estado</th>
-        <th>Número de factura</th>
         <th>Costo de la factura</th>
         <th>Fecha de creación</th>
         <th>Fecha de la última actualización</th>
@@ -48,7 +47,6 @@
             <td>{{$ticket->request}}</td>
             <td>{{optional($ticket->user)->name}}</td>
             <td>{{$ticket->ticketState->nameClass() }}</td>
-            <td>{{$ticket->invoice_number}}</td>
             <td>{{$ticket->invoice_cost}}</td>
             <td>{{$ticket->created_at}}</td>
             <td>{{$ticket->updated_at}}</td>

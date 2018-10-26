@@ -43,8 +43,9 @@
                 <div class="col-4 col-l-2 is-text-center">{{$ticket->name}}</div>
                 <div class="col-10 col-l-3 is-text-center">{{$ticket->email}}</div>
                 <div class="col-4 col-l-3  hide-phone is-text-center">{{$ticket->subject}}</div>
-                <div class="col-4 col-l-4 hide-phone is-text-center">{{$ticket->ServiceSubcategory->name}}</div>
+                <div class="col-4 col-l-3 hide-phone is-text-center">{{$ticket->ServiceSubcategory->name}}</div>
                 <div class="col-2 col-l-2 hide-phone is-text-center">{{optional($ticket->user)->name}}</div>
+                <div class="col-10 col-l-1 is-text-center">{{($ticket->invoice_cost!="")? '$'.number_format($ticket->invoice_cost, 0):''}}</div>
                 <div class="col-1 col-l-1 row justify-end middle-items">
                     <a href="{{route('ticket',[$ticket->id])}}"><i class="fas fa-edit "></i></a>
                 </div>

@@ -124,14 +124,15 @@
             </div>
             @endhasrole
         </form>
-        <h4 class="m-t-40">Comentarios</h4>
+        <div class="comentarios">
+        <h4 class="">Comentarios</h4>
         @forelse($ticket->comments as $comment)
-            <div class="m-t-20 row middle-items">
-                <div class="col-3">
+            <div class="row middle-items comentario-item">
+                <div class="col-16 col-m-3 comentarios-nombre">
                     {{$comment->user->name}}
                 </div>
-                <div class="col-13">
-                    <p>{{$comment->comment_text}}</p>
+                <div class="col-16 col-m-13 comentarios-c-texto">
+                    <p> {!! nl2br(e($comment->comment_text)) !!}</p>
                     <p class="row align-center m-t-4 Ticket-date">
                         <i class="far fa-clock"></i>
                         <span class="m-l-4">{{$comment->created_at}}</span>
@@ -158,5 +159,6 @@
                 <button type="submit">Comentar</button>
             </div>
         </form>
+        </div>
     </div>
 @endsection
