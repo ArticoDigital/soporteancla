@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-16 p-l-20 p-r-20 m-t-20">
                     <textarea required name="request" id="" cols="30" rows="10"
-                              placeholder="Escribe tu solicitud">{!! old('request') !!}</textarea>
+                              placeholder="Escriba su solicitud">{!! old('request') !!}</textarea>
                     <div class="m-t-20">
                         <label for="file">Elija un documento</label>
                         <input type="file" id="file" class="Request-file" name="file2" placeholder="Elija un documento ">
@@ -72,9 +72,9 @@
                     <label for="habeas_data" class="m-t-16 m-b-20">
                         <span>Acepto la <a
                                     href="https://www.ancla.la/wp-content/uploads/2017/02/politica_general_privacidad.pdf"
-                                    target="_blank">política política de privacidad</a> , <a
+                                    target="_blank"> política de privacidad</a> , <a
                                     href="https://www.ancla.la/wp-content/uploads/2017/02/Habeas-data.pdf"
-                                    target="_blank">terminos y condiciones</a> y el uso de mis datos con fines comerciales.</span>
+                                    target="_blank">términos y condiciones</a> y el uso de mis datos con fines comerciales.</span>
                     </label>
                 </div>
 
