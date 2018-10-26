@@ -112,12 +112,12 @@ class ServiceSubcategoryController extends Controller
 
         if ($subcategory->tickets()->count()){
             return redirect()->back()->with(['message' =>
-                ['message' => 'La subcategoria  no puede ser elimando, tiene tickets asignados ', 'type' => 'alert-warning']
+                ['message' => 'La subcategoría  no puede ser elimanda, tiene tickets asignados ', 'type' => 'alert-warning']
             ]);
         }
         $subcategory->delete();
         return redirect()->route('category',$subcategory->serviceCategory->id)->with(['message' =>
-            ['message' => 'subcategoria eliminada', 'type' => 'alert-success']
+            ['message' => 'subcategoría eliminada', 'type' => 'alert-success']
         ]);
     }
 }

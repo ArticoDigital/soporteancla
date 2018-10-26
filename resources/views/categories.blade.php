@@ -21,11 +21,11 @@
         </div>
     @endif
     <div class="row justify-between middle-items m-t-16 m-b-16">
-        <div class="col-6"><h2 class="">Categorias</h2></div>
+        <div class="col-6"><h2 class="">Categorías</h2></div>
     </div>
     <div class="row col-16 justify-between m-b-40">
         <div class="col-8 row  ">
-            <a href="{{route('categoryCreate')}}" class="button">Crear Categoria <i class="fas fa-boxes "></i></a>
+            <a href="{{route('categoryCreate')}}" class="button">Crear Categoría <i class="fas fa-boxes "></i></a>
         </div>
 
 

@@ -109,7 +109,7 @@ class CategoryController extends Controller
     {
         if ($category->subcategories()->count()) {
             return redirect()->back()->with(['message' =>
-                ['message' => 'La categoria  no puede ser elimando, tiene subcategorias asignados ', 'type' => 'alert-warning']
+                ['message' => 'La categoría  no puede ser elimanda, tiene subcategorías asignadas ', 'type' => 'alert-warning']
             ]);
         }
         $category->delete();
