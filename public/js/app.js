@@ -252,7 +252,8 @@ if (ticketState) {
       //invoice_cost.classList.remove('is-hidden');
 
     } else {
-      is_invoiced.value = '';
+      is_invoiced.value = '0';
+      is_invoiced.checked = 0;
       is_invoiced.classList.add('is-hidden');
       invoice_cost.value = '';
       invoice_cost.classList.add('is-hidden');

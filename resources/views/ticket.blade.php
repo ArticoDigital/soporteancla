@@ -101,7 +101,7 @@
                       <input name="is_invoiced" id="is_invoiced" type="checkbox" value="1" class="{{$ticket->ticket_state_id == 4?'':'is-hidden'}}" {{($ticket->is_invoiced == 1) ? 'checked': ''}} >
                       <label for="is_invoiced" class="m-t-16 m-b-20">Es facturado:</label>
 
-                      <input id="invoice_cost" class="{{$ticket->is_invoiced == 1?'':'is-hidden'}}" type="text" name="invoice_cost"
+                      <input id="invoice_cost" class="{{$ticket->is_invoiced == 1?'':'is-hidden'}}" style="margin-top:10px;" type="text" name="invoice_cost"
                              placeholder="Valor" value="{{$ticket->invoice_cost}}">
 
                     </div>

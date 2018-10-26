@@ -123,6 +123,7 @@ return [
       'password'=>'Contraseña',
       'identification' => 'Identificación',
       'description' => 'Descripción',
+      'is_invoiced' => 'Es facturado',
 
 
     ],
