@@ -47,7 +47,7 @@ class ListUnasignedTickets extends Notification
 
         return (new MailMessage)
             ->subject('Soporte Ancla - Tickets no asignados')
-            ->line('Se han detectado los siguientes tickets sin asignación de soporte, por favor asígnelos o cambie el estado de los mismos')
+            ->line('Se han detectado los siguientes tickets sin asignación de usuario de soporte, por favor asígnelos o cambie el estado de los mismos')
             ->markdown('emails.tickets.unasigned', ['data' => $this->data]);
     }
 

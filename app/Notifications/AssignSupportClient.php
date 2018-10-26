@@ -44,7 +44,8 @@ class AssignSupportClient extends Notification
     {
         return (new MailMessage)
             ->subject('Ticket Nº ' . $this->data->id . ' Su solicitud ha sido asignada ')
-            ->line('Su solicitud ha sido asignada. En un plazo de 24 horas responderá a su requerimiento y dará inicio a la atención de su solicitud. Invitamos a estar pendiente de su correo electrónico. Gracias por contactarnos y tenga usted un feliz día.');
+            ->line('Su solicitud ha sido asignada. En un plazo de 24 horas se responderá a su requerimiento y se dará inicio a la atención de su solicitud. Lo invitamos a estar pendiente de su correo electrónico.')
+            ->line('Gracias por contactarnos y tenga usted un feliz día.');
     }
 
     /**

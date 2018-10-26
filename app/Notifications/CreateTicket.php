@@ -44,7 +44,7 @@ class CreateTicket extends Notification
     {
         return (new MailMessage)
             ->subject('Se ha registrado un Ticket ')
-            ->line('El Sr (Sra) ' . $this->data->name . ' creó la solicitud #' . $this->data->id . ', por favor abrir solicitud y asignar un técnico para dar inicio al proceso de atención.')
+            ->line('El Sr (Sra) ' . $this->data->name . ' creó la solicitud #' . $this->data->id . ', por favor abrir la solicitud y asignar un técnico para dar inicio al proceso de atención.')
             ->action('Ver ticket', route('ticket', $this->data->id));
     }
 

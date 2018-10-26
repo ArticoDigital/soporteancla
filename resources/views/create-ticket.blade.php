@@ -58,7 +58,7 @@
                         @endforeach
                     </select>
                     <input id="otherForm" class="{{old('city_id') == 1124?'':'is-hidden'}}" type="text" name="city_text"
-                           placeholder="¿Cúal?" value="{{old('city_text')}}">
+                           placeholder="¿Cuál?" value="{{old('city_text')}}">
 
                 </div>
                 <div class="col-16 p-l-20 p-r-20 m-t-20">

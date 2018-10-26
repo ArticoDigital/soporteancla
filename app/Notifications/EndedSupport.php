@@ -44,7 +44,8 @@ class EndedSupport extends Notification
     {
         return (new MailMessage)
             ->subject('Solicitud resuelta')
-            ->line('Su solicitud #' . $this->data->id .' ha sido resuelta satisfactoriamente. Ante cualquier nueva duda, estaremos prestos a responder sus consultas. Gracias por confiar en CAJAS FUERTES ANCLA.');
+            ->line('Su solicitud #' . $this->data->id .' ha sido resuelta satisfactoriamente. Ante cualquier nueva duda, estaremos prestos a responder sus consultas.')
+            ->line('Gracias por confiar en CAJAS FUERTES ANCLA.');
     }
 
     /**
