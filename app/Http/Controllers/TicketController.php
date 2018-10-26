@@ -225,6 +225,7 @@ class TicketController extends Controller
               'invoice_cost' => 'numeric'
             ]);
         }
+        $ticket->fill($this->file($request))->save();
         if ($user = $ticket->user) {
             if ($user->id != $request->input('user_id')) {
 
@@ -248,7 +249,7 @@ class TicketController extends Controller
             $ticket->notify(new EndedSupport($ticket));
         }
 
-        $ticket->fill($this->file($request))->save();
+
 
         return redirect()->back()->with(['messageok' => 'Ticket actualizado']);
     }
