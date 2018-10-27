@@ -11,6 +11,7 @@ use App\Models\TicketState;
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\CommentRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CommentController extends Controller
 {

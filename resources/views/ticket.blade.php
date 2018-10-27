@@ -141,7 +141,7 @@
             </div>
         @endforelse
 
-        <form action="{{route('updateComment')}}" method="post" class="m-t-40">
+        <form action="{{route('updateComment')}}" enctype="multipart/form-data" method="post" class="m-t-40">
             @csrf
             <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
             <textarea name="comment_text" id="" cols="30" rows="10" placeholder="Escribe un comentario"
