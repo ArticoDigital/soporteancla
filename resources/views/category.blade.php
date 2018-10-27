@@ -24,11 +24,11 @@
     <div class="User Category">
         <form method="post" action="{{route('categoryUpdate',$category->id)}}" class="row  justify-between">
             @csrf
-            <div class="col-8 p-r-20">
+            <div class="col-16 col-l-8 p-r-20">
                 <input type="text" name="name" placeholder="Nombre" value="{{$category->name}}" required>
                 <input type="text" name="description" placeholder="Descripción" value="{{$category->description}}">
             </div>
-            <div class="col-8 p-l-20">
+            <div class="col-16 col-l-8 p-l-20">
 
               <input type="hidden" name="id" value="{{$category->id}}">
                 <select name="isActive" class=" m-t-16" id="" required>
@@ -43,7 +43,7 @@
                     </option>
                 </select>
             </div>
-            <div class="col-8 m-t-20">
+            <div class="col-16 col-l-8 row justify-center  justify-start-m  m-t-20">
                 <button type="submit">Actualizar categoría</button>
             </div>
         </form>
@@ -51,7 +51,7 @@
 
 
     <div class="col-12 row m-t-40 m-b-40">
-        <h3 class="col-4">Subcategorías</h3><a href="{{route('subcategoryCreate',$category->id)}}" class="button">Crear
+        <h3 class="col-l-4 col-16">Subcategorías</h3><a href="{{route('subcategoryCreate',$category->id)}}" class="button">Crear
             Subcategoria <i class="fas fa-boxes "></i></a>
     </div>
 

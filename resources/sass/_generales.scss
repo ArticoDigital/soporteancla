@@ -92,13 +92,21 @@ input.numInput {
 
 .Filters {
   &-submit {
-    max-width: 6.5rem;
-    margin-left: 1.2rem;
+    @include respond-to(medium){
+      max-width: 6.5rem;
+      margin-left: 1.2rem;
+    }
   }
   &-button {
     min-height: 4.3rem;
     min-width: 0;
     border-radius: 2px;
+  }
+  input, button{
+    margin-top: 1rem;
+    @include respond-to(medium){
+      margin-top: 0;
+    }
   }
 }
 

@@ -46,7 +46,7 @@ class CommentController extends Controller
         $request['user_id']= auth()->user()->id;
         $inputs = $request->all();
         $ticket = Ticket::find($request->input('ticket_id'));
-        Comment::create($inputs);
+        Comment::create($this->file($request));
         Notification::send(User::role('Admin')->get(), new NewComment($ticket));
         if ($user = $ticket->user) {
             $user->notify(new NewComment($ticket));
@@ -97,5 +97,15 @@ class CommentController extends Controller
     public function destroy($id)
     {
         //
+    }
+    private function file($request)
+    {
+        $inputs = $request->all();
+        if ($request->file('file')) {
+
+            $path = Storage::putFile('SoporteAncla', $request->file('file'), 'public');
+            $inputs['file'] = $path;
+        }
+        return $inputs;
     }
 }

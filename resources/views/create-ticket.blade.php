@@ -65,7 +65,7 @@
                     <textarea required name="request" id="" cols="30" rows="10"
                               placeholder="Escriba su solicitud">{!! old('request') !!}</textarea>
                     <div class="m-t-20">
-                        <label for="file">Elija un documento</label>
+                        <label for="file">Si cuenta con un archivo o imagen que describa el problema, por favor adjúntelo </label>
                         <input type="file" id="file" class="Request-file" name="file2" placeholder="Elija un documento ">
                     </div>
                     <input name="habeas_data" id="habeas_data" type="checkbox" required>

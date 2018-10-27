@@ -28,13 +28,14 @@
     <div class="User">
         <form method="post" action="{{route('userUpdate',$user->id)}}"  class="row  justify-between">
             @csrf
-            <div class="col-8 p-r-20">
+            <div class="col-m-8 col-16 p-r-20">
                 <input type="text" name="name" placeholder="Nombre" value="{{$user->name}}">
                 <input type="text" name="identification" placeholder="Cédula" value="{{$user->identification}}">
                 <input type="email" name="email" placeholder="E-Mail"
                        value="{{$user->email}}">
+                <input type="text" name="phone" placeholder="Número de celular" value="{{$user->phone}}">
             </div>
-            <div class="col-8 p-l-20">
+            <div class=" col-m-8 col-16 p- p-l-20">
                 <input type="password" name="password" placeholder="Contraseña">
                 <select name="role" id="">
                     <option value="">Seleccione un rol</option>
@@ -46,7 +47,6 @@
                     >Soporte</option>
                 </select>
                 <select name="isActive" id="" style="margin: 1.6rem 0;">
-
                     <option value="1"
                             {{($user->isActive  == '1')?'selected':''}}
                     >Activo</option>
@@ -54,8 +54,9 @@
                             {{($user->isActive == '0')?'selected':''}}
                     >Inactivo</option>
                 </select>
+                <input type="text" name="address" placeholder="Dirección de residencia"  value="{{$user->address}}">
             </div>
-            <div class="col-8 m-t-20">
+            <div class="col-m-8 col-16 m-t-20">
                 <button type="submit">Actualizar usuario</button>
             </div>
         </form>
@@ -65,7 +66,7 @@
 
         <form class="Filters row col-16 col-l-10 middle-items justify-end" method="POST" action="{{route('ticketuserfiltered',$user->id)}}">
             @csrf
-            <label class="col-4 m-r-12" for="">
+            <label class="col-15 col-m-5 m-r-12" for="">
                 <select class="col m-r-12" name="state" id="">
                     <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
                     @foreach($states as $state)
@@ -75,10 +76,10 @@
 
                 </select>
             </label>
-            <label class="m-r-12 col-8 "><input class="dates" type="text" name="dates"
+            <label class="m-r-12 col-15 col-m-5 "><input class="dates" type="text" name="dates"
                                                 value="{{(isset($data))?$data['dates']:''}}"
                                                 placeholder="Seleccione rango de fechas"></label>
-            <div class=" Filters-submit col-2 row justify-center ">
+            <div class=" Filters-submit col-15  col-m-2row justify-center ">
                 <button class="Filters-button" type="submit"><i class="fas fa-sliders-h"></i></button>
             </div>
         </form>
@@ -87,15 +88,15 @@
        @if(!isset($data['notickets']))
         @foreach($user->tickets as $ticket)
             <li class="Items-wrapper row middle-items">
-                <div class="col-1 row justify-center">
+                <div class="col-1 row justify-center  justify-start-m ">
                     <div class=" Status-indicator {{$ticket->ticketState->nameClass()}}"></div>
                 </div>
-                <div class="col-4 col-l-2 is-text-center">{{$ticket->name}}</div>
-                <div class="col-6 col-l-3 is-text-center">{{$ticket->email}}</div>
-                <div class="col-4 col-l-3 is-text-center">{{$ticket->subject}}</div>
+                <div class="col-4 col-5 col-l-2 is-text-center">{{$ticket->name}}</div>
+                <div class="col-6 col-l-3 is-text-center hide-phone " >{{$ticket->email}}</div>
+                <div class="col-4  col-5 col-l-3 is-text-center">{{$ticket->subject}}</div>
                 <div class="col-4 col-l-4 hide-phone is-text-center">{{$ticket->ServiceSubcategory->name}}</div>
                 <div class="col-2 col-l-2 hide-phone is-text-center">{{$ticket->company}}</div>
-                <div class="col-1 col-l-1 row justify-end middle-items">
+                <div class="col-1  col-5 col-l-1 row justify-end middle-items">
                     <a href="{{route('ticket',[$ticket->id])}}"><i class="fas fa-edit "></i></a>
                 </div>
             </li>

@@ -16,11 +16,11 @@
     <div class="User Category">
         <form method="post" action="{{route('subcategoryStore',$category->id)}}"  class="row  justify-between">
             @csrf
-            <div class="col-8 p-r-20">
+            <div class="col-l-8 col-16 p-r-20">
                 <input type="text" name="name" placeholder="Nombre" value="{{old('name')}}" required>
                 <input type="text" name="description" placeholder="Descripción" value="{{old('description')}}">
             </div>
-            <div class="col-8 p-l-20">
+            <div class="col-l-8 col-16  p-l-20">
               <input type="hidden" name="service_category_id" value="{{$category->id}}">
                 <select name="isActive" id="" required>
 
@@ -32,7 +32,7 @@
                     >Inactivo</option>
                 </select>
             </div>
-            <div class="col-8 m-t-20">
+            <div class="col-l-8 col-16 row justify-center justify-start-m m-t-20">
                 <button type="submit">Guardar</button>
             </div>
         </form>

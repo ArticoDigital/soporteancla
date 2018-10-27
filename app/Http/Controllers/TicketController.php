@@ -269,7 +269,6 @@ class TicketController extends Controller
     {
         $inputs = $request->all();
         if ($request->file('file')) {
-
             $path = Storage::putFile('SoporteAncla', $request->file('file'), 'public');
             $inputs['file'] = $path;
         }

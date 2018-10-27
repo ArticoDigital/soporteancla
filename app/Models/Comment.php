@@ -10,7 +10,7 @@ use Jenssegers\Date\Date;
 class Comment extends Model
 {
     //
-    protected $fillable = ['comment_text', 'file_included', 'user_id', 'ticket_id'];
+    protected $fillable = ['comment_text', 'file_included', 'user_id', 'ticket_id', 'file'];
 
     public function user()
     {

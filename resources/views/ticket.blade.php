@@ -53,15 +53,6 @@
             @hasrole('Admin')
             <h4 class="m-t-40">Actualizar ticket</h4>
             <div class="row col-16   middle-items">
-                <div class="col-16 row  m-b-28 middle-items">
-                    <label for="" class="col-15 col-l-8">
-                        <input type="file" class="" name="file" placeholder="Archivo">
-                    </label>
-                    @if($ticket->file)
-                        <div class="col-8 p-l-32"><a target="_blank" href="{{Storage::url($ticket->file)}}">Ver
-                                archivo</a></div>
-                    @endif
-                </div>
 
                 <div class="col-16 col-l-16 row justify-left">
 
@@ -81,7 +72,6 @@
                                         value="{{$user->id}}">{{$user->name}}
                                 </option>
                             @endforeach
-
                         </select>
                     </div>
 
@@ -133,6 +123,9 @@
                 </div>
                 <div class="col-16 col-m-13 comentarios-c-texto">
                     <p> {!! nl2br(e($comment->comment_text)) !!}</p>
+                    @if($comment->file)
+                        <p><b>Documento</b> <a target="_blank" href="{{Storage::url($comment->file)}}"> Ver documento</a></p>
+                    @endif
                     <p class="row align-center m-t-4 Ticket-date">
                         <i class="far fa-clock"></i>
                         <span class="m-l-4">{{$comment->created_at}}</span>
@@ -142,9 +135,7 @@
             @if (!$loop->last)
                 <hr>
             @endif
-
         @empty
-
             <div>
                 No hay comentarios
             </div>
@@ -155,6 +146,11 @@
             <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
             <textarea name="comment_text" id="" cols="30" rows="10" placeholder="Escribe un comentario"
                       required></textarea>
+            <div class="col-16 row  m-t-20  m-b-28 middle-items">
+                <label for="" class="col-16">
+                    <input type="file" class="" name="file" placeholder="Archivo">
+                </label>
+            </div>
             <div class="m-t-20">
                 <button type="submit">Comentar</button>
             </div>
