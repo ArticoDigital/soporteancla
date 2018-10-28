@@ -48,7 +48,9 @@ class MailUnasigned extends Command
             ->where('ticket_state_id', 1)
             ->orderBy('created_at', 'desc')
             ->get();
-        Notification::send(User::role('Admin')->get(), new ListUnasignedTickets($ticketsunaigned));
-        Log::info($ticketsunaigned);
+        if(isset($ticketsunaigned) && count($ticketsunaigned) > 0){
+          Notification::send(User::role('Admin')->get(), new ListUnasignedTickets($ticketsunaigned));
+          Log::info($ticketsunaigned);
+        }
     }
 }

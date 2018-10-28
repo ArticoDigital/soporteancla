@@ -64,20 +64,20 @@
     <div class="row justify-between middle-items m-t-40 m-b-16">
         <div class="col-6 col-l-6"><h2 class="">Tickets</h2></div>
 
-        <form class="Filters row col-16 col-l-10 middle-items justify-end" method="POST" action="{{route('ticketuserfiltered',$user->id)}}">
+        <form class="Filters row col-16 col-l-10 middle-items justify-end" method="GET" action="{{route('user',$user->id)}}">
             @csrf
             <label class="col-15 col-m-5 m-r-12" for="">
                 <select class="col m-r-12" name="state" id="">
-                    <option value="{{(isset($data) && is_null($data['state']))?'selected':''}}" >Todos los estados</option>
+                    <option value="0" "{{(!isset($data['state']))?'selected':''}}">Todos los estados
+                    </option>
                     @foreach($states as $state)
-
-                        <option {{ (isset($data) && $data['state'] == $state->id)?'selected':'' }}   value="{{$state->id}}">{{$state->name}}</option>
+                        <option @if(isset($data['state'])) {{ ($data['state'] == $state->id)?'selected':'' }} @endif  value="{{$state->id}}">{{$state->name}}</option>
                     @endforeach
 
                 </select>
             </label>
             <label class="m-r-12 col-15 col-m-5 "><input class="dates" type="text" name="dates"
-                                                value="{{(isset($data))?$data['dates']:''}}"
+                                                value="{{(isset($data['dates']))?$data['dates']:''}}"
                                                 placeholder="Seleccione rango de fechas"></label>
             <div class=" Filters-submit col-15  col-m-2row justify-center ">
                 <button class="Filters-button" type="submit"><i class="fas fa-sliders-h"></i></button>
@@ -86,7 +86,7 @@
     </div>
     <ul class="is-list-less  Items">
        @if(!isset($data['notickets']))
-        @foreach($user->tickets as $ticket)
+        @foreach($tickets as $ticket)
             <li class="Items-wrapper row middle-items">
                 <div class="col-1 row justify-center  justify-start-m ">
                     <div class=" Status-indicator {{$ticket->ticketState->nameClass()}}"></div>
@@ -103,4 +103,6 @@
         @endforeach
         @endif
     </ul>
+    {{ $tickets->appends(Request::except('page'))->links() }}
+
 @endsection

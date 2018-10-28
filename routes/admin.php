@@ -18,9 +18,14 @@ Route::get('/tickets', function () {
 Route::get('/tickets', [
     'uses' => 'TicketController@viewTickets',
 ])->name('tickets');
-Route::post('/tickets', [
+/*Route::post('/tickets', [
     'uses' => 'TicketController@filterviewTickets',
-])->name('filtertickets');
+])->name('filtertickets');*/
+
+//usar este sobre el filterviewtickets
+Route::get('/ticketsget', [
+    'uses' => 'TicketController@filterviewTicketsget',
+])->name('filterticketsget');
 /*Route::post('/tickets/{user}', [
     'uses' => 'TicketController@filterviewTicketsUser',
 ])->name('filterticketsuser');*/
@@ -33,7 +38,8 @@ Route::get('/ticket/{ticket}', 'TicketController@show')
 Route::get('/usuarios', 'UserController@index')->name('users');
 
 Route::get('/usuario/{user}', 'UserController@edit')->name('user');
-Route::post('/usuariof/{user}', 'UserController@editfiltrado')->name('ticketuserfiltered');
+//Route::post('/usuariof/{user}', 'UserController@editfiltrado')->name('ticketuserfiltered');
+//Route::get('/usuariof/{user}', 'UserController@editfiltradoget')->name('ticketuserfilteredget');
 Route::post('/usuario/{user}', 'UserController@update')->name('userUpdate');
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('userCreate');

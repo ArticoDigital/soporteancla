@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Ticket;
 use App\Models\TicketState;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
@@ -67,11 +68,46 @@ class UserController extends Controller
      * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $user,Request $inputs)
     {
-        $states = TicketState::all();
+        /*$states = TicketState::all();
         $user->load('tickets');
-        return view('user', compact('user','states'));
+        return view('user', compact('user','states'));*/
+        $data = $inputs->all();
+
+        $states = TicketState::all();
+        //$user->load('tickets');
+
+        $data['statesearch'] = (empty($inputs['state'])) ?
+            TicketState::where('isActive', '=', 1)->select('id')->get()->toArray() :
+            [$inputs['state']];
+        //dd($inputs);
+
+
+        if (!empty($inputs['dates'])) {
+            $datev = explode(" a ", $inputs['dates']);
+
+            if (!isset($datev[1])) {
+                $datev[1] = $datev[0];
+            }
+
+            $tickets = Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $data['statesearch'])
+                    ->where('user_id', $user->id)
+                    ->whereDate('created_at', '>=', $datev[0])
+                    ->whereDate('created_at', '<=', $datev[1])
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
+            } else {
+
+            $tickets = Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
+                    ->whereIn('ticket_state_id', $data['statesearch'])
+                    ->where('user_id', $user->id)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
+        }
+
+        return view('user', compact('user','states','tickets','data'));
     }
 
     public function editfiltrado(Request $inputs, $id)
@@ -79,7 +115,7 @@ class UserController extends Controller
       //dd($id);
 
       //$user=User::find($id)->tickets;
-      //dd($user);
+        //dd($inputs);
         $states = TicketState::all();
         $data = $inputs->all();
 
@@ -112,6 +148,71 @@ class UserController extends Controller
           $q->whereIn('ticket_state_id', $inputs['state']);
         }])->first();
 
+
+          //$user->tickets()->whereIn('ticket_state_id',  $inputs['state'])->get();
+          //dd($user);
+          /*
+            $user = User::find($id)->with('tickets',function($q) use ($inputs) {
+              dd($q);
+            $q->whereIn('ticket_state_id', $inputs['state']);
+          });*/
+        }
+        //dd($user);
+        if(empty($user)){
+          //dd("vaco");
+          $data['notickets']=true;
+          $user=User::find($id);
+
+        }
+        //$user->load('ticketsfiltro',$inputs);
+        return view('user', compact('user','states', 'data'));
+    }
+
+    public function editfiltradoget(Request $inputs, $id)
+    {
+      //dd($id);
+
+      //$user=User::find($id)->tickets;
+        //dd($inputs);
+        $states = TicketState::all();
+        $data = $inputs->all();
+
+        $data['statesearch'] = (empty($inputs['state'])) ?
+            TicketState::where('isActive', '=', 1)->select('id')->get()->toArray() :
+            [$inputs['state']];
+
+        if (!empty($inputs['dates'])) {
+
+                $datev = explode(" a ", $inputs['dates']);
+
+                if (!isset($datev[1])) {
+                    $datev[1] = $datev[0];
+                }
+                $user = User::find($id)->wherehas('tickets',function($q) use ($data, $datev){
+                  $q->whereIn('ticket_state_id', $data['statesearch'])
+                  ->whereDate('created_at', '>=', $datev[0])
+                  ->whereDate('created_at', '<=', $datev[1])
+                  ;
+                })->with(['tickets' => function($q) use ($data, $datev){
+                  $q->whereIn('ticket_state_id', $data['statesearch'])
+                  ->whereDate('created_at', '>=', $datev[0])
+                  ->whereDate('created_at', '<=', $datev[1])
+                  //->paginate(1)
+                  ;
+                }])->first();
+        }else{
+          //$user = User::find($id);
+          //dd($user);
+          $user = User::find($id)->wherehas('tickets',function($q) use ($data){
+            $q->whereIn('ticket_state_id', $data['statesearch']);
+          })->with(['tickets' => function($q) use ($data){
+          $q->whereIn('ticket_state_id', $data['statesearch'])
+          //->paginate(1)
+          ;
+        }])->first();
+
+        //$user->tickets;
+        //dd($user->tickets);
 
           //$user->tickets()->whereIn('ticket_state_id',  $inputs['state'])->get();
           //dd($user);

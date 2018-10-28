@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-        //$schedule->command('log:test')->everyMinute();
+        $schedule->command('log:test')->dailyAt('7:00');
         //$schedule->command('log:testa')->everyMinute();
         $schedule->command('mail:unasigned')->dailyAt('07:00');  //Envía correo si no ha sido asignado el tickets
 
