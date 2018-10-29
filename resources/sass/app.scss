@@ -8,6 +8,29 @@
 @import 'template/tickets';
 @import 'template/users';
 
+.pagination{
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 2rem;
+  a{
+    padding: .7rem 1rem .4rem;
+    text-align: center;
+    color: white;
+    background: #d20023;
+    display: block;
+    margin: 0 .5rem;
+  }
+  span{
+    padding: .7rem 1rem .4rem;
+    text-align: center;
+    color: #080808;
+    background: #e8e8e8;
+    display: block;
+    margin: 0 .5rem;
+  }
+}
+
 
 
 
