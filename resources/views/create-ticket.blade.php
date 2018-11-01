@@ -13,7 +13,7 @@
     @endif
     <div class=" m-t-40">
         <figure class="Banner-principal row justify-center align-end"
-                style="background-image: url({{asset('images/banner.png')}})">
+                style="background-image: url({{asset('images/slide.jpg')}})">
             <img  id="arrowToScroll" class="Banner-principalArrow  animated bounce" src="{{asset('images/angle-down-solid.svg')}}" alt="">
         </figure>
     </div>
