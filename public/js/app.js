@@ -189,125 +189,129 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 __WEBPACK_IMPORTED_MODULE_0_flatpickr___default()(".dates", {
-    altInput: true,
-    "locale": "es",
-    mode: "range",
-    dateFormat: "Y-m-d"
+  altInput: true,
+  "locale": "es",
+  mode: "range",
+  dateFormat: "Y-m-d"
 });
 
 var errorClose = document.querySelector('.Error-close');
 if (errorClose) {
-    errorClose.addEventListener('click', function () {
-        document.querySelector('.alert-error').remove();
-    });
+  errorClose.addEventListener('click', function () {
+    document.querySelector('.alert-error').remove();
+  });
 }
 
 Object(__WEBPACK_IMPORTED_MODULE_2__subcategories__["a" /* default */])();
 
 var deleteElement = document.querySelectorAll('.delete');
 if (deleteElement) {
-    deleteElement.forEach(function (el) {
-        el.addEventListener('click', function (e) {
-            e.preventDefault();
-            Object(__WEBPACK_IMPORTED_MODULE_3__Delete__["a" /* Delete */])({
-                title: 'Estas seguro de eliminar?',
-                text: 'Recuerda que no podrás volver a recuperar la info',
-                formId: el
-            });
-        });
+  deleteElement.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      Object(__WEBPACK_IMPORTED_MODULE_3__Delete__["a" /* Delete */])({
+        title: 'Estas seguro de eliminar?',
+        text: 'Recuerda que no podrás volver a recuperar la info',
+        formId: el
+      });
     });
+  });
 }
 var arrow = document.querySelector('#arrowToScroll');
+var bannerButton = document.querySelector('.Banner-button');
 if (arrow) {
-    arrow.addEventListener('click', function () {
-        __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to___default()(document.querySelector('.target'));
-    });
+  arrow.addEventListener('click', function () {
+    __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to___default()(document.querySelector('.target'));
+  });
+  bannerButton.addEventListener('click', function () {
+    __WEBPACK_IMPORTED_MODULE_4_animated_scroll_to___default()(document.querySelector('.target'));
+  });
 }
 
 var otherForm = document.querySelector('#cities');
 if (otherForm) {
-    otherForm.addEventListener('change', function () {
+  otherForm.addEventListener('change', function () {
 
-        var otherFormInput = document.querySelector('#otherForm');
-        if (otherForm.value === '1124') {
-            otherFormInput.classList.remove('is-hidden');
-        } else {
-            otherFormInput.value = '';
-            otherFormInput.classList.add('is-hidden');
-        }
-    });
+    var otherFormInput = document.querySelector('#otherForm');
+    if (otherForm.value === '1124') {
+      otherFormInput.classList.remove('is-hidden');
+    } else {
+      otherFormInput.value = '';
+      otherFormInput.classList.add('is-hidden');
+    }
+  });
 }
 
 var ticketState = document.querySelector('#ticket_state');
 var is_invoiced = document.querySelector('#is_invoiced');
 if (ticketState) {
 
-    ticketState.addEventListener('change', function () {
-        var isfinished = document.querySelector('#isfinished');
-        var invoice_cost = document.querySelector('#invoice_cost');
+  ticketState.addEventListener('change', function () {
+    var isfinished = document.querySelector('#isfinished');
+    var invoice_cost = document.querySelector('#invoice_cost');
 
-        if (ticketState.value === '4') {
-            is_invoiced.classList.remove('is-hidden');
-            isfinished.classList.remove('is-hidden');
-            //invoice_cost.classList.remove('is-hidden');
+    if (ticketState.value === '4') {
+      is_invoiced.classList.remove('is-hidden');
+      isfinished.classList.remove('is-hidden');
+      //invoice_cost.classList.remove('is-hidden');
 
-        } else {
-            is_invoiced.value = '';
-            is_invoiced.classList.add('is-hidden');
-            invoice_cost.value = '';
-            invoice_cost.classList.add('is-hidden');
-            isfinished.classList.add('is-hidden');
-        }
-    });
+    } else {
+      is_invoiced.value = '';
+      is_invoiced.classList.add('is-hidden');
+      invoice_cost.value = '';
+      invoice_cost.classList.add('is-hidden');
+      isfinished.classList.add('is-hidden');
+    }
+  });
 }
 if (is_invoiced) {
-    is_invoiced.addEventListener('change', function () {
-        var invoice_cost = document.querySelector('#invoice_cost');
-        if (this.checked) {
-            invoice_cost.classList.remove('is-hidden');
-            invoice_cost.attributes.add('required');
-        } else {
-            invoice_cost.value = '';
-            invoice_cost.classList.add('is-hidden');
-            invoice_cost.attributes.remove('required');
-        }
-    });
+  is_invoiced.addEventListener('change', function () {
+    var invoice_cost = document.querySelector('#invoice_cost');
+    if (this.checked) {
+      invoice_cost.classList.remove('is-hidden');
+      invoice_cost.attributes.add('required');
+    } else {
+      invoice_cost.value = '';
+      invoice_cost.classList.add('is-hidden');
+      invoice_cost.attributes.remove('required');
+    }
+  });
 }
 
 var downloadExcel = document.querySelector('#downloadExcel');
 var filtersForm = document.querySelector('#FiltersForm');
 if (downloadExcel) {
-    var buttonSubmit = document.querySelector('#downloadExcelButton');
-    buttonSubmit.addEventListener('click', function (e) {
-        e.preventDefault();
-        var form = addElementForm(filtersForm, downloadExcel);
-        form.submit();
-    });
+  var buttonSubmit = document.querySelector('#downloadExcelButton');
+  buttonSubmit.addEventListener('click', function (e) {
+    e.preventDefault();
+    var form = addElementForm(filtersForm, downloadExcel);
+    form.submit();
+  });
 }
 
 function addElementForm(filtersForm, newForm) {
 
-    var elements = filtersForm.querySelectorAll("input, select, textarea");
+  var elements = filtersForm.querySelectorAll("input, select, textarea");
 
-    while (newForm.firstChild) {
-        newForm.removeChild(newForm.firstChild);
-    }
-    for (var i = 0; i < elements.length; ++i) {
-        var x = document.createElement("INPUT");
-        x.setAttribute("type", 'hidden');
-        x.setAttribute("name", elements[i].name);
-        x.setAttribute("value", elements[i].value);
-        newForm.appendChild(x);
-    }
-    return newForm;
+  while (newForm.firstChild) {
+    newForm.removeChild(newForm.firstChild);
+  }
+  for (var i = 0; i < elements.length; ++i) {
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", 'hidden');
+    x.setAttribute("name", elements[i].name);
+    x.setAttribute("value", elements[i].value);
+    newForm.appendChild(x);
+  }
+  return newForm;
 }
 
 var ButtonMenu = document.querySelector('#ButtonMenu');
 if (ButtonMenu) {
-    var HeaderContainer = document.querySelector('#Header-container');
-    ButtonMenu.addEventListener('click', function () {
-        HeaderContainer.classList.toggle('open');
-    });
+  var HeaderContainer = document.querySelector('#Header-container');
+  ButtonMenu.addEventListener('click', function () {
+    HeaderContainer.classList.toggle('open');
+  });
 }
 
 /***/ }),

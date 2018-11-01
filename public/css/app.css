@@ -8121,6 +8121,12 @@ select {
   position: absolute;
 }
 
+.Banner-button {
+  position: absolute;
+  top: -6rem;
+  right: 0;
+}
+
 .bounce {
   -webkit-animation-name: bounce;
           animation-name: bounce;
@@ -8305,5 +8311,9 @@ select {
   background: #e8e8e8;
   display: block;
   margin: 0 .5rem;
+}
+
+.position-relative {
+  position: relative;
 }
 

@@ -41,6 +41,11 @@
       position: absolute;
     }
   }
+  &-button{
+    position: absolute;
+    top: -6rem;
+    right: 0;
+  }
 }
 .bounce {
   animation-name: bounce;
