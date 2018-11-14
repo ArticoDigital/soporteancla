@@ -40,10 +40,10 @@
                 <select name="role" id="">
                     <option value="">Seleccione un rol</option>
                     <option value="Admin"
-                            {{($user->roles->first()->name == 'Admin')?'selected':''}}
+                            {{(optional($user->roles->first())->name == 'Admin')?'selected':''}}
                     >Administrador</option>
                     <option value="Support"
-                            {{($user->roles->first()->name == 'Support')?'selected':''}}
+                            {{(optional($user->roles->first())->name == 'Support')?'selected':''}}
                     >Soporte</option>
                 </select>
                 <select name="isActive" id="" style="margin: 1.6rem 0;">
