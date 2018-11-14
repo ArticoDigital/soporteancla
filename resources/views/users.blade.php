@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-1 hide-phone is-text-center">{{$user->id}}</div>
                 <div class="col-7 col-l-4 is-text-center">{{$user->name}}</div>
-                <div class="col-4 col-l-2 is-text-center">{{(optional($user->roles)->first()->name == 'Admin')?'Admin':'Soporte'}}</div>
+                <div class="col-4 col-l-2 is-text-center">{{(optional($user->roles->first())->name == 'Admin')?'Admin':'Soporte'}}</div>
                 <div class="col-3 col-l-2 hide-phone is-text-center">{{$user->identification}}</div>
                 <div class="col-6 col-l-4 hide-phone is-text-center">{{$user->email}}</div>
                 <div class="col-2 col-l-1 row justify-end middle-items">
