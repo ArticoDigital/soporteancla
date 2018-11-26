@@ -26,14 +26,14 @@ class CommentRequest extends FormRequest
         return [
             'comment_text' => 'required',
             'ticket_id' => 'required',
-            'file' => 'sometimes|mimes:jpeg,png,jpg,pdf|max:2048'
+            'file' => 'sometimes|mimes:jpeg,png,jpg,pdf,csv,xlsx,xls|max:2048'
         ];
     }
 
     public function messages()
     {
         return [
-            'file.mimes' => 'El archivo debe ser jpeg,png,jpg o pdf',
+            'file.mimes' => 'El archivo debe ser jpeg,png,jpg, excel o pdf',
         ];
     }
 }

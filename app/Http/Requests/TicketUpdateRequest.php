@@ -31,7 +31,7 @@ class TicketUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'file2.mimes' => 'El archivo debe ser jpeg,png,jpg o pdf',
+            'file2.mimes' => 'El archivo debe ser jpeg,png,jpg, excel o pdf',
             'file2.max' => 'El archivo no debe pesar más de 2GB',
             'city_text.required_if' => 'El campo ¿Cúal? es obligatorio cuando se selecciona otra ciudad ',
         ];
