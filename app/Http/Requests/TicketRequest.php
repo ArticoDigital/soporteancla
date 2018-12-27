@@ -38,7 +38,7 @@ class TicketRequest extends FormRequest
             'city_id' => 'required',
             'habeas_data' => 'required',
             'city_text' => 'required_if:city_id,==,1124',
-            'file2' => 'sometimes|mimes:jpeg,png,jpg,pdf,csv,xlsx,xls|max:2048',
+            'file2' => 'required_if:service_category_id,==,1|sometimes|mimes:jpeg,png,jpg,pdf,csv,xlsx,xls|max:2048',
 
         ];
     }
@@ -49,6 +49,7 @@ class TicketRequest extends FormRequest
             'file2.mimes' => 'El archivo debe ser jpeg,png,jpg, excel o pdf',
             'file2.max' => 'El archivo no debe pesar más de 2GB',
             'city_text.required_if' => 'El campo ¿Cuál? es obligatorio cuando se selecciona otra ciudad ',
+            'file2.required_if' => 'para servicio con trasportadora de valores es obligatorio anexar el formato de solicitud'
         ];
     }
 }
