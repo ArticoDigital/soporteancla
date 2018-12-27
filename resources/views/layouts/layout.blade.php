@@ -16,7 +16,9 @@
 <header class="Header row align-end">
     <div class="container Header-container row justify-end" id="Header-container">
         <figure class="Header-logo">
-            <img class="Header-logoImage" src="{{asset('images/logo_ancla_blanco.png')}}" alt="">
+            <a href="https://www.ancla.la">
+                <img class="Header-logoImage" src="{{asset('images/logo_ancla_blanco.png')}}" alt="">
+            </a>
         </figure>
         @if(auth()->check())
             <nav class="Header-nav">
@@ -47,7 +49,22 @@
 
                 </ul>
             </nav>
+        @else
+            <nav class="Header-nav">
+                <ul class="row is-list-less">
+                    <li><a href="https://www.ancla.la/">Inicio</a></li>
+                    <li><a href="https://www.ancla.la/productos/">Productos</a></li>
+                    <li><a href="https://www.ancla.la/servicios/">Servicios</a></li>
+                    <li><a href="https://www.ancla.la/nosotros/">Nosotros</a></li>
+                    <li><a href="https://www.ancla.la/video-tutoriales-cash-contro/">Videos</a></li>
+                    <li><a href="https://www.ancla.la/blog/category/blog//">Blog</a></li>
+                    <li><a href="https://www.ancla.la/noticias/">Noticias</a></li>
+                    <li><a href="http://soporte.ancla.la">Soporte</a></li>
+                    <li><a href="https://www.ancla.la/contacto/">Contacto</a></li>
+                </ul>
+            </nav>
         @endif
+
     </div>
 
 </header>
