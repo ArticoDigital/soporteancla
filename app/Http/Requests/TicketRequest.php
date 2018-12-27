@@ -23,6 +23,7 @@ class TicketRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             'name' => 'required|max:100',
             'email' => 'required|email',
@@ -38,7 +39,7 @@ class TicketRequest extends FormRequest
             'city_id' => 'required',
             'habeas_data' => 'required',
             'city_text' => 'required_if:city_id,==,1124',
-            'file2' => 'required_if:service_category_id,==,1|sometimes|mimes:jpeg,png,jpg,pdf,csv,xlsx,xls|max:2048',
+            'file2' => 'required_if:service_category_id,==,1|mimes:jpeg,png,jpg,pdf,csv,xlsx,xls|max:2048',
 
         ];
     }
