@@ -34,6 +34,7 @@
                 <p><b>Nombre: </b> {{$ticket->name}}</p>
                 <p><b>Compañia: </b> {{$ticket->company}}</p>
                 <p><b>Celular: </b> {{$ticket->cellphone}}</p>
+                <p><b>Dirección: </b>{{$ticket->address}}</p>
             </div>
             <div class="col-16 col-m-5">
                 <p><b>Email: </b> {{$ticket->email}}</p>
