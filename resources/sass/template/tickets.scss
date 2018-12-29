@@ -18,28 +18,28 @@
 }
 
 .boxcolor {
-    background-color: beige;
-    padding: 13px;
-    margin: 15px;
-  }
+  background-color: beige;
+  padding: 13px;
+  margin: 15px;
+}
 
-.comentarios{
-    padding: 10px 30px;
-    margin-top: 40px;
-    background-color: #f9f9f9;
-    textarea{
-      background-color: white;
-      border-radius: 0px;
-    }
-    &-c-texto{
-      padding-left: 10px;
-      border-left: solid 1px gray;
-    }
-    &-nombre{
-      padding: 10px;
-      font-weight: 400;
-      color: #d2514c;
-    }
+.comentarios {
+  padding: 10px 30px;
+  margin-top: 40px;
+  background-color: #f9f9f9;
+  textarea {
+    background-color: white;
+    border-radius: 0px;
+  }
+  &-c-texto {
+    padding-left: 10px;
+    border-left: solid 1px gray;
+  }
+  &-nombre {
+    padding: 10px;
+    font-weight: 400;
+    color: #d2514c;
+  }
 }
 
 .Filters-download {
@@ -55,3 +55,10 @@
     margin-left: .4rem;
   }
 }
+
+#FiltersForm {
+  input, select {
+    padding: 1.2rem .5rem !important;
+  }
+}
+

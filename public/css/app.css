@@ -8410,6 +8410,11 @@ select {
   margin-left: .4rem;
 }
 
+#FiltersForm input,
+#FiltersForm select {
+  padding: 1.2rem .5rem !important;
+}
+
 .Users-links {
   font-weight: 400;
   color: #999;

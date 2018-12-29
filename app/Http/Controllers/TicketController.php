@@ -18,42 +18,26 @@ use App\Http\Requests\TicketRequest;
 use App\Http\Requests\TicketUpdateRequest;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
 
 class TicketController extends Controller
 {
     private $ticket;
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $categories = ServiceCategory::where("isActive", 1);
         return view('create-ticket', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
         $categories = ServiceCategory::where("isActive", 1)->with('subcategories')->get();
         $cities = City::all();
         return view('create-ticket', compact('categories', 'cities'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(TicketRequest $request)
     {
         $inputs = $request->all();
@@ -86,86 +70,25 @@ class TicketController extends Controller
                 ->where('user_id', auth()->user()->id)
                 ->orderBy('created_at', 'desc')
                 ->paginate(10) :
-                //->get() :
+            //->get() :
             Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
                 ->where('ticket_state_id', $data['state'])
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
-                //->get();
+        //->get();
 
         return view('tickets', compact('states', 'tickets', 'data'));
     }
 
-
-    public function filterviewTicketsget(Request $inputs)
+    public function filterViewTicketsGet(Request $inputs)
     {
-
-        //$state = $inputs->query('state');
+        $tickets = Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])->search($inputs);
         $states = TicketState::all();
-        $data = $inputs->all();
-
-        $data['statesearch'] = (empty($inputs['state'])) ?
-            TicketState::where('isActive', '=', 1)->select('id')->get()->toArray() :
-            [$inputs['state']];
-        //dd($inputs);
-
-
-        if (!empty($inputs['dates'])) {
-            $datev = explode(" a ", $inputs['dates']);
-
-            if (!isset($datev[1])) {
-                $datev[1] = $datev[0];
-            }
-
-            $tickets = (auth()->user()->hasRole('Support')) ?
-                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                    ->whereIn('ticket_state_id', $data['statesearch'])
-                    ->where('user_id', auth()->user()->id)
-                    ->whereDate('created_at', '>=', $datev[0])
-                    ->whereDate('created_at', '<=', $datev[1])
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10)
-                    //->appends($_GET)->links()
-                     :
-                    //->get() :
-                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                    ->whereIn('ticket_state_id', $data['statesearch'])
-                    ->whereDate('created_at', '>=', $datev[0])
-                    ->whereDate('created_at', '<=', $datev[1])
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10)
-                    //->appends($_GET)->links();
-                    ;
-        } else {
-
-            $tickets = (auth()->user()->hasRole('Support')) ?
-                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                    ->whereIn('ticket_state_id', $data['statesearch'])
-                    ->where('user_id', auth()->user()->id)
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10)
-                    //->appends($_GET)->links() :
-                    :
-                    //->get() :
-                Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])
-                    ->whereIn('ticket_state_id', $data['statesearch'])
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10)
-                    //->appends($_GET)->links();
-                    ;
-                    //dd($tickets);
-        }
-
-        return view('ticketsget', compact('states', 'tickets', 'data'));
+        $categories = ServiceCategory::all('name','id');
+        return view('ticketsget', compact('states', 'tickets', 'inputs','categories'));
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param $ticket
-     * @return \Illuminate\Http\Response
-     */
     public function show(Ticket $ticket)
     {
         $users = User::role('Support')->where('isActive', 1)->get();
@@ -174,35 +97,16 @@ class TicketController extends Controller
         return view('ticket', compact('ticket', 'users', 'ticketStates'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param $ticket
-     * @return back
-     */
     public function update(Request $request, Ticket $ticket)
     {
-        //dd($request);
 
-        if(!isset($request['is_invoiced'])){
-          $request['is_invoiced']=0;
-          $request['invoice_cost']=null;
-        }else{
-          $validatedData = $request->validate([
-              'is_invoiced' => 'numeric',
-              'invoice_cost' => 'numeric'
+        if (!isset($request['is_invoiced'])) {
+            $request['is_invoiced'] = 0;
+            $request['invoice_cost'] = null;
+        } else {
+            $validatedData = $request->validate([
+                'is_invoiced' => 'numeric',
+                'invoice_cost' => 'numeric'
             ]);
         }
         $ticket->fill($this->file($request))->save();
@@ -230,21 +134,13 @@ class TicketController extends Controller
         }
 
 
-
         return redirect()->back()->with(['messageok' => 'Ticket actualizado']);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $request
+     * @return mixed
      */
-    public function destroy($id)
-    {
-        //
-    }
-
     private function file($request)
     {
         $inputs = $request->all();
@@ -254,4 +150,5 @@ class TicketController extends Controller
         }
         return $inputs;
     }
+
 }
