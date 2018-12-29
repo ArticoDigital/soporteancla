@@ -57,10 +57,7 @@ class TicketController extends Controller
     public function viewTickets()
     {
         $states = TicketState::all();
-        //  $allstates['states'] =TicketState::where('isActive', '=', 1)->select('id')->get()->toArray();
 
-        //dd($allstates);
-        //  TicketState::where('isActive', '=', 1)->select('id')->get()->toArray() :
         $data['state'] = (auth()->user()->hasRole('Support')) ? 2 : 1;
         $data['dates'] = "";
 
@@ -76,8 +73,8 @@ class TicketController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
         //->get();
-
-        return view('tickets', compact('states', 'tickets', 'data'));
+        $categories = ServiceCategory::all('name','id');
+        return view('tickets', compact('states', 'tickets', 'data','categories'));
     }
 
     public function filterViewTicketsGet(Request $inputs)

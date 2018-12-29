@@ -3,12 +3,25 @@
 @section('content')
 
     <div class="row justify-between middle-items m-t-16 m-b-16">
-        <div class="col-6 col-l-6"><h2 class="">Tickets</h2></div>
-        <div class="Filters row  col-16 col-l-10 middle-items justify-end">
+        <div class="col-6 col-l-1"><h2 class="">Tickets</h2></div>
+        <div class="Filters row  col-16 col-l-15 middle-items justify-end">
 
-            <form method="GET" id="FiltersForm" class="row col-16 col-m-13  justify-end" action="{{route('filterticketsget')}}">
-                @csrf
-                <label class="col-15 col-m-5 m-r-12 " for="">
+            <form method="GET" id="FiltersForm" class="row col-16 col-m-14  justify-end" action="{{route('filterticketsget')}}">
+                <label class="col-15 col-m-1 m-r-12 " for="">
+                    <input type="number" placeholder="ID" name="id" value="">
+                </label>
+                <label class="col-15 col-m-3 m-r-12 " for="">
+                    <input type="text" placeholder="Nombre" name="name" value="">
+                </label>
+                <label class="col-15 col-m-3 m-r-12 " for="">
+                    <select class="col-16 m-r-12" name="category" id="">
+                        <option value="0" >Seleccione una categoría</option>
+                        @foreach($categories as $category)
+                            <option   value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </label>
+                <label class="col-15 col-m-3 m-r-12 " for="">
                     <select class="col-16 m-r-12" name="state" id="">
                         <option {{(!isset($data['state']))?'selected':''}} value="0">Todos los estados
                         </option>
@@ -18,7 +31,8 @@
 
                     </select>
                 </label>
-                <label class="m-r-12 col-15 col-m-8"><input class="dates" type="text" name="dates"
+                <label class="m-r-12 col-15 col-m-3">
+                    <input class="dates" type="text" name="dates"
                                                    value="{{(isset($data['dates']))?$data['dates']:''}}"
                                                    placeholder="Seleccione rango de fechas"></label>
                 <div class=" Filters-submit col-15  col-m-2 row justify-center ">
