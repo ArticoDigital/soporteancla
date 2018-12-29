@@ -23,6 +23,10 @@
                            required>
                     <input type="email" name="email" placeholder="E-Mail" value="{{old('email')}}" required>
                     <input type="text" name="phone" placeholder="Número de celular" value="{{old('phone')}}">
+                    <p>
+                        <input type="checkbox" name="is_send_mail" id="test3" checked value="1">
+                        <label for="test3">Enviar mail</label>
+                    </p>
                 </div>
                 <div class="col-16 col-l-8 p-l-20">
                     <input type="password" name="password" placeholder="Contraseña" value="{{old('password')}}"

@@ -34,6 +34,11 @@
                 <input type="email" name="email" placeholder="E-Mail"
                        value="{{$user->email}}">
                 <input type="text" name="phone" placeholder="Número de celular" value="{{$user->phone}}">
+
+                <p>
+                    <input type="checkbox" name="is_send_mail" id="test3" {{ $user->is_send_mail ? 'checked':''}} value="1">
+                    <label for="test3">Enviar mail</label>
+                </p>
             </div>
             <div class=" col-m-8 col-16 p- p-l-20">
                 <input type="password" name="password" placeholder="Contraseña">

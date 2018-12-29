@@ -48,7 +48,7 @@ class TicketController extends Controller
             $inputs['file2'] = $path;
         }
         $ticket = Ticket::create($inputs);
-        Notification::send(User::role('Admin')->get(), new CreateTicket($ticket));
+        Notification::send(User::role('Admin')->where('is_send_mail', 1)->get(), new CreateTicket($ticket));
 
         $ticket->notify(new CreateTicketClient($ticket));
         return view('ticket-success', compact('ticket'))->with(['messageok' => 'Registro exitoso']);
@@ -114,7 +114,7 @@ class TicketController extends Controller
 
             } else {
                 $user->notify(new ChangeStateTicket($ticket, auth()->user()));
-                Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket, auth()->user()));
+                Notification::send(User::role('Admin')->where('is_send_mail', 1)->get(), new ChangeStateTicket($ticket, auth()->user()));
             }
         } else {
             if ($supportUserId = $request->input('user_id')) {
@@ -123,7 +123,7 @@ class TicketController extends Controller
                 $ticket->notify(new AssignSupportClient($ticket));
             }
 
-            Notification::send(User::role('Admin')->get(), new ChangeStateTicket($ticket, auth()->user()));
+            Notification::send(User::role('Admin')->where('is_send_mail', 1)->get(), new ChangeStateTicket($ticket, auth()->user()));
         }
 
         if ($ticket->ticketState->name == 'Finalizado') {
