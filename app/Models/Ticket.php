@@ -48,5 +48,10 @@ class Ticket extends Model
         new TicketSearch($query, $data);
         return $query->orderBy('created_at', 'desc')->paginate(10);
     }
+    public function scopeSearchExcel($query, $data)
+    {
+        new TicketSearch($query, $data);
+        return $query->orderBy('created_at', 'desc')->get();
+    }
 
 }
