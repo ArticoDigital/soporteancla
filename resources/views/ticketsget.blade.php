@@ -65,6 +65,6 @@
     </ul>
 
     {{ $tickets->appends(Request::except('page'))->links() }}
-    <form action="{{route('downloadExcel')}}" method="post" id="downloadExcel"></form>
+    <form action="{{route('downloadExcel')}}"  id="downloadExcel"></form>
 
 @endsection

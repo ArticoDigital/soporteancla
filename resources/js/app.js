@@ -109,6 +109,7 @@ if (downloadExcel) {
     let form = addElementForm(filtersForm, downloadExcel);
     form.submit()
   })
+  
 }
 
 function addElementForm(filtersForm, newForm) {

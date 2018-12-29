@@ -7,6 +7,7 @@
         <div class="Filters row  col-16 col-l-15 middle-items justify-end">
 
             <form method="GET" id="FiltersForm" class="row col-16 col-m-14  justify-end" action="{{route('filterticketsget')}}">
+
                 <label class="col-15 col-m-1 m-r-12 " for="">
                     <input type="number" placeholder="ID" name="id" value="">
                 </label>
@@ -67,6 +68,6 @@
     </ul>
 
     {{ $tickets->appends(Request::except('page'))->links() }}
-    <form action="{{route('downloadExcel')}}" method="post" id="downloadExcel"></form>
+    <form action="{{route('downloadExcel')}}"  id="downloadExcel"></form>
 
 @endsection

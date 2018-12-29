@@ -70,4 +70,4 @@ Route::post('/updateComment', 'CommentController@store')->name('updateComment');
 Route::delete('/usuario/{user}', 'UserController@destroy')->name('userDelete');
 Route::delete('/categoria/{subcategory}', 'ServiceSubcategoryController@destroy')->name('subcategoryDelete');
 Route::delete('/categorias/{category}', 'CategoryController@destroy')->name('categoryDelete');
-Route::post('/downloadExcel', 'ExportController@tickets')->name('downloadExcel');
+Route::get('/downloadExcel', 'ExportController@tickets')->name('downloadExcel');
