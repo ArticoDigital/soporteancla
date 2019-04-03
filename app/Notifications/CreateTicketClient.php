@@ -45,7 +45,7 @@ class CreateTicketClient extends Notification
         return (new MailMessage)
             ->subject($this->data->name . ' Se ha registrado un nuevo ticket número ' . $this->data->id )
             ->line('Gracias por contactarnos. ')
-            ->line(' Hemos recibido su solicitud y en un plazo de 24 horas hábiles daremos respuesta al requerimiento número'
+            ->line(' Hemos recibido su solicitud y en un plazo de 24 horas hábiles daremos respuesta al requerimiento número '
                 . $this->data->id .
                 ' Tenga presente que los horarios de atención son de lunes a viernes de 8am a 6pm y los sábados de 9am a 12m"');
     }
