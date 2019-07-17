@@ -159,6 +159,21 @@
                 <button type="submit">Comentar</button>
             </div>
         </form>
+            <div class="m-t-20">
+                <h3 class="m-b-12">Historial</h3>
+                <ul class="is-list-less  Items">
+                    @foreach($ticket->logs as $log)
+                        <li class="Items-wrapper row middle-items">
+                            <div class="col-12  ">{{$log->description}}</div>
+                            <div class="col-4  is-text-center">{{$log->created_at}}</div>
+
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
+
+
+
     </div>
 @endsection

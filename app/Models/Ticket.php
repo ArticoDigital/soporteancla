@@ -39,6 +39,11 @@ class Ticket extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
+
     public function Comments()
     {
         return $this->hasMany(Comment::class);

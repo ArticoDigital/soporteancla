@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Log;
 use App\Models\ServiceCategory;
 use App\Models\TicketState;
 use App\Notifications\AssignSupport;
@@ -48,6 +49,9 @@ class TicketController extends Controller
             $inputs['file2'] = $path;
         }
         $ticket = Ticket::create($inputs);
+
+        $this->createLog($ticket, 'Ticket creado');
+
         Notification::send(User::role('Admin')->where('is_send_mail', 1)->get(), new CreateTicket($ticket));
 
         $ticket->notify(new CreateTicketClient($ticket));
@@ -73,16 +77,16 @@ class TicketController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
         //->get();
-        $categories = ServiceCategory::all('name','id');
-        return view('tickets', compact('states', 'tickets', 'data','categories'));
+        $categories = ServiceCategory::all('name', 'id');
+        return view('tickets', compact('states', 'tickets', 'data', 'categories'));
     }
 
     public function filterViewTicketsGet(Request $inputs)
     {
         $tickets = Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])->search($inputs);
         $states = TicketState::all();
-        $categories = ServiceCategory::all('name','id');
-        return view('ticketsget', compact('states', 'tickets', 'inputs','categories'));
+        $categories = ServiceCategory::all('name', 'id');
+        return view('ticketsget', compact('states', 'tickets', 'inputs', 'categories'));
     }
 
 
@@ -110,16 +114,22 @@ class TicketController extends Controller
         if ($user = $ticket->user) {
             if ($user->id != $request->input('user_id')) {
 
+                $this->createLog($ticket,  auth()->user()->name . ' le ha asignado el ticket a ' .  $user->name);
                 $user->notify(new AssignSupport($ticket));
 
             } else {
+                $this->createLog($ticket,
+                    auth()->user()->name . ' ha cambiado el estado a ' . $ticket->ticketState->name . ', usuario asignado: ' . $user->name
+                );
                 $user->notify(new ChangeStateTicket($ticket, auth()->user()));
                 Notification::send(User::role('Admin')->where('is_send_mail', 1)->get(), new ChangeStateTicket($ticket, auth()->user()));
             }
         } else {
             if ($supportUserId = $request->input('user_id')) {
                 $supportUser = User::find($supportUserId);
+                $this->createLog($ticket, auth()->user()->name . ' le ha asignado el ticket a '. $supportUser->name);
                 $supportUser->notify(new AssignSupport($ticket));
+
                 $ticket->notify(new AssignSupportClient($ticket));
             }
 
@@ -127,6 +137,8 @@ class TicketController extends Controller
         }
 
         if ($ticket->ticketState->name == 'Finalizado') {
+
+            $this->createLog($ticket, auth()->user()->name . ' Finalizo el ticket');
             $ticket->notify(new EndedSupport($ticket));
         }
 
@@ -146,6 +158,11 @@ class TicketController extends Controller
             $inputs['file'] = $path;
         }
         return $inputs;
+    }
+
+    private function createLog(Ticket $ticket, string $description)
+    {
+        $ticket->logs()->save(new log(['description' => $description]));
     }
 
 }
