@@ -5,7 +5,7 @@
         <h2>SELECCIONE SU PAÍS DE USO:</h2>
         <section class="Dashboard-section row justify-around">
             @for($i = 0 ; $i < 9 ; $i++)
-                <a href="{{route('material')}}">
+                <a href="">
                     <article class="card col-5 row justify-center align-center">
                     <svg width="200px" viewBox="0 0 62 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">

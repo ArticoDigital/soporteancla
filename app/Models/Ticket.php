@@ -5,6 +5,7 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Jenssegers\Date\Date;
 
 class Ticket extends Model
 {
@@ -15,7 +16,7 @@ class Ticket extends Model
         'sell_point', 'operation_center', 'user_id',
         'service_subcategory_id', 'ticket_state_id', 'request',
         'address', 'city_id', 'file', 'file2', 'file3', 'city_text', 'is_invoiced',
-        'invoice_number', 'invoice_cost'];
+        'invoice_number', 'invoice_cost', 'type_category', 'album', 'spreadsheets'];
 
 
     public function user()
@@ -48,10 +49,16 @@ class Ticket extends Model
         new TicketSearch($query, $data);
         return $query->orderBy('created_at', 'desc')->paginate(10);
     }
+
     public function scopeSearchExcel($query, $data)
     {
         new TicketSearch($query, $data);
         return $query->orderBy('created_at', 'desc')->get();
+    }
+
+    public function getDateFormatAttribute()
+    {
+        return $this->created_at->format('d M Y');
     }
 
 }

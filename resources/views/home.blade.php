@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+x@extends('layouts.layout')
 
 @section('content')
     @if ($errors->any())

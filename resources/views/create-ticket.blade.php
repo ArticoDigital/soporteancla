@@ -35,6 +35,11 @@
                     <input type="email" name="email" placeholder="E-mail" required value="{{old('email')}}">
                     <input type="text" name="subject" placeholder="Asunto" required maxlength="200"
                            value="{{old('subject')}}">
+                    <select class="m-t-16"  name="album"  >
+                        <option value="">Actualización de albúm de tripulación ?</option>
+                        <option {{old('album') == 'si' ? 'selected':''}}value="si">Si</option>
+                        <option {{old('album') == 'no' ? 'selected':''}} value="no">No</option>
+                    </select>
                 </div>
                 <div class="col-16 col-m-8 col-l-8  p-l-20 p-r-20">
                     <input type="text" name="identification" placeholder="Cédula o NIT" required maxlength="50"
@@ -49,6 +54,14 @@
                             <option {{old('service_category_id') == $category->id ? 'selected':''}}  value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
+
+                    <select class="m-t-16 is-hidden" name="type_category" id="type_category">
+                        <option {{old('type_category') == 'ATLAS – TVS' ? 'selected':''}} value="ATLAS – TVS">ATLAS – TVS</option>
+                        <option {{old('type_category') == 'BRINKS' ? 'selected':''}} value="BRINKS">BRINKS</option>
+                        <option {{old('type_category') == 'PROSEGUR' ? 'selected':''}} value="PROSEGUR">PROSEGUR</option>
+                        <option {{old('type_category') == 'G4S' ? 'selected':''}} value="G4S">G4S</option>
+                    </select>
+
                     <select class="m-t-16" data-old="{{old('service_subcategory_id')}}" name="service_subcategory_id" id="service_subcategory" disabled required>
                         <option value="">Seleccione una subcategoría</option>
                     </select>
@@ -60,15 +73,20 @@
                     </select>
                     <input id="otherForm" class="{{old('city_id') == 1124?'':'is-hidden'}}" type="text" name="city_text"
                            placeholder="¿Cuál?" value="{{old('city_text')}}">
+                    <select class="m-t-16"  name="spreadsheets"  >
+                        <option value="">Solicitud de planillas ?</option>
+                        <option {{old('spreadsheets') == 'si' ? 'selected':''}} value="si">Si</option>
+                        <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
+                    </select>
 
                 </div>
                 <div class="col-16 p-l-20 p-r-20 m-t-20">
                     <textarea required name="request" id="" cols="30" rows="10"
                               placeholder="Escriba su solicitud">{!! old('request') !!}</textarea>
-                    <div class="m-t-20">
+                    <!--<div class="m-t-20">
                         <label for="file">Si cuenta con un archivo o imagen que describa el problema, por favor adjúntelo </label>
                         <input type="file" id="file" class="Request-file" name="file2" placeholder="Elija un documento ">
-                    </div>
+                    </div>-->
                     <input name="habeas_data" id="habeas_data" type="checkbox" required>
                     <label for="habeas_data" class="m-t-16 m-b-20">
                         <span>Acepto la <a

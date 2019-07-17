@@ -35,14 +35,17 @@
                 <p><b>Compañia: </b> {{$ticket->company}}</p>
                 <p><b>Celular: </b> {{$ticket->cellphone}}</p>
                 <p><b>Dirección: </b>{{$ticket->address}}</p>
+                <p><b>Albúm: </b><span class="is-text-uppercase">{{$ticket->album}}</span></p>
             </div>
             <div class="col-16 col-m-5">
                 <p><b>Email: </b> {{$ticket->email}}</p>
                 <p><b>identification: </b> {{$ticket->identification}}</p>
                 <p><b>Punto de venta: </b> {{$ticket->sell_point}}</p>
-
+                <p><b>Tipo: </b> {{$ticket->type_category}}</p>
+                <p><b>Planilla: </b> <span class="is-text-uppercase">{{$ticket->spreadsheets}}</span></p>
             </div>
             <div class="col-16 col-m-5">
+                <p><b>Fecha: </b> {{$ticket->date_format}}</p>
                 <p><b>Centro de operaciones: </b> {{$ticket->operation_center}}</p>
                 <p><b>Subcategoría de servicio: </b> {{$ticket->ServiceSubcategory->name}}</p>
                 <p><b>Ciudad: </b> {{$ticket->city->municipio}}

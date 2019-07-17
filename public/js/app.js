@@ -2540,44 +2540,53 @@ if (ButtonMenu) {
 
 "use strict";
 var subCategoriesEl = document.querySelector('#service_subcategory'),
-    categoriesEl = document.querySelector('#service_category_id');
+    categoriesEl = document.querySelector('#service_category_id'),
+    type_category = document.querySelector('#type_category');
 var categoriesJson = {};
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
-  if (categoriesEl) {
+    if (categoriesEl) {
 
-    categoriesJson = JSON.parse(categoriesEl.dataset.json);
+        categoriesJson = JSON.parse(categoriesEl.dataset.json);
 
-    if (categoriesEl.value !== '') {
-      change();
+        if (categoriesEl.value !== '') {
+            change();
+        }
+        categoriesEl.addEventListener('change', change);
     }
-    categoriesEl.addEventListener('change', change);
-  }
 });
 
 function change() {
-  var oldSubCategories = subCategoriesEl.dataset.old;
-  var categoryId = categoriesEl.options[categoriesEl.selectedIndex].value;
-  if (categoryId) {
-    var c = categoriesJson.find(function (c) {
-      return c.id === parseInt(categoryId);
-    });
-    subCategoriesEl.disabled = false;
-    subCategoriesEl.options.length = 0;
-    c.subcategories.forEach(function (el) {
-      var option = document.createElement("option");
-      option.text = el.name;
-      option.value = el.id;
-      if (+oldSubCategories === el.id) {
-        option.selected = true;
-        subCategoriesEl.dataset.old = '';
-        console.log(oldSubCategories);
-      }
-      subCategoriesEl.add(option);
-    });
-  } else {
-    subCategoriesEl.disabled = true;
-  }
+    var oldSubCategories = subCategoriesEl.dataset.old;
+    var categoryId = categoriesEl.options[categoriesEl.selectedIndex].value;
+    if (categoryId) {
+        var c = categoriesJson.find(function (c) {
+            return c.id === parseInt(categoryId);
+        });
+        subCategoriesEl.disabled = false;
+        subCategoriesEl.options.length = 0;
+        c.subcategories.forEach(function (el) {
+            var option = document.createElement("option");
+            option.text = el.name;
+            option.value = el.id;
+            if (+oldSubCategories === el.id) {
+                option.selected = true;
+                subCategoriesEl.dataset.old = '';
+                console.log(oldSubCategories);
+            }
+            subCategoriesEl.add(option);
+        });
+
+        if (parseInt(categoryId) === 1) {
+            console.log(type_category);
+            type_category.classList.remove('is-hidden');
+        } else {
+            console.log(categoryId);
+            type_category.classList.add('is-hidden');
+        }
+    } else {
+        subCategoriesEl.disabled = true;
+    }
 }
 
 /***/ }),
