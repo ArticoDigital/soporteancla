@@ -16,7 +16,7 @@ class Ticket extends Model
         'sell_point', 'operation_center', 'user_id',
         'service_subcategory_id', 'ticket_state_id', 'request',
         'address', 'city_id', 'file', 'file2', 'file3', 'city_text', 'is_invoiced',
-        'invoice_number', 'invoice_cost', 'type_category', 'album', 'spreadsheets'];
+        'invoice_number', 'invoice_cost', 'type_category', 'album', 'spreadsheets','regional'];
 
 
     public function user()

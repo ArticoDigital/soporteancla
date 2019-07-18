@@ -35,7 +35,6 @@ class TicketRequest extends FormRequest
             'operation_center' => 'max:150',
             'service_subcategory_id' => 'required|numeric',
             'request' => 'required',
-            'subject' => 'required|max:200',
             'city_id' => 'required',
             'habeas_data' => 'required',
             'city_text' => 'required_if:city_id,==,1124',

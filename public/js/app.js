@@ -2541,7 +2541,9 @@ if (ButtonMenu) {
 "use strict";
 var subCategoriesEl = document.querySelector('#service_subcategory'),
     categoriesEl = document.querySelector('#service_category_id'),
-    type_category = document.querySelector('#type_category');
+    type_category = document.querySelector('#type_category'),
+    spreadsheets = document.querySelector('#spreadsheets'),
+    album = document.querySelector('#album');
 var categoriesJson = {};
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
@@ -2553,8 +2555,23 @@ var categoriesJson = {};
             change();
         }
         categoriesEl.addEventListener('change', change);
+        subCategoriesEl.addEventListener('change', changeSubcategory);
     }
 });
+
+function changeSubcategory() {
+
+    var subCategoryId = subCategoriesEl.options[subCategoriesEl.selectedIndex].value;
+
+    if (parseInt(subCategoryId) === 1) {
+        spreadsheets.classList.remove('is-hidden');
+        album.classList.remove('is-hidden');
+    } else {
+
+        spreadsheets.classList.add('is-hidden');
+        album.classList.add('is-hidden');
+    }
+}
 
 function change() {
     var oldSubCategories = subCategoriesEl.dataset.old;
@@ -2572,21 +2589,21 @@ function change() {
             if (+oldSubCategories === el.id) {
                 option.selected = true;
                 subCategoriesEl.dataset.old = '';
-                console.log(oldSubCategories);
             }
             subCategoriesEl.add(option);
         });
 
-        if (parseInt(categoryId) === 1) {
-            console.log(type_category);
+        if (parseInt(categoryId) === 6) {
+
             type_category.classList.remove('is-hidden');
         } else {
-            console.log(categoryId);
             type_category.classList.add('is-hidden');
         }
     } else {
         subCategoriesEl.disabled = true;
     }
+
+    changeSubcategory();
 }
 
 /***/ }),
