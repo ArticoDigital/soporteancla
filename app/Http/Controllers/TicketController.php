@@ -77,6 +77,7 @@ class TicketController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
         //->get();
+
         $categories = ServiceCategory::all('name', 'id');
         return view('tickets', compact('states', 'tickets', 'data', 'categories'));
     }

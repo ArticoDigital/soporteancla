@@ -50,13 +50,14 @@
 
     <ul class="is-list-less  Items">
         @foreach($tickets as $ticket)
+
             <li class="Items-wrapper row middle-items">
                 <div class="col-1 row justify-center">
                     <div class=" Status-indicator {{$ticket->ticketState->nameClass()}}"></div>
                 </div>
                 <div class="col-5 col-l-2 is-text-center">{{$ticket->name}}</div>
                 <div class="col-10 col-l-3 is-text-center hide-phone">{{$ticket->sell_point}}</div>
-                <div class="col-5 col-l-3   is-text-center">{{$ticket->subject}}</div>
+                <div class="col-5 col-l-3   is-text-center">{{$ticket->serviceSubcategory->name}}</div>
                 <div class="col-1 col-l-1  is-text-center">{{$ticket->id}}</div>
                 <div class="col-2 col-l-2 hide-phone is-text-center">{{optional($ticket->user)->name}}</div>
                 <div class="col-10 col-l-1 hide-phone is-text-center">{{($ticket->invoice_cost!="")? '$'.number_format($ticket->invoice_cost, 0):''}}</div>
