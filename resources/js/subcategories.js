@@ -2,7 +2,7 @@ const subCategoriesEl = document.querySelector('#service_subcategory'),
     categoriesEl = document.querySelector('#service_category_id'),
     type_category = document.querySelector('#type_category'),
     spreadsheets = document.querySelector('#spreadsheets'),
-    other = document.querySelector('#other'),
+    otherType = document.querySelector('#otherType'),
     album = document.querySelector('#album')
 ;
 let categoriesJson = {};
@@ -29,11 +29,11 @@ function changeSubcategory() {
         spreadsheets.classList.remove('is-hidden')
         album.classList.remove('is-hidden')
         type_category.classList.remove('is-hidden')
-        other.classList.remove('is-hidden')
+        otherType.classList.remove('is-hidden')
     } else {
         spreadsheets.classList.add('is-hidden');
-        album.classList.add('is-hidden')
-        other.classList.add('is-hidden')
+        album.classList.add('is-hidden');
+        otherType.classList.add('is-hidden')
     }
 }
 

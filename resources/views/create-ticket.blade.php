@@ -89,7 +89,7 @@
                         <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
                     </select>
 
-                    <input type="text" name="{{old('other')}}" id="other" class="is-hidden">
+                    <input type="text" value="{{old('otherType')}}" name="otherType" id="otherType" class="is-hidden">
 
                 </div>
                 <div class="col-16 p-l-20 p-r-20 m-t-20">
