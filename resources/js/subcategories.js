@@ -27,10 +27,11 @@ function changeSubcategory() {
     if (parseInt(subCategoryId) === 6) {
         spreadsheets.classList.remove('is-hidden')
         album.classList.remove('is-hidden')
+        type_category.classList.remove('is-hidden')
     } else {
-
-        spreadsheets.classList.add('is-hidden')
+        spreadsheets.classList.add('is-hidden');
         album.classList.add('is-hidden')
+        type_category.classList.add('is-hidden')
     }
 }
 
@@ -54,12 +55,7 @@ function change() {
 
         });
 
-        if (parseInt(categoryId) === 1) {
 
-            type_category.classList.remove('is-hidden')
-        } else {
-            type_category.classList.add('is-hidden')
-        }
 
     } else {
         subCategoriesEl.disabled = true;

@@ -71,7 +71,8 @@
                     </select>
 
                     <select class="m-t-16 is-hidden" name="type_category" id="type_category">
-                        <option {{old('type_category') == 'ATLAS – TVS' ? 'selected':''}} value="ATLAS – TVS">ATLAS – TVS</option>
+                        <option {{old('type_category') == 'ATLAS – TVS' ? 'selected':''}} value="ATLAS – TVS">ATLAS </option>
+                        <option {{old('type_category') == 'ATLAS – TVS' ? 'selected':''}} value="ATLAS – TVS">TVS </option>
                         <option {{old('type_category') == 'BRINKS' ? 'selected':''}} value="BRINKS">BRINKS</option>
                         <option {{old('type_category') == 'PROSEGUR' ? 'selected':''}} value="PROSEGUR">PROSEGUR</option>
                         <option {{old('type_category') == 'G4S' ? 'selected':''}} value="G4S">G4S</option>
@@ -87,6 +88,8 @@
                         <option {{old('spreadsheets') == 'si' ? 'selected':''}} value="si">Si</option>
                         <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
                     </select>
+
+                    <input type="text" name="{{old('other')}}" id="" class="is-hidden">
 
                 </div>
                 <div class="col-16 p-l-20 p-r-20 m-t-20">
