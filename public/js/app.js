@@ -2563,7 +2563,7 @@ function changeSubcategory() {
 
     var subCategoryId = subCategoriesEl.options[subCategoriesEl.selectedIndex].value;
 
-    if (parseInt(subCategoryId) === 1) {
+    if (parseInt(subCategoryId) === 6) {
         spreadsheets.classList.remove('is-hidden');
         album.classList.remove('is-hidden');
     } else {
@@ -2593,7 +2593,7 @@ function change() {
             subCategoriesEl.add(option);
         });
 
-        if (parseInt(categoryId) === 6) {
+        if (parseInt(categoryId) === 1) {
 
             type_category.classList.remove('is-hidden');
         } else {

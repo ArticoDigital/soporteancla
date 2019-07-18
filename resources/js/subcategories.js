@@ -24,7 +24,7 @@ function changeSubcategory() {
 
     let subCategoryId = subCategoriesEl.options[subCategoriesEl.selectedIndex].value;
 
-    if (parseInt(subCategoryId) === 1) {
+    if (parseInt(subCategoryId) === 6) {
         spreadsheets.classList.remove('is-hidden')
         album.classList.remove('is-hidden')
     } else {
@@ -54,7 +54,7 @@ function change() {
 
         });
 
-        if (parseInt(categoryId) === 6) {
+        if (parseInt(categoryId) === 1) {
 
             type_category.classList.remove('is-hidden')
         } else {
