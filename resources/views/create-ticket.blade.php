@@ -46,16 +46,11 @@
                     <input id="otherForm" class="{{old('city_id') == 1124?'':'is-hidden'}}" type="text" name="city_text"
                            placeholder="¿Cuál?" value="{{old('city_text')}}">
 
-                    <select class="m-t-16 is-hidden"  id="spreadsheets"  name="spreadsheets"  >
-                        <option value="">Solicitud de planillas ?</option>
-                        <option {{old('spreadsheets') == 'si' ? 'selected':''}} value="si">Si</option>
-                        <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
-                    </select>
+
                 </div>
                 <div class="col-16 col-m-8 col-l-8  p-l-20 p-r-20">
                     <input type="text" name="name" placeholder="Nombre" required maxlength="100"
                            value="{{old('name')}}">
-
                     <input type="text" name="identification" placeholder="Cédula o NIT" required maxlength="50"
                            value="{{old('identification')}}">
                     <input type="email" name="email" placeholder="E-mail" required value="{{old('email')}}">
@@ -87,7 +82,11 @@
                         <option {{old('album') == 'si' ? 'selected':''}}value="si">Si</option>
                         <option {{old('album') == 'no' ? 'selected':''}} value="no">No</option>
                     </select>
-
+                    <select class="m-t-16 is-hidden"  id="spreadsheets"  name="spreadsheets"  >
+                        <option value="">Solicitud de planillas ?</option>
+                        <option {{old('spreadsheets') == 'si' ? 'selected':''}} value="si">Si</option>
+                        <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
+                    </select>
 
                     <input type="text" value="{{old('otherType')}}" placeholder="Otro" name="otherType" id="otherType" class="is-hidden">
 

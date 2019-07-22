@@ -23,7 +23,7 @@ class UsersExport implements FromView
 
     public function view(): View
     {
-        $tickets = Ticket::with(['ticketState', 'ServiceSubcategory', 'user'])->searchExcel($this->inputs);
+        $tickets = Ticket::with(['ticketState', 'ServiceSubcategory.serviceCategory', 'user'])->searchExcel($this->inputs);
         return view('exports.tickets', compact('tickets'));
     }
 
