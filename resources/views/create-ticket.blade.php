@@ -71,8 +71,8 @@
                     </select>
 
                     <select class="m-t-16 is-hidden" name="type_category" id="type_category">
-                        <option {{old('type_category') == 'ATLAS – TVS' ? 'selected':''}} value="ATLAS – TVS">ATLAS </option>
-                        <option {{old('type_category') == 'ATLAS – TVS' ? 'selected':''}} value="ATLAS – TVS">TVS </option>
+                        <option {{old('type_category') == 'ATLAS' ? 'selected':''}} value="ATLAS">ATLAS </option>
+                        <option {{old('type_category') == 'TVS' ? 'selected':''}} value="TVS">TVS </option>
                         <option {{old('type_category') == 'BRINKS' ? 'selected':''}} value="BRINKS">BRINKS</option>
                         <option {{old('type_category') == 'PROSEGUR' ? 'selected':''}} value="PROSEGUR">PROSEGUR</option>
                         <option {{old('type_category') == 'G4S' ? 'selected':''}} value="G4S">G4S</option>
