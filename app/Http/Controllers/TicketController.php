@@ -48,6 +48,9 @@ class TicketController extends Controller
             $path = Storage::putFile('SoporteAncla', $request->file('file2'), 'public');
             $inputs['file2'] = $path;
         }
+
+        $inputs['address'] = $inputs['address1'] . ' '
+            . $inputs['address2'] . ' # ' . $inputs['address3'] . ' - ' . $inputs['address4'];
         $ticket = Ticket::create($inputs);
 
         $this->createLog($ticket, 'Ticket creado');
@@ -115,7 +118,7 @@ class TicketController extends Controller
         if ($user = $ticket->user) {
             if ($user->id != $request->input('user_id')) {
 
-                $this->createLog($ticket,  auth()->user()->name . ' le ha asignado el ticket a ' .  $user->name);
+                $this->createLog($ticket, auth()->user()->name . ' le ha asignado el ticket a ' . $user->name);
                 $user->notify(new AssignSupport($ticket));
 
             } else {
@@ -128,7 +131,7 @@ class TicketController extends Controller
         } else {
             if ($supportUserId = $request->input('user_id')) {
                 $supportUser = User::find($supportUserId);
-                $this->createLog($ticket, auth()->user()->name . ' le ha asignado el ticket a '. $supportUser->name);
+                $this->createLog($ticket, auth()->user()->name . ' le ha asignado el ticket a ' . $supportUser->name);
                 $supportUser->notify(new AssignSupport($ticket));
 
                 $ticket->notify(new AssignSupportClient($ticket));

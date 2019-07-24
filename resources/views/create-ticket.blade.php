@@ -14,17 +14,19 @@
     <div class="position-relative m-t-40">
         <button class="Banner-button">Ingresa tu solicitud</button>
         <figure class="Banner-principal row justify-center align-end">
-            <img  id="arrowToScroll" class="Banner-principalArrow  animated bounce" src="{{asset('images/angle-down-solid.svg')}}" alt="">
+            <img id="arrowToScroll" class="Banner-principalArrow  animated bounce"
+                 src="{{asset('images/angle-down-solid.svg')}}" alt="">
             <img src="{{asset('images/slide.jpg')}}" alt="">
         </figure>
     </div>
-    <form class="Request row justify-center m-t-40" method="POST" enctype="multipart/form-data" action="{{route('storeticket')}}">
+    <form class="Request row justify-center m-t-40" method="POST" enctype="multipart/form-data"
+          action="{{route('storeticket')}}">
         @csrf
         <div class="Login-container">
             <h1 class="target">¿Cómo puedo ayudarle?</h1>
             <div class="row">
                 <div class="col-16 col-m-8 col-l-8  p-l-20 p-r-20">
-                    <input type="text"  value="{{date("d-m-Y")}}" disabled>
+                    <input type="text" value="{{date("d-m-Y")}}" disabled>
 
                     <input type="text" name="company" placeholder="Razón social o empresa" required maxlength="100"
                            value="{{old('company')}}">
@@ -34,12 +36,23 @@
                            value="{{old('sell_point')}}">
                     <input type="text" name="operation_center" placeholder="Centro de operación"
                            maxlength="150" value="{{old('operation_center')}}">
-                    <input type="text" name="address" placeholder="Dirección" required maxlength="100"
-                           value="{{old('address')}}">
+                    <div class="row middle-items">
+                        <input type="text" name="address1" placeholder="Calle" required maxlength="100"
+                               value="{{old('address1')}}" class="col" style="margin-right: 6px">
+                        <input type="text" name="address2" placeholder="127 a" required maxlength="100"
+                               value="{{old('address2')}}" class="col" style="margin-right: 6px">
+                        <span style="margin-right: 6px">#</span>
+                        <input type="text" name="address3" placeholder="38" required maxlength="100"
+                               value="{{old('address3')}}" class="col" style="margin-right: 6px">
+                        <span style="margin-right: 6px">-</span>
+                        <input type="text" name="address4" placeholder="12" required maxlength="100"
+                               value="{{old('address4')}}" class="col" style="margin-right: 6px">
+                    </div>
                     <select class="m-t-16" name="city_id" id="cities" required>
                         <option value="">Seleccione Ciudad o Municipio</option>
                         @foreach($cities as $city)
-                            <option {{old('city_id') == $city->id ? 'selected':''}} value="{{$city->id}}">{{$city->municipio}} - {{$city->departamento}}</option>
+                            <option {{old('city_id') == $city->id ? 'selected':''}} value="{{$city->id}}">{{$city->municipio}}
+                                - {{$city->departamento}}</option>
                         @endforeach
                     </select>
 
@@ -66,29 +79,33 @@
                         @endforeach
                     </select>
 
-                    <select class="m-t-16" data-old="{{old('service_subcategory_id')}}" name="service_subcategory_id" id="service_subcategory" disabled required>
+                    <select class="m-t-16" data-old="{{old('service_subcategory_id')}}" name="service_subcategory_id"
+                            id="service_subcategory" disabled required>
                         <option value="">Seleccione una subcategoría</option>
                     </select>
 
                     <select class="m-t-16 is-hidden" name="type_category" id="type_category">
-                        <option {{old('type_category') == 'ATLAS' ? 'selected':''}} value="ATLAS">ATLAS </option>
-                        <option {{old('type_category') == 'TVS' ? 'selected':''}} value="TVS">TVS </option>
+                        <option value="">Seleccione una trasportadora</option>
+                        <option {{old('type_category') == 'ATLAS' ? 'selected':''}} value="ATLAS">ATLAS</option>
+                        <option {{old('type_category') == 'TVS' ? 'selected':''}} value="TVS">TVS</option>
                         <option {{old('type_category') == 'BRINKS' ? 'selected':''}} value="BRINKS">BRINKS</option>
-                        <option {{old('type_category') == 'PROSEGUR' ? 'selected':''}} value="PROSEGUR">PROSEGUR</option>
+                        <option {{old('type_category') == 'PROSEGUR' ? 'selected':''}} value="PROSEGUR">PROSEGUR
+                        </option>
                         <option {{old('type_category') == 'G4S' ? 'selected':''}} value="G4S">G4S</option>
                     </select>
-                    <select class="m-t-16 is-hidden" id="album" name="album"  >
+                    <select class="m-t-16 is-hidden" id="album" name="album">
                         <option value="">Actualización de albúm de tripulación ?</option>
                         <option {{old('album') == 'si' ? 'selected':''}}value="si">Si</option>
                         <option {{old('album') == 'no' ? 'selected':''}} value="no">No</option>
                     </select>
-                    <select class="m-t-16 is-hidden"  id="spreadsheets"  name="spreadsheets"  >
+                    <select class="m-t-16 is-hidden" id="spreadsheets" name="spreadsheets">
                         <option value="">Solicitud de planillas ?</option>
                         <option {{old('spreadsheets') == 'si' ? 'selected':''}} value="si">Si</option>
                         <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
                     </select>
 
-                    <input type="text" value="{{old('otherType')}}" placeholder="Otro" name="otherType" id="otherType" class="is-hidden">
+                    <input type="text" value="{{old('otherType')}}" placeholder="Otro" name="otherType" id="otherType"
+                           class="is-hidden">
 
                 </div>
                 <div class="col-16 p-l-20 p-r-20 m-t-20">
