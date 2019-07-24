@@ -44,6 +44,18 @@ function change() {
         const c = categoriesJson.find((c) => c.id === parseInt(categoryId));
         subCategoriesEl.disabled = false;
         subCategoriesEl.options.length = 0;
+
+        let option = document.createElement("option");
+        option.text = 'Seleccione una opción';
+        option.value = '';
+        if (+oldSubCategories === '') {
+            option.selected = true;
+            subCategoriesEl.dataset.old = '';
+
+        }
+        subCategoriesEl.add(option);
+
+
         c.subcategories.forEach(function (el) {
             let option = document.createElement("option");
             option.text = el.name;
@@ -56,7 +68,6 @@ function change() {
             subCategoriesEl.add(option);
 
         });
-
 
 
     } else {

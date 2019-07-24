@@ -2585,6 +2585,16 @@ function change() {
         });
         subCategoriesEl.disabled = false;
         subCategoriesEl.options.length = 0;
+
+        var option = document.createElement("option");
+        option.text = 'Seleccione una opción';
+        option.value = '';
+        if (+oldSubCategories === '') {
+            option.selected = true;
+            subCategoriesEl.dataset.old = '';
+        }
+        subCategoriesEl.add(option);
+
         c.subcategories.forEach(function (el) {
             var option = document.createElement("option");
             option.text = el.name;
