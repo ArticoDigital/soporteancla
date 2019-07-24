@@ -46,7 +46,7 @@ function change() {
         subCategoriesEl.options.length = 0;
 
         let option = document.createElement("option");
-        option.text = 'Seleccione una opción';
+        option.text = 'Seleccione una subcategoría';
         option.value = '';
         if (+oldSubCategories === '') {
             option.selected = true;
