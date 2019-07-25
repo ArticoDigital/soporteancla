@@ -43,6 +43,8 @@ class TicketRequest extends FormRequest
             'habeas_data' => 'required',
             'city_text' => 'required_if:city_id,==,1124',
             'type_category' => 'required_if:service_category_id,==,1',
+            'album' => 'required_if:service_category_id,==,6',
+            'spreadsheets' => 'required_if:service_category_id,==,6',
             //'file2' => 'required_if:service_category_id,==,1|mimes:jpeg,png,jpg,pdf,csv,xlsx,xls|max:2048',
 
         ];
@@ -54,7 +56,9 @@ class TicketRequest extends FormRequest
             'file2.mimes' => 'El archivo debe ser jpeg,png,jpg, excel o pdf',
             'file2.max' => 'El archivo no debe pesar más de 2GB',
             'city_text.required_if' => 'El campo ¿Cuál? es obligatorio cuando se selecciona otra ciudad ',
-            'file2.required_if' => 'para servicio con trasportadora de valores es obligatorio anexar el formato de solicitud'
+            'file2.required_if' => 'para servicio con trasportadora de valores es obligatorio anexar el formato de solicitud',
+            'album.required_if' => 'Debes seleccionar albúm',
+            'spreadsheets.required_if' => 'Debes seleccionar planilla'
         ];
     }
 }
