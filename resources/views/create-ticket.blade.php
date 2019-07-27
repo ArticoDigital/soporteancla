@@ -50,7 +50,7 @@
                                value="{{old('address4')}}" class="col" style="margin-right: 6px">
                     </div>
                     <select class="m-t-16" name="city_id" id="cities" required>
-                        <option value="">Seleccione Ciudad o Municipio</option>
+                        <option value="">Seleccione Ciudad</option>
                         @foreach($cities as $city)
                             <option {{old('city_id') == $city->id ? 'selected':''}} value="{{$city->id}}">{{$city->municipio}}
                                 - {{$city->region}}</option>
