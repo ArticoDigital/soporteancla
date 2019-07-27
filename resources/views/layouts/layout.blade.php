@@ -16,7 +16,7 @@
 <header class="Header row align-end">
     <div class="container Header-container row justify-end" id="Header-container">
         <figure class="Header-logo">
-            <a href="https://www.ancla.la">
+            <a href="{{config('APP_URL')}}">
                 <img class="Header-logoImage" src="{{asset('images/logo_ancla_blanco.png')}}" alt="">
             </a>
         </figure>
