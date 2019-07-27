@@ -8,6 +8,7 @@ class City extends Model
 {
     //
     protected $fillable = [
-        'region', 'codigo_dane_depto','departamento','codigo_dane_mun','municipio'
+        'region', 'municipio'
+        # 'region', 'codigo_dane_depto','departamento','codigo_dane_mun','municipio'
     ];
 }

@@ -12,7 +12,7 @@
         </div>
     @endif
     <div class="position-relative m-t-40">
-        <button class="Banner-button">Ingresa tu solicitud Panama</button>
+        <button class="Banner-button">Ingresa tu solicitud</button>
         <figure class="Banner-principal row justify-center align-end">
             <img id="arrowToScroll" class="Banner-principalArrow  animated bounce"
                  src="{{asset('images/angle-down-solid.svg')}}" alt="">

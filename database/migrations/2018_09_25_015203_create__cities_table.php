@@ -16,9 +16,6 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('region')->nullable();
-            $table->string('codigo_dane_depto')->nullable();
-            $table->string('departamento')->nullable();
-            $table->string('codigo_dane_mun')->nullable();
             $table->string('municipio')->nullable();
             $table->timestamps();
         });
