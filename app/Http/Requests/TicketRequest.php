@@ -58,7 +58,8 @@ class TicketRequest extends FormRequest
             'city_text.required_if' => 'El campo ¿Cuál? es obligatorio cuando se selecciona otra ciudad ',
             'file2.required_if' => 'para servicio con trasportadora de valores es obligatorio anexar el formato de solicitud',
             'album.required_if' => 'Debes seleccionar albúm',
-            'spreadsheets.required_if' => 'Debes seleccionar planilla'
+            'spreadsheets.required_if' => 'Debes seleccionar planilla',
+            'type_category.required_if' => 'Debes seleccionar una transportadora',
         ];
     }
 }
