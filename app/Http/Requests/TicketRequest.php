@@ -41,10 +41,10 @@ class TicketRequest extends FormRequest
             'request' => 'required',
             'city_id' => 'required',
             'habeas_data' => 'required',
-            'city_text' => 'required_if:city_id,==,1124',
-            'type_category' => 'required_if:service_category_id,==,1',
-            'album' => 'required_if:service_category_id,==,6',
-            'spreadsheets' => 'required_if:service_category_id,==,6',
+            //'city_text' => 'required_if:city_id,==,1124',
+            //'type_category' => 'required_if:service_category_id,==,1',
+            //'album' => 'required_if:service_category_id,==,6',
+            //'spreadsheets' => 'required_if:service_category_id,==,6',
             //'file2' => 'required_if:service_category_id,==,1|mimes:jpeg,png,jpg,pdf,csv,xlsx,xls|max:2048',
 
         ];
