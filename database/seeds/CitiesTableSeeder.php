@@ -11,15 +11,15 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        city::create([ 'providence'=>'Panamá.','municipio' => 'Panamá.' ]);
-        city::create([ 'providence'=>'Veraguas','municipio' => 'Santiago de Veraguas' ]);
-        city::create([ 'providence'=>'Los Santos.','municipio' => 'Las Tablas' ]);
-        city::create([ 'providence'=>'Herrera','municipio' => 'Chitré' ]);
-        city::create([ 'providence'=>'Darién','municipio' => ' La Palma' ]);
-        city::create([ 'providence'=>'Colón','municipio' => 'Colón' ]);
-        city::create([ 'providence'=>'Penonomé','municipio' => 'Penonomé' ]);
-        city::create([ 'providence'=>'Chiriquí','municipio' => 'David' ]);
-        city::create([ 'providence'=>'Bocas del Toro','municipio' => 'Bocas del Toro' ]);
+        city::create([ 'region'=>'Panamá.','municipio' => 'Panamá.' ]);
+        city::create([ 'region'=>'Veraguas','municipio' => 'Santiago de Veraguas' ]);
+        city::create([ 'region'=>'Los Santos.','municipio' => 'Las Tablas' ]);
+        city::create([ 'region'=>'Herrera','municipio' => 'Chitré' ]);
+        city::create([ 'region'=>'Darién','municipio' => ' La Palma' ]);
+        city::create([ 'region'=>'Colón','municipio' => 'Colón' ]);
+        city::create([ 'region'=>'Penonomé','municipio' => 'Penonomé' ]);
+        city::create([ 'region'=>'Chiriquí','municipio' => 'David' ]);
+        city::create([ 'region'=>'Bocas del Toro','municipio' => 'Bocas del Toro' ]);
 
     }
 }
