@@ -49,8 +49,6 @@ class TicketController extends Controller
             $inputs['file2'] = $path;
         }
 
-        $inputs['address'] = $inputs['address1'] . ' '
-            . $inputs['address2'] . ' # ' . $inputs['address3'] . ' - ' . $inputs['address4'];
         $ticket = Ticket::create($inputs);
 
         $this->createLog($ticket, 'Ticket creado');

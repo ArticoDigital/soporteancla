@@ -36,19 +36,10 @@
                            value="{{old('sell_point')}}">
                     <input type="text" name="operation_center" placeholder="Centro de operación"
                            maxlength="150" value="{{old('operation_center')}}">
-                    <div class="row middle-items">
-                        <label for="" style="display: block" class="col-16">Direción</label>
-                        <input type="text" name="address1" placeholder="Calle" required maxlength="100"
-                               value="{{old('address1')}}" class="col" style="margin-right: 6px">
-                        <input type="text" name="address2" placeholder="127 a" required maxlength="100"
-                               value="{{old('address2')}}" class="col" style="margin-right: 6px">
-                        <span style="margin-right: 6px">#</span>
-                        <input type="text" name="address3" placeholder="38" required maxlength="100"
-                               value="{{old('address3')}}" class="col" style="margin-right: 6px">
-                        <span style="margin-right: 6px">-</span>
-                        <input type="text" name="address4" placeholder="12" required maxlength="100"
-                               value="{{old('address4')}}" class="col" style="margin-right: 6px">
-                    </div>
+
+                    <input type="text" name="address" placeholder="Dirección" required maxlength="100"
+                           value="{{old('address')}}" class="col" style="margin-right: 6px">
+
                     <select class="m-t-16" name="city_id" id="cities" required>
                         <option value="">Seleccione Ciudad</option>
                         @foreach($cities as $city)
