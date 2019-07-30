@@ -37,7 +37,7 @@
                     <input type="text" name="operation_center" placeholder="Centro de operación"
                            maxlength="150" value="{{old('operation_center')}}">
                     <div class="row middle-items">
-                        <label for="" style="display: block" class="col-16">Direción</label>
+                        <label for="" style="display: block" class="col-16">Dirección</label>
                         <input type="text" name="address1" placeholder="Calle" required maxlength="100"
                                value="{{old('address1')}}" class="col" style="margin-right: 6px">
                         <input type="text" name="address2" placeholder="127 a" required maxlength="100"
