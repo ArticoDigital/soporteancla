@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Log;
 use App\Models\ServiceCategory;
 use App\Models\TicketState;
+use App\Models\Towns;
 use App\Notifications\AssignSupport;
 use App\Notifications\AssignSupportClient;
 use App\Notifications\ChangeStateTicket;
@@ -36,7 +37,8 @@ class TicketController extends Controller
     {
         $categories = ServiceCategory::where("isActive", 1)->with('subcategories')->get();
         $cities = City::all();
-        return view('create-ticket', compact('categories', 'cities'));
+        $towns = Towns::all();
+        return view('create-ticket', compact('categories', 'cities','towns'));
     }
 
     public function store(TicketRequest $request)

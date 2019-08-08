@@ -45,6 +45,15 @@
                         @endforeach
                     </select>
 
+                    <select class="m-t-16" name="town" id="town" class="{{old('city_id') == 1?'':'is-hidden'}}">
+                        <option value="">Seleccione el corregimientos</option>
+                        @foreach($towns as $town->name)
+                            <option {{old('town') == $town->name ? 'selected':''}} value="{{$town->name}}">
+                                {{$town->name}}
+                            </option>
+                        @endforeach
+                    </select>
+
                     <input id="otherForm" class="{{old('city_id') == 1124?'':'is-hidden'}}" type="text" name="city_text"
                            placeholder="¿Cuál?" value="{{old('city_text')}}">
 

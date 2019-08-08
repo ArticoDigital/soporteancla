@@ -15,7 +15,7 @@ class Ticket extends Model
         'email', 'sap_number', 'identification',
         'sell_point', 'operation_center', 'user_id',
         'service_subcategory_id', 'ticket_state_id', 'request',
-        'address', 'city_id', 'file', 'file2', 'file3', 'city_text', 'is_invoiced',
+        'address', 'city_id', 'file', 'file2', 'file3', 'city_text', 'is_invoiced', 'town',
         'invoice_number', 'invoice_cost', 'type_category', 'album', 'spreadsheets','regional'];
 
 
