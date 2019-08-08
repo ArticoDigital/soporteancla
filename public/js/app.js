@@ -2544,7 +2544,9 @@ var subCategoriesEl = document.querySelector('#service_subcategory'),
     type_category = document.querySelector('#type_category'),
     spreadsheets = document.querySelector('#spreadsheets'),
     otherType = document.querySelector('#otherType'),
-    album = document.querySelector('#album');
+    album = document.querySelector('#album'),
+    town = document.querySelector('#town'),
+    cities = document.querySelector('#cities');
 var categoriesJson = {};
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
@@ -2557,9 +2559,18 @@ var categoriesJson = {};
         }
         categoriesEl.addEventListener('change', change);
         subCategoriesEl.addEventListener('change', changeSubcategory);
+        cities.addEventListener('change', changeCities);
     }
 });
+function changeCities() {
+    var citiesId = cities.options[cities.selectedIndex].value;
 
+    if (cities === '1') {
+        town.classList.remove('is-hidden');
+    } else {
+        town.classList.add('is-hidden');
+    }
+}
 function changeSubcategory() {
 
     var subCategoryId = subCategoriesEl.options[subCategoriesEl.selectedIndex].value;
