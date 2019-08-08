@@ -37,9 +37,6 @@
                     <input type="text" name="operation_center" placeholder="Centro de operación"
                            maxlength="150" value="{{old('operation_center')}}">
 
-                    <input type="text" name="address" placeholder="Dirección" required maxlength="100"
-                           value="{{old('address')}}" class="col" style="margin-right: 6px">
-
                     <select class="m-t-16" name="city_id" id="cities" required>
                         <option value="">Seleccione Ciudad</option>
                         @foreach($cities as $city)
@@ -58,6 +55,10 @@
                            value="{{old('name')}}">
                     <input type="text" name="identification" placeholder="Cédula o NIT" required maxlength="50"
                            value="{{old('identification')}}">
+
+                    <input type="text" name="address" placeholder="Dirección" required maxlength="100"
+                           value="{{old('address')}}" class="col" style="margin-right: 6px">
+
                     <input type="email" name="email" placeholder="E-mail" required value="{{old('email')}}">
                     <input type="text" name="cellphone" placeholder="Celular" required maxlength="20"
                            value="{{old('cellphone')}}">
@@ -71,10 +72,7 @@
                         @endforeach
                     </select>
 
-                    <select class="m-t-16" data-old="{{old('service_subcategory_id')}}" name="service_subcategory_id"
-                            id="service_subcategory" disabled required>
-                        <option value="">Seleccione una subcategoría</option>
-                    </select>
+
 
                     <select class="m-t-16 is-hidden" name="type_category" id="type_category">
                         <option value="">Seleccione una trasportadora</option>
