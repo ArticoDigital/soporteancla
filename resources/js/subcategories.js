@@ -19,7 +19,7 @@ export default function () {
 
         }
         categoriesEl.addEventListener('change', change);
-        subCategoriesEl.addEventListener('change', changeSubcategory)
+      //  subCategoriesEl.addEventListener('change', changeSubcategory)
         cities.addEventListener('change', changeCities)
     }
 }
