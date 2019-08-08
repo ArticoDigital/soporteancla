@@ -45,7 +45,7 @@
                         @endforeach
                     </select>
 
-                    <select class="m-t-16" name="town" id="town" class="{{old('city_id') == 1?'':'is-hidden'}}">
+                    <select name="town" id="town" class="{{old('city_id') == 1?'m-t-16':'m-t-16 is-hidden'}}">
                         <option value="">Seleccione el corregimientos</option>
                         @foreach($towns as $town)
                             <option {{old('town') == $town->name ? 'selected':''}} value="{{$town->name}}">
