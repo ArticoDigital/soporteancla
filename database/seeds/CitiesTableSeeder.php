@@ -18,7 +18,7 @@ class CitiesTableSeeder extends Seeder
         city::create([ 'region'=>'Darién','municipio' => '' ]);
         city::create([ 'region'=>'Herrera','municipio' => '' ]);
         city::create([ 'region'=>'Los Santos.','municipio' => '' ]);
-        city::create([ 'region'=>'Panamá.','municipio' => 'Panamá.' ]);
+        city::create([ 'region'=>'Panamá.','municipio' => ' - Panamá.' ]);
         city::create([ 'region'=>'Veraguas','municipio' => '' ]);
         city::create([ 'region'=>'Panama oeste','municipio' => '' ]);
     }
