@@ -2565,7 +2565,8 @@ var categoriesJson = {};
 function changeCities() {
     var citiesId = cities.options[cities.selectedIndex].value;
 
-    if (citiesId === '1') {
+    if (citiesId === '4') {
+
         town.classList.remove('is-hidden');
     } else {
         town.classList.add('is-hidden');

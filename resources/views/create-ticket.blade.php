@@ -41,7 +41,7 @@
                         <option value="">Seleccione Ciudad</option>
                         @foreach($cities as $city)
                             <option {{old('city_id') == $city->id ? 'selected':''}} value="{{$city->id}}">{{$city->municipio}}
-                                - {{$city->region}}</option>
+                                {{$city->region}}</option>
                         @endforeach
                     </select>
 

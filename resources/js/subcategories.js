@@ -27,6 +27,7 @@ function changeCities() {
     let citiesId = cities.options[cities.selectedIndex].value;
 
     if (citiesId === '4') {
+
         town.classList.remove('is-hidden')
     }else{
         town.classList.add('is-hidden')
