@@ -16,7 +16,7 @@
         <figure class="Banner-principal row justify-center align-end">
             <img id="arrowToScroll" class="Banner-principalArrow  animated bounce"
                  src="{{asset('images/angle-down-solid.svg')}}" alt="">
-            <img src="{{asset('images/slide.jpg')}}" alt="">
+            <img src="{{asset('images/slide1.jpg')}}" alt="">
         </figure>
     </div>
     <form class="Request row justify-center m-t-40" method="POST" enctype="multipart/form-data"
