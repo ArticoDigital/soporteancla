@@ -100,7 +100,11 @@
                     </select>
                     <select class="m-t-16 is-hidden" id="spreadsheets" name="spreadsheets">
                         <option value="">Solicitud de planillas ?</option>
-                        <option value="">Solicitud Recolección de Valores ?</option>
+                        <option {{old('spreadsheets') == 'si' ? 'selected':''}} value="si">Si</option>
+                        <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
+                    </select>
+                    <select class="m-t-16 is-hidden" id="spreadsheets" name="spreadsheets">
+                        <option value="">Solicitud Bases y Recambio ?</option>
                         <option {{old('spreadsheets') == 'si' ? 'selected':''}} value="si">Si</option>
                         <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
                     </select>
