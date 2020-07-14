@@ -93,10 +93,10 @@
                         </option>
                         <option {{old('type_category') == 'G4S' ? 'selected':''}} value="G4S">G4S</option>
                     </select>
-                    <select class="m-t-16 is-hidden" id="album" name="album">
+                    <select class="m-t-16 is-hidden" id="spreadsheets" name="spreadsheets">
                         <option value="">Actualización de albúm de tripulación ?</option>
-                        <option {{old('album') == 'si' ? 'selected':''}}value="si">Si</option>
-                        <option {{old('album') == 'no' ? 'selected':''}} value="no">No</option>
+                        <option {{old('spreadsheets') == 'si' ? 'selected':''}}value="si">Si</option>
+                        <option {{old('spreadsheets') == 'no' ? 'selected':''}} value="no">No</option>
                     </select>
                     <select class="m-t-16 is-hidden" id="spreadsheets" name="spreadsheets">
                         <option value="">Solicitud de planillas ?</option>
