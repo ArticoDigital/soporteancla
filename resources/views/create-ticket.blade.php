@@ -94,7 +94,7 @@
                         <option {{old('type_category') == 'G4S' ? 'selected':''}} value="G4S">G4S</option>
                     </select>
                     <select class="m-t-16 is-hidden" id="album" name="album">
-                        <option value="">Actualización de albúm de tripulación ?</option>
+                        <option value="">Solicitud Bases y Recambio ?</option>
                         <option {{old('album') == 'si' ? 'selected':''}}value="si">Si</option>
                         <option {{old('album') == 'no' ? 'selected':''}} value="no">No</option>
                     </select>
