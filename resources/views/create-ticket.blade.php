@@ -84,7 +84,7 @@
                             id="service_subcategory" disabled required>
                         <option value="">Seleccione una subcategoría</option>
                     </select>
-                    <select class="m-t-16 is-hidden" name="type_category" id="type_category">
+                    <select class="m-t-16" name="type_category" id="type_category">
                         <option value="">Seleccione una trasportadora</option>
                         <option {{old('type_category') == 'ATLAS' ? 'selected':''}} value="ATLAS">ATLAS</option>
                         <option {{old('type_category') == 'TVS' ? 'selected':''}} value="TVS">TVS</option>
