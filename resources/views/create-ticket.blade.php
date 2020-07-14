@@ -112,7 +112,7 @@
                     <textarea required name="request" id="" cols="30" rows="10"
                               placeholder="Escriba su solicitud">{!! old('request') !!}</textarea>
                     <div class="m-t-20">
-                        <label for="file">por favor adjúnte soporte de su solicitud </label>
+                        <label for="file">Adjúnte soporte de su solicitud </label>
                         <input type="file" id="file" class="Request-file" name="file2" placeholder="Elija un documento ">
                     </div>-->
                     <input name="habeas_data" id="habeas_data" type="checkbox" required>
