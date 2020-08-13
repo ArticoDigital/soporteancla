@@ -132,8 +132,12 @@
 
             </div>
             <button class="m-t-16">Enviar Ticket</button>
-            <p> Cajas Fuertes Ancla actuará como un medio facilitador en temas de conciliación entre clientes y transportadoras de valores, sin que éste sea su obligación. Somos un ente colaborador y mediador.</p>
-        </div>
+                    </div>
+        <div class="m-t-20">
+        
+        <p> Cajas Fuertes Ancla actuará como un medio facilitador en temas de conciliación entre clientes y transportadoras de valores, sin que éste sea su obligación. Somos un ente colaborador y mediador.</p>
+
+        <div>
 
     </form>
 @endsection
