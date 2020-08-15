@@ -60,7 +60,7 @@ Route::get('/perfil', 'UserProfileController@edit')->name('profile');
 Route::post('/perfil', 'UserProfileController@update')->name('profileUpdate');
 
 Route::get('/admin', function () {
-    return view('admin');
+   return redirect()->route('tickets');
 })->name('dashboard');
 
 
