@@ -47,7 +47,9 @@ class CreateTicketClient extends Notification
             ->line('Gracias por contactarnos. ')
             ->line(' Hemos recibido su solicitud y en un plazo de 24 horas hábiles daremos respuesta al requerimiento número '
                 . $this->data->id .
-                ' Tenga presente que los horarios de atención son de lunes a viernes de 8am a 6pm y los sábados de 9am a 12m"');
+                ' Tenga presente que los horarios de atención son de lunes a viernes de 8am a 6pm y los sábados de 9am a 12m. 
+                Cajas Fuertes Ancla actuará como un medio facilitador en temas de conciliación entre clientes y transportadoras de valores, 
+                sin que éste sea su obligación. Somos un ente colaborador y mediador.');
     }
 
     /**
