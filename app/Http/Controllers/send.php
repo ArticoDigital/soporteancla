@@ -31,3 +31,15 @@ if ($mail->Send()) {
            alert("NO ENVIADO, intentar de nuevo");
         </script>';
 }
+//configurar preguntas
+echo p<"EL TIEMPO DE RESPUESTA A SU SOLICITUD FUE:">;
+        </script> img1
+        </script> img2
+        </script> img3
+            
+echo p<"COMO TE PARECIO LA ATENCION DE LA PERSONA QUE REALIZO LA VISITA?">;
+        </script> img1
+        </script> img2
+        </script> img3 
+            SEND
+            
