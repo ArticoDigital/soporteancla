@@ -8,13 +8,13 @@ $mail = new PHPMailer();
 $mail->IsSMTP();
 
 //Configuracion servidor mail
-$mail->From = "mail@gmail.com"; //remitente
+$mail->From = "analistati@cajasfuertesancla.com"; //remitente
 $mail->SMTPAuth = true;
 $mail->SMTPSecure = 'tls'; //seguridad
 $mail->Host = "smtp.gmail.com"; // servidor smtp
 $mail->Port = 587; //puerto
 $mail->Username ='mail@gmail.com'; //nombre usuario
-$mail->Password = 'password'; //contraseña
+$mail->Password = '@ncla2020'; //contraseña
 
 //Agregar destinatario
 $mail->AddAddress($_POST['email']);
